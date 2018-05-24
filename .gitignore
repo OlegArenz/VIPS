@@ -1,0 +1,11 @@
+.idea
+c++/build/*
+c++/VIPS.py
+c++/VIPS_PythonWrapper.py
+c++/VIPS_PythonWrapper.cxx
+c++/VIPS_PythonWrapper_wrap.cxx
+c++/MMD.py
+c++/MMD_wrap.cxx
+python/cppWrapper/*
+*.pyc
+data/*

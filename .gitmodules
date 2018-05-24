@@ -1,0 +1,12 @@
+[submodule "python/sampler/elliptical_slice"]
+	path = python/sampler/elliptical_slice
+	url = https://github.com/OlegArenz/bovy_mcmc.git
+[submodule "python/sampler/PTMCMC"]
+	path = python/sampler/PTMCMC
+	url = https://github.com/OlegArenz/PTMCMCSampler.git
+[submodule "python/sampler/VBOOST"]
+	path = python/sampler/VBOOST
+	url = https://github.com/OlegArenz/vboost.git
+[submodule "python/sampler/SVGD"]
+	path = python/sampler/SVGD
+	url = https://github.com/OlegArenz/Stein-Variational-Gradient-Descent.git
