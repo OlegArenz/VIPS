@@ -4,6 +4,12 @@
 using namespace std; // ToDo: Make all std calls explicit and remove
 using namespace arma;
 
+/**
+ * The GMM-model learned by VIPS.
+ * This class extends GMM to include learning related meta information.
+ * @param dim number of dimensions
+ * @extends GMM
+ */
 VIPS_Model::VIPS_Model(int dim)
         : GMM(dim), last_etas_for_comp_optimization(), target_inv_chols(dim, dim, 0),
           target_chols(dim, dim, 0), target_means(dim, 0), target_weights(), target_log_weights(),
@@ -13,7 +19,7 @@ VIPS_Model::VIPS_Model(int dim)
 arma::vec VIPS_Model::getLastEtasForCompOptimization() { return last_etas_for_comp_optimization; }
 
 /**
-* store the Lagrangian parameters that have been learned during the last model update for warm-starting.
+* Store the Lagrangian parameters that have been learned during the last model update for warm-starting.
 * @param new_lastEtas - Lagrangian parameters for the KL constraints for the component update
 */
 void VIPS_Model::setLastEtasForCompOptimization(vec new_lastEtas) {
@@ -26,7 +32,7 @@ void VIPS_Model::setLastEtasForCompOptimization(vec new_lastEtas) {
 
 /**
 * The VIPS-model stores various meta-information for each component, e.g. KL bounds,
-* the target distributions for the KL constraint and some debug data like the history of achieved rewards.
+* the target distributions for the KL constraint and some debug data like the history of achieved rewards.<br>
 * This function will enlarge the matrices/vector that store this meta-information in order to account for
 * newly added components.
 * @param N - the number of new components that have been added
@@ -56,7 +62,7 @@ void VIPS_Model::add_meta_info_for_components(int N) {
 }
 
 /**
-* Adds the expected target densities to the reward history for each component.
+* Adds the expected target densities to the reward history for each component.<br>
 * @param expected_target_densities - E_o[log(f(x)] for each component o.
 * @param component_rewards - the reward that was used for updating the weights (includes entropy and log-responsibilities)
 * @param component_weights - the current mixture weights for each component
@@ -69,9 +75,9 @@ void VIPS_Model::update_histories(vec expected_target_densities, vec component_r
 
 /**
 * Adds new components.
-* The weights will be initialized close to zero
- * @params new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
- * @params new_covs - cube of size N_dimensions x N_dimensions x N_newComponents specifying the covariance matrices
+* The weights will be initialized close to zero.
+ * @param new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
+ * @param new_covs - cube of size N_dimensions x N_dimensions x N_newComponents specifying the covariance matrices
  * of the new components
 */
 void VIPS_Model::add_components(arma::mat new_means, arma::cube new_covs) {
@@ -81,9 +87,9 @@ void VIPS_Model::add_components(arma::mat new_means, arma::cube new_covs) {
 
 /**
 * Adds new components. Second parameter is interpreted as inverse cholesky matrix.
-* The weights will be initialized close to zero
-* @params new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
-* @params new_InvChols - cube of size N_dimensions x N_dimensions x N_newComponents specifying the inverse cholesky matrices
+* The weights will be initialized close to zero.
+* @param new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
+* @param new_InvChols - cube of size N_dimensions x N_dimensions x N_newComponents specifying the inverse cholesky matrices
 * of the new components
 */
 void VIPS_Model::add_components_invChols(arma::mat new_means, arma::cube new_invChols) {
@@ -93,7 +99,7 @@ void VIPS_Model::add_components_invChols(arma::mat new_means, arma::cube new_inv
 
 /**
 * Delete the components given by the indices and renormalize the weights afterwards.
-* @params index specifying which component to delete
+* @param index specifying which component to delete
 */
 void VIPS_Model::delete_component(int index) {
   GMM::delete_component(index);
@@ -109,10 +115,12 @@ void VIPS_Model::delete_component(int index) {
 }
 
 
+
 /**
  * Removes all components with weight below the given threshold that did not exceed that threshold during the last n_del iterations.
  * Weights are normalized afterwards.
  * @param min_weight - threshold for keeping components
+ * @param n_del - number of most recent EM iterations to be considered
  */
 void VIPS_Model::delete_low_weight_components(double min_weight, int n_del) {
   int n_hist = comp_weight_history.n_cols;
@@ -169,11 +177,11 @@ void VIPS_Model::update_targets_for_KL_bounds(bool update_weight_targets, bool u
 /**
  * Return the component distributions and the weight distributions that we currently want to stay close to.
  *
- * @returns the following tuple:
- * tuple[0] - cube of size N_dimensions x N_dimensions x N_components containing inverse cholesky matrices
- * tuple[1] - cube of size N_dimensions x N_dimensions x N_components containing cholesky matrices
- * tuple[2] - matrix of size N_dimensions x N_components containing the means
- * tuple[3] - vector of size N_components containing the log_weights log(q(o))
+ * @returns the following tuple<br>
+ * tuple[0] - cube of size N_dimensions x N_dimensions x N_components containing inverse cholesky matrices<br>
+ * tuple[1] - cube of size N_dimensions x N_dimensions x N_components containing cholesky matrices<br>
+ * tuple[2] - matrix of size N_dimensions x N_components containing the means<br>
+ * tuple[3] - vector of size N_components containing the log_weights log(q(o))<br>
  * tuple[4] - vector of size N_components containing the weights q(o)
  */
 std::tuple<arma::cube, arma::cube, arma::mat, arma::vec, arma::vec> VIPS_Model::getTargetsForKLBounds() {

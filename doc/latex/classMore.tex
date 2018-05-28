@@ -1,0 +1,213 @@
+\hypertarget{classMore}{}\section{More Class Reference}
+\label{classMore}\index{More@{More}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries More} (int dim)\hypertarget{classMore_a4d5e29a878e515129484d2a04738ed4f}{}\label{classMore_a4d5e29a878e515129484d2a04738ed4f}
+
+\item 
+int {\bfseries run\+\_\+lbfgs} (float initial\+\_\+eta, float initial\+\_\+omega)\hypertarget{classMore_a1deae43fa72d7ce2ef34dd10cc44a75f}{}\label{classMore_a1deae43fa72d7ce2ef34dd10cc44a75f}
+
+\item 
+int {\bfseries run\+\_\+lbfgs\+\_\+nlopt} (std\+::vector$<$ double $>$ \&initial, bool dont\+\_\+learn\+\_\+omega)\hypertarget{classMore_aafcaa1a9dd299715349391a9092691ad}{}\label{classMore_aafcaa1a9dd299715349391a9092691ad}
+
+\item 
+std\+::tuple$<$ double, vec $>$ \hyperlink{classMore_aa3fdb202ca291e253f7c157d8a13040b}{dual\+\_\+function\+\_\+gaussian} (double eta, double omega)
+\item 
+bool \hyperlink{classMore_a5bb1da06e25a581a06d4c84359702e7b}{update\+\_\+surrogate} (vec regression\+\_\+weights, mat X, vec targets, double ridge\+\_\+factor, bool omit\+\_\+linear\+\_\+term, bool no\+\_\+correlations)
+\item 
+bool \hyperlink{classMore_a0943909cf34c607dba952bf65f724702}{update\+\_\+surrogate\+\_\+normalize\+Data} (vec regression\+\_\+weights, mat X, vec targets, mat cov, vec mean, double ridge\+\_\+factor, bool standardize, bool omit\+\_\+linear\+\_\+term, bool no\+\_\+correlations)
+\item 
+void \hyperlink{classMore_a7163e4cb11467ccbdb76b830a193c597}{set\+\_\+target\+\_\+dist} (mat Sigma\+\_\+q, vec mu\+\_\+q)
+\item 
+void \hyperlink{classMore_a52a17e3a77606659aeb668ad597aac62}{set\+\_\+target\+\_\+dist} (mat chol\+\_\+\+Sigma\+\_\+q, mat chol\+\_\+Q, vec mu\+\_\+q)
+\item 
+void {\bfseries set\+\_\+bounds} (double epsilon, double beta)\hypertarget{classMore_a67b66cbfcc08b37d6781f7887fccbfbf}{}\label{classMore_a67b66cbfcc08b37d6781f7887fccbfbf}
+
+\item 
+double {\bfseries get\+\_\+expected\+\_\+reward} ()\hypertarget{classMore_a37becd406f53d7d4ea39a63ecddaff65}{}\label{classMore_a37becd406f53d7d4ea39a63ecddaff65}
+
+\item 
+std\+::tuple$<$ vec, vec $>$ {\bfseries test\+\_\+obj\+\_\+finite\+\_\+difference} (double eta, double omega, double eps)\hypertarget{classMore_a46f6dafc240f9c318734ed7ffbee73b7}{}\label{classMore_a46f6dafc240f9c318734ed7ffbee73b7}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+mat {\bfseries R}\hypertarget{classMore_a433b935746584a3f575aaad0a4dff676}{}\label{classMore_a433b935746584a3f575aaad0a4dff676}
+
+\item 
+vec {\bfseries r}\hypertarget{classMore_abd58e2c611fcd0ba19ff1827de13a079}{}\label{classMore_abd58e2c611fcd0ba19ff1827de13a079}
+
+\item 
+double {\bfseries r0}\hypertarget{classMore_af13af649eb7ab142565c7138654638e7}{}\label{classMore_af13af649eb7ab142565c7138654638e7}
+
+\item 
+mat {\bfseries chol\+\_\+\+Sigma\+\_\+q}\hypertarget{classMore_aea252b6789078d0db3151f7b91d6b14d}{}\label{classMore_aea252b6789078d0db3151f7b91d6b14d}
+
+\item 
+mat {\bfseries chol\+\_\+Q}\hypertarget{classMore_a4d98cd1335ad9eb1e6eb3dcb491392f9}{}\label{classMore_a4d98cd1335ad9eb1e6eb3dcb491392f9}
+
+\item 
+vec {\bfseries mu\+\_\+q}\hypertarget{classMore_a44d06b5bef43614da37f03cee8b49f7b}{}\label{classMore_a44d06b5bef43614da37f03cee8b49f7b}
+
+\item 
+mat {\bfseries Q}\hypertarget{classMore_a5a81408e0bb2ac67f25f7dc80fdb638c}{}\label{classMore_a5a81408e0bb2ac67f25f7dc80fdb638c}
+
+\item 
+vec {\bfseries q}\hypertarget{classMore_a646ac6513d1490b21f20c869eff874d9}{}\label{classMore_a646ac6513d1490b21f20c869eff874d9}
+
+\item 
+double {\bfseries KL}\hypertarget{classMore_af24998dba5d26095ce9427aed6d173e6}{}\label{classMore_af24998dba5d26095ce9427aed6d173e6}
+
+\item 
+double {\bfseries entropy}\hypertarget{classMore_a59f91914871f4a0651c85169b9c2fc80}{}\label{classMore_a59f91914871f4a0651c85169b9c2fc80}
+
+\item 
+double {\bfseries epsilon}\hypertarget{classMore_a00c64aa141fcdcbcb3e3c6faac735678}{}\label{classMore_a00c64aa141fcdcbcb3e3c6faac735678}
+
+\item 
+double {\bfseries beta}\hypertarget{classMore_afcb6713d1144080cbd73c086e6312b8c}{}\label{classMore_afcb6713d1144080cbd73c086e6312b8c}
+
+\item 
+double {\bfseries eta}\hypertarget{classMore_a3bb07053d6041a83a326541f3fb45546}{}\label{classMore_a3bb07053d6041a83a326541f3fb45546}
+
+\item 
+double {\bfseries omega}\hypertarget{classMore_adc2f0c4c8b8eccea6306879a4d274eb0}{}\label{classMore_adc2f0c4c8b8eccea6306879a4d274eb0}
+
+\item 
+mat {\bfseries chol\+\_\+\+Sigma\+\_\+p}\hypertarget{classMore_a069da105929f0494703ffb24f86e6ad8}{}\label{classMore_a069da105929f0494703ffb24f86e6ad8}
+
+\item 
+mat {\bfseries chol\+\_\+P}\hypertarget{classMore_adf80f265d7973f2b1fee9385c0e4dc8c}{}\label{classMore_adf80f265d7973f2b1fee9385c0e4dc8c}
+
+\item 
+mat {\bfseries Sigma\+\_\+p}\hypertarget{classMore_a713ece9bc8bb8a52be429a3aa6fb0bd1}{}\label{classMore_a713ece9bc8bb8a52be429a3aa6fb0bd1}
+
+\item 
+vec {\bfseries mu\+\_\+p}\hypertarget{classMore_a0fede37a2f86a367d6ffeeee404e65e2}{}\label{classMore_a0fede37a2f86a367d6ffeeee404e65e2}
+
+\item 
+mat {\bfseries P}\hypertarget{classMore_a93fd420d0058b710cabaf6c15ff65ba4}{}\label{classMore_a93fd420d0058b710cabaf6c15ff65ba4}
+
+\item 
+vec {\bfseries p}\hypertarget{classMore_a89e33f9ae22902ed11d732bb56439721}{}\label{classMore_a89e33f9ae22902ed11d732bb56439721}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{More@{More}!dual\+\_\+function\+\_\+gaussian@{dual\+\_\+function\+\_\+gaussian}}
+\index{dual\+\_\+function\+\_\+gaussian@{dual\+\_\+function\+\_\+gaussian}!More@{More}}
+\subsubsection[{\texorpdfstring{dual\+\_\+function\+\_\+gaussian(double eta, double omega)}{dual_function_gaussian(double eta, double omega)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ double, vec $>$ More\+::dual\+\_\+function\+\_\+gaussian (
+\begin{DoxyParamCaption}
+\item[{double}]{eta, }
+\item[{double}]{omega}
+\end{DoxyParamCaption}
+)}\hypertarget{classMore_aa3fdb202ca291e253f7c157d8a13040b}{}\label{classMore_aa3fdb202ca291e253f7c157d8a13040b}
+Evaluates the dual function and computes the gradient for the given Lagrangian multipliers 
+\begin{DoxyParams}{Parameters}
+{\em eta} & \\
+\hline
+{\em omega} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{More@{More}!set\+\_\+target\+\_\+dist@{set\+\_\+target\+\_\+dist}}
+\index{set\+\_\+target\+\_\+dist@{set\+\_\+target\+\_\+dist}!More@{More}}
+\subsubsection[{\texorpdfstring{set\+\_\+target\+\_\+dist(mat Sigma\+\_\+q, vec mu\+\_\+q)}{set_target_dist(mat Sigma_q, vec mu_q)}}]{\setlength{\rightskip}{0pt plus 5cm}void More\+::set\+\_\+target\+\_\+dist (
+\begin{DoxyParamCaption}
+\item[{mat}]{Sigma\+\_\+q, }
+\item[{vec}]{mu\+\_\+q}
+\end{DoxyParamCaption}
+)}\hypertarget{classMore_a7163e4cb11467ccbdb76b830a193c597}{}\label{classMore_a7163e4cb11467ccbdb76b830a193c597}
+Sets the target dist. This version takes covariance matrix and mean 
+\begin{DoxyParams}{Parameters}
+{\em chol\+\_\+\+Sigma\+\_\+q} & \\
+\hline
+{\em chol\+\_\+Q} & \\
+\hline
+{\em mu\+\_\+q} & \\
+\hline
+\end{DoxyParams}
+\index{More@{More}!set\+\_\+target\+\_\+dist@{set\+\_\+target\+\_\+dist}}
+\index{set\+\_\+target\+\_\+dist@{set\+\_\+target\+\_\+dist}!More@{More}}
+\subsubsection[{\texorpdfstring{set\+\_\+target\+\_\+dist(mat chol\+\_\+\+Sigma\+\_\+q, mat chol\+\_\+\+Q, vec mu\+\_\+q)}{set_target_dist(mat chol_Sigma_q, mat chol_Q, vec mu_q)}}]{\setlength{\rightskip}{0pt plus 5cm}void More\+::set\+\_\+target\+\_\+dist (
+\begin{DoxyParamCaption}
+\item[{mat}]{chol\+\_\+\+Sigma\+\_\+q, }
+\item[{mat}]{chol\+\_\+Q, }
+\item[{vec}]{mu\+\_\+q}
+\end{DoxyParamCaption}
+)}\hypertarget{classMore_a52a17e3a77606659aeb668ad597aac62}{}\label{classMore_a52a17e3a77606659aeb668ad597aac62}
+Sets the target dist. This version takes both, the cholesky decomposition of the the covariance matrix and it\textquotesingle{}s inverse. 
+\begin{DoxyParams}{Parameters}
+{\em chol\+\_\+\+Sigma\+\_\+q} & \\
+\hline
+{\em chol\+\_\+Q} & \\
+\hline
+{\em mu\+\_\+q} & \\
+\hline
+\end{DoxyParams}
+\index{More@{More}!update\+\_\+surrogate@{update\+\_\+surrogate}}
+\index{update\+\_\+surrogate@{update\+\_\+surrogate}!More@{More}}
+\subsubsection[{\texorpdfstring{update\+\_\+surrogate(vec regression\+\_\+weights, mat X, vec targets, double ridge\+\_\+factor, bool omit\+\_\+linear\+\_\+term, bool no\+\_\+correlations)}{update_surrogate(vec regression_weights, mat X, vec targets, double ridge_factor, bool omit_linear_term, bool no_correlations)}}]{\setlength{\rightskip}{0pt plus 5cm}bool More\+::update\+\_\+surrogate (
+\begin{DoxyParamCaption}
+\item[{vec}]{regression\+\_\+weights, }
+\item[{mat}]{X, }
+\item[{vec}]{targets, }
+\item[{double}]{ridge\+\_\+factor, }
+\item[{bool}]{omit\+\_\+linear\+\_\+term, }
+\item[{bool}]{no\+\_\+correlations}
+\end{DoxyParamCaption}
+)}\hypertarget{classMore_a5bb1da06e25a581a06d4c84359702e7b}{}\label{classMore_a5bb1da06e25a581a06d4c84359702e7b}
+Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables 
+\begin{DoxyParams}{Parameters}
+{\em regression\+\_\+weights} & \\
+\hline
+{\em X} & \\
+\hline
+{\em targets} & \\
+\hline
+{\em ridge\+\_\+factor} & \\
+\hline
+{\em omit\+\_\+linear\+\_\+term} & \\
+\hline
+{\em no\+\_\+correlations} & \\
+\hline
+\end{DoxyParams}
+\index{More@{More}!update\+\_\+surrogate\+\_\+normalize\+Data@{update\+\_\+surrogate\+\_\+normalize\+Data}}
+\index{update\+\_\+surrogate\+\_\+normalize\+Data@{update\+\_\+surrogate\+\_\+normalize\+Data}!More@{More}}
+\subsubsection[{\texorpdfstring{update\+\_\+surrogate\+\_\+normalize\+Data(vec regression\+\_\+weights, mat X, vec targets, mat cov, vec mean, double ridge\+\_\+factor, bool standardize, bool omit\+\_\+linear\+\_\+term, bool no\+\_\+correlations)}{update_surrogate_normalizeData(vec regression_weights, mat X, vec targets, mat cov, vec mean, double ridge_factor, bool standardize, bool omit_linear_term, bool no_correlations)}}]{\setlength{\rightskip}{0pt plus 5cm}bool More\+::update\+\_\+surrogate\+\_\+normalize\+Data (
+\begin{DoxyParamCaption}
+\item[{vec}]{regression\+\_\+weights, }
+\item[{mat}]{X, }
+\item[{vec}]{targets, }
+\item[{mat}]{cov, }
+\item[{vec}]{mean, }
+\item[{double}]{ridge\+\_\+factor, }
+\item[{bool}]{standardize, }
+\item[{bool}]{omit\+\_\+linear\+\_\+term, }
+\item[{bool}]{no\+\_\+correlations}
+\end{DoxyParamCaption}
+)}\hypertarget{classMore_a0943909cf34c607dba952bf65f724702}{}\label{classMore_a0943909cf34c607dba952bf65f724702}
+Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables 
+\begin{DoxyParams}{Parameters}
+{\em regression\+\_\+weights} & \\
+\hline
+{\em X} & \\
+\hline
+{\em targets} & \\
+\hline
+{\em ridge\+\_\+factor} & \\
+\hline
+{\em omit\+\_\+linear\+\_\+term} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+More.\+h\item 
+More.\+cpp\end{DoxyCompactItemize}

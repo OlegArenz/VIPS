@@ -1,0 +1,365 @@
+\hypertarget{classVIPS}{}\section{V\+I\+PS Class Reference}
+\label{classVIPS}\index{V\+I\+PS@{V\+I\+PS}}
+
+
+Collaboration diagram for V\+I\+PS\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classVIPS__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVIPS_a468c5d01f08c35ca0243f02fe6cafeaf}{V\+I\+PS} (int num\+\_\+dimensions, int num\+\_\+threads)
+\item 
+void \hyperlink{classVIPS_aba18c184ad6826ac8458fb573af7bcbc}{delete\+\_\+low\+\_\+weight\+\_\+components} (double min\+\_\+weight)
+\item 
+void \hyperlink{classVIPS_adff46a3464207e55c4e699e6d869d40f}{add\+\_\+samples\+\_\+to\+\_\+database} (arma\+::mat new\+\_\+samples, arma\+::vec new\+\_\+target\+\_\+densities, arma\+::uvec used\+\_\+components)
+\item 
+void \hyperlink{classVIPS_a8e90dcdcf50ffca10fbb9dbfd8176e22}{recompute\+\_\+densities} (bool update\+\_\+log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps=true, bool update\+\_\+log\+\_\+densities\+\_\+on\+\_\+background\+\_\+dist=true)
+\item 
+void \hyperlink{classVIPS_a2f862569f67b4061bbcd267108adede9}{activate\+\_\+newest\+\_\+samples} (int N)
+\item 
+void \hyperlink{classVIPS_a6e88b8a4ffd410ee100455458b5d9e3b}{update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds} (bool update\+\_\+weight\+\_\+targets, bool update\+\_\+comp\+\_\+targets)
+\item 
+void \hyperlink{classVIPS_afda46fdd2494774ae418a9fcccda905f}{promote\+\_\+samples\+\_\+to\+\_\+components} (int N, double max\+\_\+exploration\+\_\+bonus, double tau, bool only\+\_\+check\+\_\+active\+\_\+samples, int max\+\_\+samples)
+\item 
+std\+::tuple$<$ double, vec, vec $>$ \hyperlink{classVIPS_aebb5f603c3ec270f625eb2bd4d3efe3a}{update\+\_\+weights} (double epsilon, double tau, double entropy\+\_\+bound)
+\item 
+arma\+::vec \hyperlink{classVIPS_aac85e9be0da81e9fa603528aa7958a0a}{adapt\+\_\+\+K\+L\+\_\+bound\+\_\+for\+\_\+comp\+\_\+update} (double max\+\_\+kl\+\_\+bound, double factor)
+\item 
+arma\+::vec \hyperlink{classVIPS_a84a2917e689f48562e0f951a8f577723}{update\+\_\+components} (double max\+\_\+kl\+\_\+bound, double factor, double tau, double ridge\+\_\+coefficient, vec entropy\+\_\+bounds, double max\+\_\+active\+\_\+samples, bool dont\+\_\+learn\+\_\+correlations)
+\item 
+void \hyperlink{classVIPS_aeb4149a37ec733f22ef9e302439c42da}{add\+\_\+components} (arma\+::vec new\+\_\+weights\+\_\+total, arma\+::mat new\+\_\+means, arma\+::cube new\+\_\+covs)
+\item 
+double \hyperlink{classVIPS_acfc4f6911881e21b1b06276f7514bcfa}{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples} ()
+\item 
+double \hyperlink{classVIPS_aeec7ba6219e433ad9ab6214e4ed0dd4a}{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+gmm\+\_\+samples} (int num\+\_\+samples=10000)
+\item 
+std\+::tuple$<$ arma\+::mat, arma\+::vec, arma\+::mat, arma\+::mat, arma\+::vec, arma\+::mat, arma\+::mat, arma\+::mat, arma\+::mat $>$ \hyperlink{classVIPS_ac824a4180e5a8475eeb5a7c68a6483b6}{get\+\_\+debug\+\_\+info} ()
+\item 
+int {\bfseries get\+Num\+Samples} ()\hypertarget{classVIPS_a9c3c1617a3e8be6b02a7b5166711bb46}{}\label{classVIPS_a9c3c1617a3e8be6b02a7b5166711bb46}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVIPS__Model}{V\+I\+P\+S\+\_\+\+Model} {\bfseries model}\hypertarget{classVIPS_a9929f2b77be4949c57ac9008d5f3ec5c}{}\label{classVIPS_a9929f2b77be4949c57ac9008d5f3ec5c}
+
+\item 
+\hyperlink{classGMM}{G\+MM} {\bfseries background\+Distribution}\hypertarget{classVIPS_a9e9d133d270287a47e693ebda4199a91}{}\label{classVIPS_a9e9d133d270287a47e693ebda4199a91}
+
+\item 
+\hyperlink{classSampleDatabase}{Sample\+Database} {\bfseries sample\+Database}\hypertarget{classVIPS_a29ce35cb0e4ba5bbff626bcccd88417b}{}\label{classVIPS_a29ce35cb0e4ba5bbff626bcccd88417b}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries num\+\_\+threads}\hypertarget{classVIPS_accccca2a57a73de29ee07a8a76c9c941}{}\label{classVIPS_accccca2a57a73de29ee07a8a76c9c941}
+
+\item 
+int {\bfseries num\+\_\+dimensions}\hypertarget{classVIPS_ae2fc04069049b703933aa1a1834067a2}{}\label{classVIPS_ae2fc04069049b703933aa1a1834067a2}
+
+\item 
+int {\bfseries num\+\_\+samples}\hypertarget{classVIPS_ac99a855e6f284c3028435dd23fea3c06}{}\label{classVIPS_ac99a855e6f284c3028435dd23fea3c06}
+
+\item 
+arma\+::mat {\bfseries samples}\hypertarget{classVIPS_a16a3f01a04f8a2aabb4972912e4f105d}{}\label{classVIPS_a16a3f01a04f8a2aabb4972912e4f105d}
+
+\item 
+arma\+::vec {\bfseries target\+\_\+densities}\hypertarget{classVIPS_a27193a3430c50755c6342ed370df794b}{}\label{classVIPS_a27193a3430c50755c6342ed370df794b}
+
+\item 
+arma\+::mat {\bfseries log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps}\hypertarget{classVIPS_acd32741f14cf0d1793cf6e64b636fcc0}{}\label{classVIPS_acd32741f14cf0d1793cf6e64b636fcc0}
+
+\item 
+arma\+::mat {\bfseries log\+\_\+joint\+\_\+densities}\hypertarget{classVIPS_a4a84ac52b3f3475ad4efeabc6d92c1c3}{}\label{classVIPS_a4a84ac52b3f3475ad4efeabc6d92c1c3}
+
+\item 
+arma\+::vec {\bfseries log\+\_\+densities\+\_\+on\+\_\+model}\hypertarget{classVIPS_a6c98147f1bba2bf4467714bb1070f5b6}{}\label{classVIPS_a6c98147f1bba2bf4467714bb1070f5b6}
+
+\item 
+arma\+::mat {\bfseries log\+\_\+responsibilities}\hypertarget{classVIPS_a17f93d9215dbee5127d94fd65b61848e}{}\label{classVIPS_a17f93d9215dbee5127d94fd65b61848e}
+
+\item 
+arma\+::mat {\bfseries log\+\_\+densities\+\_\+on\+\_\+background\+\_\+dist}\hypertarget{classVIPS_abe994fe945632006165a985c4c89f4b8}{}\label{classVIPS_abe994fe945632006165a985c4c89f4b8}
+
+\item 
+arma\+::rowvec {\bfseries offsets\+\_\+for\+\_\+model\+\_\+joint\+\_\+densities}\hypertarget{classVIPS_a05cf1526a1aaa34cfd76f2f7b9f1f653}{}\label{classVIPS_a05cf1526a1aaa34cfd76f2f7b9f1f653}
+
+\item 
+arma\+::rowvec {\bfseries sum\+\_\+of\+\_\+joint\+\_\+densities\+\_\+with\+\_\+offsets}\hypertarget{classVIPS_a825e8ea57d1c72d0941e1d5fc4c68ab3}{}\label{classVIPS_a825e8ea57d1c72d0941e1d5fc4c68ab3}
+
+\item 
+arma\+::mat {\bfseries importance\+\_\+weights}\hypertarget{classVIPS_ac318b08a7f1e3e7d386da8921f69db5c}{}\label{classVIPS_ac318b08a7f1e3e7d386da8921f69db5c}
+
+\item 
+arma\+::mat {\bfseries importance\+\_\+weights\+\_\+normalized}\hypertarget{classVIPS_aedb1fb27412374a577219711f083dd7d}{}\label{classVIPS_aedb1fb27412374a577219711f083dd7d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{V\+I\+PS@{V\+I\+PS}!V\+I\+PS@{V\+I\+PS}}
+\index{V\+I\+PS@{V\+I\+PS}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{V\+I\+P\+S(int num\+\_\+dimensions, int num\+\_\+threads)}{VIPS(int num_dimensions, int num_threads)}}]{\setlength{\rightskip}{0pt plus 5cm}V\+I\+P\+S\+::\+V\+I\+PS (
+\begin{DoxyParamCaption}
+\item[{int}]{num\+\_\+dimensions, }
+\item[{int}]{num\+\_\+threads}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_a468c5d01f08c35ca0243f02fe6cafeaf}{}\label{classVIPS_a468c5d01f08c35ca0243f02fe6cafeaf}
+Main class implementing the Learn-\/\+To-\/\+Sample algorithm 
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+dimensions} & -\/ dimensionality of the sampling problem \\
+\hline
+{\em num\+\_\+threads} & -\/ number of threads to use \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{V\+I\+PS@{V\+I\+PS}!activate\+\_\+newest\+\_\+samples@{activate\+\_\+newest\+\_\+samples}}
+\index{activate\+\_\+newest\+\_\+samples@{activate\+\_\+newest\+\_\+samples}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{activate\+\_\+newest\+\_\+samples(int N)}{activate_newest_samples(int N)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+::activate\+\_\+newest\+\_\+samples (
+\begin{DoxyParamCaption}
+\item[{int}]{N}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_a2f862569f67b4061bbcd267108adede9}{}\label{classVIPS_a2f862569f67b4061bbcd267108adede9}
+Selects the N most recent samples and activates them (i.\+e. uses them for the upcoming learning iteration).~\newline
+ Makes sure, that all relevant data (e.\+g. densities, importance weights, etc.) gets updated 
+\begin{DoxyParams}{Parameters}
+{\em N} & -\/ the maximum number of recent samples to be activated, actually number of activated samples might be less, iff the sample database does not contain sufficient samples. \\
+\hline
+\end{DoxyParams}
+\index{V\+I\+PS@{V\+I\+PS}!adapt\+\_\+\+K\+L\+\_\+bound\+\_\+for\+\_\+comp\+\_\+update@{adapt\+\_\+\+K\+L\+\_\+bound\+\_\+for\+\_\+comp\+\_\+update}}
+\index{adapt\+\_\+\+K\+L\+\_\+bound\+\_\+for\+\_\+comp\+\_\+update@{adapt\+\_\+\+K\+L\+\_\+bound\+\_\+for\+\_\+comp\+\_\+update}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{adapt\+\_\+\+K\+L\+\_\+bound\+\_\+for\+\_\+comp\+\_\+update(double max\+\_\+kl\+\_\+bound, double factor)}{adapt_KL_bound_for_comp_update(double max_kl_bound, double factor)}}]{\setlength{\rightskip}{0pt plus 5cm}vec V\+I\+P\+S\+::adapt\+\_\+\+K\+L\+\_\+bound\+\_\+for\+\_\+comp\+\_\+update (
+\begin{DoxyParamCaption}
+\item[{double}]{max\+\_\+kl\+\_\+bound, }
+\item[{double}]{factor}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_aac85e9be0da81e9fa603528aa7958a0a}{}\label{classVIPS_aac85e9be0da81e9fa603528aa7958a0a}
+Adapts the KL bound based on the number of effective samples.~\newline
+ The KL bound for each component is set to min(max\+\_\+kl\+\_\+bound, factor $\ast$ num\+\_\+eff\+\_\+samples(o)) 
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+kl\+\_\+bound} & -\/ hard upper bound for KL \\
+\hline
+{\em factor} & -\/ factor for computing the KL bound based on the number of effective samples \\
+\hline
+\end{DoxyParams}
+\index{V\+I\+PS@{V\+I\+PS}!add\+\_\+components@{add\+\_\+components}}
+\index{add\+\_\+components@{add\+\_\+components}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{add\+\_\+components(arma\+::vec new\+\_\+weights\+\_\+total, arma\+::mat new\+\_\+means, arma\+::cube new\+\_\+covs)}{add_components(arma::vec new_weights_total, arma::mat new_means, arma::cube new_covs)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+::add\+\_\+components (
+\begin{DoxyParamCaption}
+\item[{arma\+::vec}]{new\+\_\+weights\+\_\+total, }
+\item[{arma\+::mat}]{new\+\_\+means, }
+\item[{arma\+::cube}]{new\+\_\+covs}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_aeb4149a37ec733f22ef9e302439c42da}{}\label{classVIPS_aeb4149a37ec733f22ef9e302439c42da}
+Adds new components. 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+weights\+\_\+total} & -\/ new weights of the \hyperlink{classGMM}{G\+MM} (including existing components) \\
+\hline
+{\em new\+\_\+means} & -\/ matrix of size N\+\_\+dimensions x N\+\_\+new\+Components specifying the means of the new components \\
+\hline
+{\em new\+\_\+covs} & -\/ cube of size N\+\_\+dimensions x N\+\_\+dimensions x N\+\_\+new\+Components specifying the covariance matrices of the new components \\
+\hline
+\end{DoxyParams}
+\index{V\+I\+PS@{V\+I\+PS}!add\+\_\+samples\+\_\+to\+\_\+database@{add\+\_\+samples\+\_\+to\+\_\+database}}
+\index{add\+\_\+samples\+\_\+to\+\_\+database@{add\+\_\+samples\+\_\+to\+\_\+database}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{add\+\_\+samples\+\_\+to\+\_\+database(arma\+::mat new\+\_\+samples, arma\+::vec new\+\_\+target\+\_\+densities, arma\+::uvec used\+\_\+components)}{add_samples_to_database(arma::mat new_samples, arma::vec new_target_densities, arma::uvec used_components)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+::add\+\_\+samples\+\_\+to\+\_\+database (
+\begin{DoxyParamCaption}
+\item[{arma\+::mat}]{new\+\_\+samples, }
+\item[{arma\+::vec}]{new\+\_\+target\+\_\+densities, }
+\item[{arma\+::uvec}]{used\+\_\+components}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_adff46a3464207e55c4e699e6d869d40f}{}\label{classVIPS_adff46a3464207e55c4e699e6d869d40f}
+Adds new samples to the database. Note that the samples will not be used for learning, until they have been activated (see activate\+\_\+newest\+\_\+samples).~\newline
+ The samples are assumed to have been drawn from the current model and the indices of the relevant components are to be provided for computing background distributions when necessary. 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+samples} & -\/ a matrix of size N\+\_\+dimensions X N\+\_\+samples \\
+\hline
+{\em new\+\_\+target\+\_\+densities} & -\/ a vector of size N\+\_\+samples containing the unnormalized densities on the target distribution \\
+\hline
+{\em used\+\_\+components} & -\/ a vector of size N\+\_\+samples containing the indices of the components the corresponding samples have been drawn from \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classVIPS_a2f862569f67b4061bbcd267108adede9}{activate\+\_\+newest\+\_\+samples} 
+\end{DoxySeeAlso}
+\index{V\+I\+PS@{V\+I\+PS}!delete\+\_\+low\+\_\+weight\+\_\+components@{delete\+\_\+low\+\_\+weight\+\_\+components}}
+\index{delete\+\_\+low\+\_\+weight\+\_\+components@{delete\+\_\+low\+\_\+weight\+\_\+components}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{delete\+\_\+low\+\_\+weight\+\_\+components(double min\+\_\+weight)}{delete_low_weight_components(double min_weight)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+::delete\+\_\+low\+\_\+weight\+\_\+components (
+\begin{DoxyParamCaption}
+\item[{double}]{min\+\_\+weight}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_aba18c184ad6826ac8458fb573af7bcbc}{}\label{classVIPS_aba18c184ad6826ac8458fb573af7bcbc}
+Removes all components with weight below the given threshold, and renormalized the weights afterwards 
+\begin{DoxyParams}{Parameters}
+{\em min\+\_\+weight} & -\/ threshold for keeping components \\
+\hline
+\end{DoxyParams}
+\index{V\+I\+PS@{V\+I\+PS}!get\+\_\+debug\+\_\+info@{get\+\_\+debug\+\_\+info}}
+\index{get\+\_\+debug\+\_\+info@{get\+\_\+debug\+\_\+info}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{get\+\_\+debug\+\_\+info()}{get_debug_info()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ mat, vec, mat, mat, vec, mat, mat, mat, mat $>$ V\+I\+P\+S\+::get\+\_\+debug\+\_\+info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_ac824a4180e5a8475eeb5a7c68a6483b6}{}\label{classVIPS_ac824a4180e5a8475eeb5a7c68a6483b6}
+Get various densities, importance weights, etc. for debug purposes. \begin{DoxyReturn}{Returns}
+a tuple, st. ~\newline
+ tuple\mbox{[}0\mbox{]} contains the samples ~\newline
+ tuple\mbox{[}1\mbox{]} contains the unnormalized target densities ~\newline
+ tuple\mbox{[}2\mbox{]} contains the log densities on each model p(s$\vert$o) ~\newline
+ tuple\mbox{[}3\mbox{]} contains the joint log densities p(s,o) ~\newline
+ tuple\mbox{[}4\mbox{]} contains the \hyperlink{classGMM}{G\+MM} densities p(s) ~\newline
+ tuple\mbox{[}5\mbox{]} contains the log responsibilities p(o$\vert$s) ~\newline
+ tuple\mbox{[}6\mbox{]} contains the densitis on the background distribution q(s) ~\newline
+ tuple\mbox{[}7\mbox{]} contains the importance weights ~\newline
+ tuple\mbox{[}8\mbox{]} contains the normalized importance weights 
+\end{DoxyReturn}
+\index{V\+I\+PS@{V\+I\+PS}!get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples@{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples}}
+\index{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples@{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples()}{get_entropy_estimate_on_active_samples()}}]{\setlength{\rightskip}{0pt plus 5cm}double V\+I\+P\+S\+::get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_acfc4f6911881e21b1b06276f7514bcfa}{}\label{classVIPS_acfc4f6911881e21b1b06276f7514bcfa}
+Returns a (weighted importance sampling) Monte-\/\+Carlo estimate of the entropy of the learned model. The entropy is computed based on the active samples. As this entropy is computed based on precomputed values \mbox{[}importance weights and log(p(x))\mbox{]} th evaluation is very fast. However, if the number of active samples is still low or the samples are not \char`\"{}fresh\char`\"{} (low importance weights), the estimate can be quite bad. see \hyperlink{classVIPS_aeec7ba6219e433ad9ab6214e4ed0dd4a}{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+gmm\+\_\+samples()} for a slower, but usually more accurate estimate. \begin{DoxyReturn}{Returns}
+a Monte-\/\+Carlo estimate of the entropy of the learned Gaussian Mixture Model 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classVIPS_aeec7ba6219e433ad9ab6214e4ed0dd4a}{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+gmm\+\_\+samples()} 
+\end{DoxySeeAlso}
+\index{V\+I\+PS@{V\+I\+PS}!get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+gmm\+\_\+samples@{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+gmm\+\_\+samples}}
+\index{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+gmm\+\_\+samples@{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+gmm\+\_\+samples}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+gmm\+\_\+samples(int num\+\_\+samples=10000)}{get_entropy_estimate_on_gmm_samples(int num_samples=10000)}}]{\setlength{\rightskip}{0pt plus 5cm}double V\+I\+P\+S\+::get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+gmm\+\_\+samples (
+\begin{DoxyParamCaption}
+\item[{int}]{N = {\ttfamily 10000}}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_aeec7ba6219e433ad9ab6214e4ed0dd4a}{}\label{classVIPS_aeec7ba6219e433ad9ab6214e4ed0dd4a}
+Returns a Monte-\/\+Carlo estimate of the entropy of the learned model. This methods draws new samples from the learned model and evaluated their log-\/densities log(p(x)). The entropy of the learned model is then approximated as H(p)  -\/1/N  log(p(x)). see \hyperlink{classVIPS_acfc4f6911881e21b1b06276f7514bcfa}{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples()} for a faster, but usually less accurate estimate. 
+\begin{DoxyParams}{Parameters}
+{\em N} & -\/ the number of samples that should be drawn for computing the estimate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a Monte-\/\+Carlo estimate of the entropy of the learned Gaussian Mixture Model 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classVIPS_acfc4f6911881e21b1b06276f7514bcfa}{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples()} 
+\end{DoxySeeAlso}
+\index{V\+I\+PS@{V\+I\+PS}!promote\+\_\+samples\+\_\+to\+\_\+components@{promote\+\_\+samples\+\_\+to\+\_\+components}}
+\index{promote\+\_\+samples\+\_\+to\+\_\+components@{promote\+\_\+samples\+\_\+to\+\_\+components}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{promote\+\_\+samples\+\_\+to\+\_\+components(int N, double max\+\_\+exploration\+\_\+bonus, double tau, bool only\+\_\+check\+\_\+active\+\_\+samples, int max\+\_\+samples)}{promote_samples_to_components(int N, double max_exploration_bonus, double tau, bool only_check_active_samples, int max_samples)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+::promote\+\_\+samples\+\_\+to\+\_\+components (
+\begin{DoxyParamCaption}
+\item[{int}]{N, }
+\item[{double}]{max\+\_\+exploration\+\_\+bonus, }
+\item[{double}]{tau, }
+\item[{bool}]{only\+\_\+check\+\_\+active\+\_\+samples, }
+\item[{int}]{max\+\_\+samples}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_afda46fdd2494774ae418a9fcccda905f}{}\label{classVIPS_afda46fdd2494774ae418a9fcccda905f}
+Selects promising locations among the current samples and create new components at these positions. The covariance matrices are given by the weighted sums of the covariance matrices current model, where the weights are given by the responsibilities of the model components for the new location. Locations are promising if the residual given by residual = log(p\+\_\+intractable(x)) -\/ log(p\+\_\+model(x) + exp(max\+\_\+exploration\+\_\+bonus)) is high.
+
+
+\begin{DoxyParams}{Parameters}
+{\em N} & -\/ the number of samples to be promoted \\
+\hline
+{\em max\+\_\+exploration\+\_\+bonus} & -\/ maximum bonus for samples that have low density on the current model \\
+\hline
+{\em only\+\_\+check\+\_\+active\+\_\+samples} & -\/ if set to true, the residual is computed on the active samples only, otherwise, the resiudal is computed for all samples in the sample database. \\
+\hline
+{\em max\+\_\+samples} & -\/ maximum number of samples to be considered \\
+\hline
+\end{DoxyParams}
+\index{V\+I\+PS@{V\+I\+PS}!recompute\+\_\+densities@{recompute\+\_\+densities}}
+\index{recompute\+\_\+densities@{recompute\+\_\+densities}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{recompute\+\_\+densities(bool update\+\_\+log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps=true, bool update\+\_\+log\+\_\+densities\+\_\+on\+\_\+background\+\_\+dist=true)}{recompute_densities(bool update_log_densities_on_model_comps=true, bool update_log_densities_on_background_dist=true)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+::recompute\+\_\+densities (
+\begin{DoxyParamCaption}
+\item[{bool}]{update\+\_\+log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps = {\ttfamily true}, }
+\item[{bool}]{update\+\_\+log\+\_\+densities\+\_\+on\+\_\+background\+\_\+dist = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_a8e90dcdcf50ffca10fbb9dbfd8176e22}{}\label{classVIPS_a8e90dcdcf50ffca10fbb9dbfd8176e22}
+Recomputes the densities of various distributions as well as the importance weights.~\newline
+ Manual invocation is in general not necessary, as the densities are automatic updated, e.\+g. after weight changes, component changes, adding components, etc. 
+\begin{DoxyParams}{Parameters}
+{\em update\+\_\+log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps} & -\/ if this flag is set to false, assume that the density-\/evaluations for each \hyperlink{classGMM}{G\+MM} component is up-\/to-\/date, e.\+g. because only the \hyperlink{classGMM}{G\+MM} weights have changed \\
+\hline
+{\em update\+\_\+log\+\_\+densities\+\_\+on\+\_\+model\+\_\+background\+\_\+dist} & -\/ if this flag is set to false, assume that the density evaluations for the background distribution are up-\/to-\/date, e.\+g. because it was not changed at all \\
+\hline
+\end{DoxyParams}
+\index{V\+I\+PS@{V\+I\+PS}!update\+\_\+components@{update\+\_\+components}}
+\index{update\+\_\+components@{update\+\_\+components}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{update\+\_\+components(double max\+\_\+kl\+\_\+bound, double factor, double tau, double ridge\+\_\+coefficient, vec entropy\+\_\+bounds, double max\+\_\+active\+\_\+samples, bool dont\+\_\+learn\+\_\+correlations)}{update_components(double max_kl_bound, double factor, double tau, double ridge_coefficient, vec entropy_bounds, double max_active_samples, bool dont_learn_correlations)}}]{\setlength{\rightskip}{0pt plus 5cm}vec V\+I\+P\+S\+::update\+\_\+components (
+\begin{DoxyParamCaption}
+\item[{double}]{max\+\_\+kl\+\_\+bound, }
+\item[{double}]{factor, }
+\item[{double}]{tau, }
+\item[{double}]{ridge\+\_\+coefficient, }
+\item[{vec}]{entropy\+\_\+bounds, }
+\item[{double}]{max\+\_\+active\+\_\+samples, }
+\item[{bool}]{dont\+\_\+learn\+\_\+correlations}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_a84a2917e689f48562e0f951a8f577723}{}\label{classVIPS_a84a2917e689f48562e0f951a8f577723}
+Updates the components p(s$\vert$o). 
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+kl\+\_\+bound} & -\/ hard upper bound for each KL bound \\
+\hline
+{\em factor} & -\/ factor for computing the KL bound for each component based on its number of effective samples \\
+\hline
+{\em tau} & -\/ entropy coefficient \\
+\hline
+{\em ridge\+\_\+coefficient} & -\/ coefficient used for regularization when fitting the quadratic surrogate \\
+\hline
+{\em entropy\+\_\+bounds} & -\/ lower bound on entropy \\
+\hline
+{\em max\+\_\+active\+\_\+samples} & -\/ size of the subset of samples that should be used for each component update \\
+\hline
+{\em dont\+\_\+learn\+\_\+correlations} & -\/ iff true, fit a quadratic surrogate where R is diagonal (experimental) \\
+\hline
+\end{DoxyParams}
+\index{V\+I\+PS@{V\+I\+PS}!update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds@{update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds}}
+\index{update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds@{update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds(bool update\+\_\+weight\+\_\+targets, bool update\+\_\+comp\+\_\+targets)}{update_targets_for_KL_bounds(bool update_weight_targets, bool update_comp_targets)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+::update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds (
+\begin{DoxyParamCaption}
+\item[{bool}]{update\+\_\+weight\+\_\+targets, }
+\item[{bool}]{update\+\_\+comp\+\_\+targets}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_a6e88b8a4ffd410ee100455458b5d9e3b}{}\label{classVIPS_a6e88b8a4ffd410ee100455458b5d9e3b}
+Sets the current components p(s$\vert$o) and the current weight distribution p(o) as the target for the respective KL bounds. 
+\begin{DoxyParams}{Parameters}
+{\em update\+\_\+weight\+\_\+targets} & -\/ only update the weight targets if this is set to true \\
+\hline
+{\em update\+\_\+comp\+\_\+targets} & -\/ only update the component targets if this ist set to true \\
+\hline
+\end{DoxyParams}
+\index{V\+I\+PS@{V\+I\+PS}!update\+\_\+weights@{update\+\_\+weights}}
+\index{update\+\_\+weights@{update\+\_\+weights}!V\+I\+PS@{V\+I\+PS}}
+\subsubsection[{\texorpdfstring{update\+\_\+weights(double epsilon, double tau, double entropy\+\_\+bound)}{update_weights(double epsilon, double tau, double entropy_bound)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ double, vec, vec $>$ V\+I\+P\+S\+::update\+\_\+weights (
+\begin{DoxyParamCaption}
+\item[{double}]{epsilon, }
+\item[{double}]{tau, }
+\item[{double}]{entropy\+\_\+bound}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS_aebb5f603c3ec270f625eb2bd4d3efe3a}{}\label{classVIPS_aebb5f603c3ec270f625eb2bd4d3efe3a}
+update the component weights p(o). 
+\begin{DoxyParams}{Parameters}
+{\em epsilon} & is the KL bound \\
+\hline
+{\em tau} & is the entropy coefficient \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a tuple, s.\+t. tuple\mbox{[}0\mbox{]} contains the KL D(p\+\_\+new(o)$\vert$$\vert$p\+\_\+old(o)) tuple\mbox{[}1\mbox{]} contains the rewards for each component that was used during the optimization tuple\mbox{[}2\mbox{]} contains a sample-\/estimate of the expected, unnormalized log-\/densities of the desired distribution 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+V\+I\+P\+S.\+h\item 
+V\+I\+P\+S.\+cpp\end{DoxyCompactItemize}

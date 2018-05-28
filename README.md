@@ -2,6 +2,7 @@
 Variational Inference by Policy Search (VIPS) is a method for learning Gaussian Mixture Model approximations of intractable probability density functions for the purpose of inference (e.g. sampling).<br>
 VIPS does not require knowledge about gradients or normalizing constants. The optimization leverages insights from Policy Search (hence the name) by using information-geometric trust region to improve the approximation in a controlled manner for better stability and exploration.<br>
 More details about the method can be found in the [paper](http://www.ausy.tu-darmstadt.de/uploads/Team/OlegArenz/VIPS.pdf).
+For API documentation refer to [doc/html/index.html](doc/html/index.html).
 
 ## Installation
 This implementation can be used with Python 3. However, most of the algorithm is implemented in C++ and interfaced via [SWIG](http://www.swig.org).<br>
