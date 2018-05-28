@@ -1,0 +1,100 @@
+\hypertarget{classReps}{}\section{Reps Class Reference}
+\label{classReps}\index{Reps@{Reps}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Reps} (int dim)\hypertarget{classReps_ac3458fbc515d23ea11a644414f23830b}{}\label{classReps_ac3458fbc515d23ea11a644414f23830b}
+
+\item 
+int {\bfseries optimize} (std\+::vector$<$ double $>$ \&initial, bool dont\+\_\+learn\+\_\+omega)\hypertarget{classReps_a0a262cae72447bce9d2fc79f871659de}{}\label{classReps_a0a262cae72447bce9d2fc79f871659de}
+
+\item 
+std\+::tuple$<$ double, double, vec, double $>$ \hyperlink{classReps_aa35a559a166ebb7f6a0e416838ae2cbd}{sample\+\_\+based\+\_\+reps\+\_\+dual} (double eta)
+\item 
+std\+::tuple$<$ double, vec, vec, double, double $>$ \hyperlink{classReps_af469d50c6929b8ab1aa4f16bd053a91d}{sample\+\_\+based\+\_\+reps\+\_\+dual\+\_\+with\+\_\+entropy\+\_\+bound} (double eta, double omega)
+\item 
+void {\bfseries set\+\_\+reward} (vec r)\hypertarget{classReps_a0d89163c1d612b8aa9b5c2a82d15f686}{}\label{classReps_a0d89163c1d612b8aa9b5c2a82d15f686}
+
+\item 
+void {\bfseries set\+\_\+target\+\_\+dist} (vec log\+\_\+q)\hypertarget{classReps_abf12e508670dc2f62a217ff1b99252fb}{}\label{classReps_abf12e508670dc2f62a217ff1b99252fb}
+
+\item 
+void {\bfseries set\+\_\+bounds} (double epsilon, double beta=-\/datum\+::inf)\hypertarget{classReps_a4ffc1d440d3c0a3916e17fd503158a83}{}\label{classReps_a4ffc1d440d3c0a3916e17fd503158a83}
+
+\item 
+std\+::tuple$<$ double, double $>$ {\bfseries test\+\_\+obj\+\_\+finite\+\_\+difference} (double eta, double epsilon, double fd)\hypertarget{classReps_a93c1c5e49396d8b57f0e78832d24dd55}{}\label{classReps_a93c1c5e49396d8b57f0e78832d24dd55}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries eta}\hypertarget{classReps_a1aac4e6701eb06aacec76ee2077ae515}{}\label{classReps_a1aac4e6701eb06aacec76ee2077ae515}
+
+\item 
+double {\bfseries omega}\hypertarget{classReps_affc7af1c709413fefe17419cf71b7aa9}{}\label{classReps_affc7af1c709413fefe17419cf71b7aa9}
+
+\item 
+vec {\bfseries p}\hypertarget{classReps_a266220cc4fd9f1c6ae6b6749f5b36a04}{}\label{classReps_a266220cc4fd9f1c6ae6b6749f5b36a04}
+
+\item 
+vec {\bfseries log\+\_\+p}\hypertarget{classReps_a50c7ba898cb3f88308223cbffbe5ac54}{}\label{classReps_a50c7ba898cb3f88308223cbffbe5ac54}
+
+\item 
+double {\bfseries KL}\hypertarget{classReps_a881c2659f75268ad6956b1780b9c4e53}{}\label{classReps_a881c2659f75268ad6956b1780b9c4e53}
+
+\item 
+double {\bfseries entropy}\hypertarget{classReps_a2b2c565ef3a60ce1ef8c72df54281d09}{}\label{classReps_a2b2c565ef3a60ce1ef8c72df54281d09}
+
+\item 
+vec {\bfseries r}\hypertarget{classReps_a31e8cb7f83a0ecc997110edac84af200}{}\label{classReps_a31e8cb7f83a0ecc997110edac84af200}
+
+\item 
+vec {\bfseries log\+\_\+q}\hypertarget{classReps_aa2f96dd7c0672fa78dc7d63f3a40a046}{}\label{classReps_aa2f96dd7c0672fa78dc7d63f3a40a046}
+
+\item 
+double {\bfseries epsilon}\hypertarget{classReps_a155d1a27194ad4976dcbaa6476f9f768}{}\label{classReps_a155d1a27194ad4976dcbaa6476f9f768}
+
+\item 
+double {\bfseries beta}\hypertarget{classReps_a4e56c3517fef0956183d46a467d007df}{}\label{classReps_a4e56c3517fef0956183d46a467d007df}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Reps@{Reps}!sample\+\_\+based\+\_\+reps\+\_\+dual@{sample\+\_\+based\+\_\+reps\+\_\+dual}}
+\index{sample\+\_\+based\+\_\+reps\+\_\+dual@{sample\+\_\+based\+\_\+reps\+\_\+dual}!Reps@{Reps}}
+\subsubsection[{\texorpdfstring{sample\+\_\+based\+\_\+reps\+\_\+dual(double eta)}{sample_based_reps_dual(double eta)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ double, double, vec, double $>$ Reps\+::sample\+\_\+based\+\_\+reps\+\_\+dual (
+\begin{DoxyParamCaption}
+\item[{double}]{eta}
+\end{DoxyParamCaption}
+)}\hypertarget{classReps_aa35a559a166ebb7f6a0e416838ae2cbd}{}\label{classReps_aa35a559a166ebb7f6a0e416838ae2cbd}
+Evaluates the sample-\/based R\+E\+PS dual function and computes the gradient for the given Lagrangian multiplier 
+\begin{DoxyParams}{Parameters}
+{\em eta} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{Reps@{Reps}!sample\+\_\+based\+\_\+reps\+\_\+dual\+\_\+with\+\_\+entropy\+\_\+bound@{sample\+\_\+based\+\_\+reps\+\_\+dual\+\_\+with\+\_\+entropy\+\_\+bound}}
+\index{sample\+\_\+based\+\_\+reps\+\_\+dual\+\_\+with\+\_\+entropy\+\_\+bound@{sample\+\_\+based\+\_\+reps\+\_\+dual\+\_\+with\+\_\+entropy\+\_\+bound}!Reps@{Reps}}
+\subsubsection[{\texorpdfstring{sample\+\_\+based\+\_\+reps\+\_\+dual\+\_\+with\+\_\+entropy\+\_\+bound(double eta, double omega)}{sample_based_reps_dual_with_entropy_bound(double eta, double omega)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ double, vec, vec, double, double $>$ Reps\+::sample\+\_\+based\+\_\+reps\+\_\+dual\+\_\+with\+\_\+entropy\+\_\+bound (
+\begin{DoxyParamCaption}
+\item[{double}]{eta, }
+\item[{double}]{omega}
+\end{DoxyParamCaption}
+)}\hypertarget{classReps_af469d50c6929b8ab1aa4f16bd053a91d}{}\label{classReps_af469d50c6929b8ab1aa4f16bd053a91d}
+Evaluates the sample-\/based R\+E\+PS dual function and computes the gradient for the given Lagrangian multiplier 
+\begin{DoxyParams}{Parameters}
+{\em eta} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Reps.\+h\item 
+Reps.\+cpp\end{DoxyCompactItemize}

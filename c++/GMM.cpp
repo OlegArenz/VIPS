@@ -9,7 +9,9 @@ using namespace std; // ToDo: Test whether save to remove
 using namespace arma;
 
 /**
-* A Gaussian Mixture Model
+* A Gaussian Mixture Model.
+* @param dim the number of dimensions
+* @param max_components maximum number of components this GMM may comprise
 */
 GMM::GMM(int dim, int max_components)
         : dim(dim), means(dim, 0), covs(dim, dim, 0), chols(dim, dim, 0), inv_chols(dim, dim, 0),
@@ -21,9 +23,9 @@ GMM::GMM(int dim, int max_components)
 //---- Functions for modifying the GMM
 /**
 * Compute a covariance matrix for each given query point by interpolating the covariance matrices of the GMM components
-* weighted by the their responsibility for the given query point.
-* This can be used, for example, for initializing new components.
-* @params query_points - D X N matrix containing the query points
+* weighted by the their responsibility for the given query point.<br>
+* This can be used, for example, for initializing new components.<br>
+* @param query_points - D X N matrix containing the query points
 * @returns a cube of size N x D X D containing the covariance matrices
 */
 cube GMM::interpolate_covs_for_query_points(mat query_points) {
@@ -39,11 +41,11 @@ cube GMM::interpolate_covs_for_query_points(mat query_points) {
 }
 
 /**
-* Creates new components on the given positions.
+* Creates new components on the given positions.<br>
 * The covariance matrices are initialized by interpolating the covariance matrices of the existing components
-* weighted by their responsibilities for the new mean.
+* weighted by their responsibilities for the new mean.<br>
 * The weights are initialized to low values, such that the change of the mixture is negligible
-* @params means - matrix of size N_dimensions x N_newComponents specifying
+* @param means - matrix of size N_dimensions x N_newComponents specifying
 * at which positions new components are to be added
 */
 void GMM::add_components_at_locations(mat new_means) {
@@ -57,9 +59,9 @@ void GMM::add_components_at_locations(mat new_means) {
 
 /**
 * Adds new components.
-* The weights will be initialized close to zero
- * @params new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
- * @params new_covs - cube of size N_dimensions x N_dimensions x N_newComponents specifying the covariance matrices
+* The weights will be initialized close to zero.
+ * @param new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
+ * @param new_covs - cube of size N_dimensions x N_dimensions x N_newComponents specifying the covariance matrices
  * of the new components
 */
 void GMM::add_components(mat new_means, cube new_covs) {
@@ -95,8 +97,8 @@ void GMM::add_components(mat new_means, cube new_covs) {
 /**
 * Adds new components. Second parameter is interpreted as inverse cholesky matrix.
 * The weights will be initialized close to zero
- * @params new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
- * @params new_InvChols - cube of size N_dimensions x N_dimensions x N_newComponents specifying the inverse cholesky matrices
+ * @param new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
+ * @param new_InvChols - cube of size N_dimensions x N_dimensions x N_newComponents specifying the inverse cholesky matrices
  * of the new components
 */
 void GMM::add_components_invChols(mat new_means, cube new_invChols) {
@@ -130,7 +132,7 @@ void GMM::add_components_invChols(mat new_means, cube new_invChols) {
 
 /**
 * Delete a single componentent and renormalize the weights afterwards.
-* @params index specifying which component to delete
+* @param index specifying which component to delete
 */
 void GMM::delete_component(int index) {
   means.shed_col(index);
@@ -151,7 +153,7 @@ void GMM::delete_component(int index) {
 
 /**
 * Delete the components given by the indices and renormalize the weights afterwards.
-* @params indices specifying which component to delete
+* @param indices specifying which component to delete
 */
 void GMM::delete_components(uvec indices) {
   indices = sort(indices, "descend");
@@ -202,8 +204,8 @@ void GMM::changeComponent(int index, mat newChol, vec newMean) {
 
 //---- Inference / Sampling.
 /**
-* evaluates the given query samples on the given component
-* Returns a vector of size num_samples containing p(s|o_idx)
+* Evaluates the given query samples on the given component.
+* @returns a vector of size num_samples containing p(s|o_idx)
 */
 vec GMM::compute_component_densities(int idx, mat samples, bool return_log) {
   return gaussian_pdf(inv_chols.slice(idx), samples.each_col() - means.col(idx), return_log);
@@ -211,8 +213,8 @@ vec GMM::compute_component_densities(int idx, mat samples, bool return_log) {
 
 /**
 * evaluates all components on the given samples.
-* Returns a tuple of two matrices with size num_components X num_samples
-* tuple[0] contains the joint densities p(s,o)
+* @returns a tuple of two matrices with size num_components X num_samples<br>
+* tuple[0] contains the joint densities p(s,o)<br>
 * tuple[1] contains the marginal densities p(s|o)
 */
 std::tuple<mat, mat> GMM::compute_joint_densities(mat samples, bool return_log) {
@@ -228,8 +230,8 @@ std::tuple<mat, mat> GMM::compute_joint_densities(mat samples, bool return_log) 
 }
 
 /**
-* evaluates the GMM on the given samples
-* Returns a vector of size num_samples containing p(s)
+* Evaluates the GMM on the given samples.
+* @returns a vector of size num_samples containing p(s)
 */
 vec GMM::evaluate_GMM_densities(mat samples, bool return_log) {
   mat joint_densities = std::get<0>(compute_joint_densities(samples, return_log));
@@ -240,7 +242,7 @@ vec GMM::evaluate_GMM_densities(mat samples, bool return_log) {
 }
 
 /**
- * evaluates the GMM on the given samples in a memory efficient way.
+ * Evaluates the GMM on the given samples in a memory efficient way.
  * This function is recommended for very large number of samples or components
  * @param samples - a matrix of size N_dim x N_samples of samples to be evaluated
  * @return the log GMM densities log(p(s))
@@ -286,16 +288,16 @@ vec GMM::evaluate_GMM_densities_low_mem(mat samples) {
 /**
  * This function mainly computes the log_responsibilities [log(p(comp|sample))]
  * and the the log densities [log(GMM(samples))]. However, intermediate computations are returned as well,
- * as they are required for efficient computation.
+ * as they are required for efficient computation.<br>
  * For example, when recomputing the log_responsibilites in a numerical stable way after adding more samples, tuple[1]
  * and tuple[2] can be exploited to avoid unnecessary computations.
  *
  * @param log_component_marginals, a matrix N_Components x N_Samples containing the log of component marginals log(p(s|o))
- * @return a tuple, such that
- * tuple[0]: a matrix N_Components x N_Samples containing the log of joint densities log(p(s,o))
- * tuple[1]: a row-vector containing column-wise, negated maxima of tuple[0]
- * tuple[2]: a row-vector containing the column-wise summations, sum(exp(log(tuple[0]+tuple[1]))
- * tuple[3]: a vector containing the GMM log densities for each sample (log(tuple[2]) - tuple[1], i.e. log(p(s))
+ * @return a tuple, such that<br>
+ * tuple[0]: a matrix N_Components x N_Samples containing the log of joint densities log(p(s,o))<br>
+ * tuple[1]: a row-vector containing column-wise, negated maxima of tuple[0]<br>
+ * tuple[2]: a row-vector containing the column-wise summations, sum(exp(log(tuple[0]+tuple[1]))<br>
+ * tuple[3]: a vector containing the GMM log densities for each sample (log(tuple[2]) - tuple[1], i.e. log(p(s))<br>
  * tuple[4]: a matrix containing the log responsibilities (row-wise subtraction of tuple[3] from tuple[1], i.e. p(o|s))
  */
 std::tuple<mat, rowvec, rowvec, vec, mat> GMM::compute_log_marginals_from_comp_densities(mat log_component_marginals) {
@@ -311,17 +313,17 @@ std::tuple<mat, rowvec, rowvec, vec, mat> GMM::compute_log_marginals_from_comp_d
 /**
  * This function mainly computes the log_responsibilities [log(p(comp|sample))]
  * and the the log densities [log(GMM(samples))]. However, intermediate computations are returned as well,
- * as they are required for efficient computation.
+ * as they are required for efficient computation.<br>
  * For example, when recomputing the log_responsibilites in a numerical stable way after adding more samples, tuple[2]
  * and tuple[3] can be exploited to avoid unnecessary computations.
  *
  * @param samples, a matrix N_Dim x N_Samples containing the samples to be evaluated
- * @return a tuple, such that
- * tuple[0]: a matrix N_Components x N_Samples containing the log of joint densities log(p(s,o))
- * tuple[1]: a matrix N_Components x N_Samples containing the log of component marginals log(p(s|o))
- * tuple[2]: a row-vector containing column-wise, negated maxima of tuple[1]
- * tuple[3]: a row-vector containing the column-wise summations, sum(exp(log(tuple[1]+tuple[2]))
- * tuple[4]: a vector containing the GMM log densities for each sample (log(tuple[3]) - tuple[2], i.e. log(p(s))
+ * @return a tuple, such that<br>
+ * tuple[0]: a matrix N_Components x N_Samples containing the log of joint densities log(p(s,o))<br>
+ * tuple[1]: a matrix N_Components x N_Samples containing the log of component marginals log(p(s|o))<br>
+ * tuple[2]: a row-vector containing column-wise, negated maxima of tuple[1]<br>
+ * tuple[3]: a row-vector containing the column-wise summations, sum(exp(log(tuple[1]+tuple[2]))<br>
+ * tuple[4]: a vector containing the GMM log densities for each sample (log(tuple[3]) - tuple[2], i.e. log(p(s))<br>
  * tuple[5]: a matrix containing the log responsibilities (row-wise subtraction of tuple[4] from tuple[2], i.e. p(o|s))
  */
 std::tuple<mat, mat, rowvec, rowvec, vec, mat> GMM::compute_log_marginals(mat samples) {
@@ -346,7 +348,7 @@ mat GMM::sample_from_component(int index, int n) {
 }
 
 /**
-* return samples and the corresponding indices of the components.
+* Return samples and the corresponding indices of the components.
 * temperature can be used to scale the weights
 */
 std::tuple<mat, uvec> GMM::sample_from_mixture(int n, double temperature) {
@@ -388,7 +390,7 @@ std::tuple<mat, uvec> GMM::sample_from_mixture(int n, double temperature) {
 
 
 /**
-* Sample from the current GMM, but use the specified the given component coefficient
+* Sample from the current GMM, but use the specified the given component coefficient.
 * @param N - the numb er of samples to been drawn
 * @param weights - the weights (coefficients) to be used
 * @returns samples - N Samples drwan from the mixture with the given weights
@@ -432,9 +434,10 @@ std::tuple<mat, uvec> GMM::sample_from_mixture_weights(
 
 //---- Helpers
 /**
-* computes log(sum(exp(data))) columnwise and returns a tuple containing
-* tuple[0]: a vector containing the column-wise softmaxs, max(data) + log(sum(exp(data-max(data)))
-* tuple[1]: a vector containing column-wise offsets, i.e. -max(data)
+* computes log(sum(exp(data))) columnwise
+* @returns a tuple containing<br>
+* tuple[0]: a vector containing the column-wise softmaxs, max(data) + log(sum(exp(data-max(data)))<br>
+* tuple[1]: a vector containing column-wise offsets, i.e. -max(data)<br>
 * tuple[2]: a vector containing the column-wise summations, sum(exp(data-max(data)))
 */
 std::tuple<vec, vec, vec> GMM::softMax_2D(mat data) {

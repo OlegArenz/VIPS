@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['get_5fbackground',['get_background',['../classVIPS__PythonWrapper.html#a2cf72db0bbb7259955d9229ab768cf6b',1,'VIPS_PythonWrapper']]],
+  ['get_5fbg_5fdist',['get_bg_dist',['../classSampleDatabase.html#ab997776649b126365e25335782c1fa44',1,'SampleDatabase']]],
+  ['get_5fdebug_5finfo',['get_debug_info',['../classVIPS.html#ac824a4180e5a8475eeb5a7c68a6483b6',1,'VIPS::get_debug_info()'],['../classVIPS__PythonWrapper.html#af3f8d3af3549a8296eecc25a115c31f8',1,'VIPS_PythonWrapper::get_debug_info()']]],
+  ['get_5fentropy_5festimate_5fon_5factive_5fsamples',['get_entropy_estimate_on_active_samples',['../classVIPS.html#acfc4f6911881e21b1b06276f7514bcfa',1,'VIPS::get_entropy_estimate_on_active_samples()'],['../classVIPS__PythonWrapper.html#a2be7ce5aaa742d979b35ade922139894',1,'VIPS_PythonWrapper::get_entropy_estimate_on_active_samples()']]],
+  ['get_5fentropy_5festimate_5fon_5fgmm_5fsamples',['get_entropy_estimate_on_gmm_samples',['../classVIPS.html#aeec7ba6219e433ad9ab6214e4ed0dd4a',1,'VIPS::get_entropy_estimate_on_gmm_samples()'],['../classVIPS__PythonWrapper.html#a8065f48c6060b03eaa2b5c7f1f89c636',1,'VIPS_PythonWrapper::get_entropy_estimate_on_gmm_samples()']]],
+  ['get_5fexpected_5frewards',['get_expected_rewards',['../classVIPS__PythonWrapper.html#acafd12e5bc30f51b703a73606d76de40',1,'VIPS_PythonWrapper']]],
+  ['get_5flast_5fkls',['get_last_KLs',['../classVIPS__PythonWrapper.html#aa48468dd40833596d32e202fade3af84',1,'VIPS_PythonWrapper']]],
+  ['get_5flog_5fdensities_5fon_5fmixture',['get_log_densities_on_mixture',['../classVIPS__PythonWrapper.html#a4cd577f2c0ae57ba85fff0746f7c7d7a',1,'VIPS_PythonWrapper']]],
+  ['get_5fmodel',['get_model',['../classVIPS__PythonWrapper.html#acb7c2dea0de7913cc96a8d9511cd96a8',1,'VIPS_PythonWrapper']]],
+  ['get_5fmodel_5fentropies',['get_model_entropies',['../classVIPS__PythonWrapper.html#acaee5a15878205a9ad0ce90c0ffbbdec',1,'VIPS_PythonWrapper']]],
+  ['get_5fnum_5fcomponents',['get_num_components',['../classVIPS__PythonWrapper.html#aeef466a77710252e595fcd6e9909f975',1,'VIPS_PythonWrapper']]],
+  ['get_5fnum_5fsamples',['get_num_samples',['../classVIPS__PythonWrapper.html#aa650a92bb89042882d548a16fdf46205',1,'VIPS_PythonWrapper']]],
+  ['get_5fsimilar_5fcomponent',['get_similar_component',['../classSampleDatabase.html#a4c4704c5cbe83fa5647f36b36528f49f',1,'SampleDatabase']]],
+  ['get_5fweights',['get_weights',['../classVIPS__PythonWrapper.html#a6533e3114818b6dc596a51bb8d8aae32',1,'VIPS_PythonWrapper']]],
+  ['gettargetsforklbounds',['getTargetsForKLBounds',['../classVIPS__Model.html#a19bd5e5c123088de22c80df818f67994',1,'VIPS_Model']]],
+  ['gmm',['GMM',['../classGMM.html',1,'GMM'],['../classGMM.html#a84d95fb2c6582568a9d9a1b0efe200a4',1,'GMM::GMM()']]]
+];

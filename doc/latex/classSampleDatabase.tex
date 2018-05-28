@@ -1,0 +1,140 @@
+\hypertarget{classSampleDatabase}{}\section{Sample\+Database Class Reference}
+\label{classSampleDatabase}\index{Sample\+Database@{Sample\+Database}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSampleDatabase_a92a9faa8a5c447708c1c4dda6ea2323a}{Sample\+Database} (int num\+\_\+dimensions, int num\+\_\+lates\+\_\+comp\+\_\+to\+\_\+check=200)
+\item 
+void \hyperlink{classSampleDatabase_a3dc15b26c93e6f426ed0da35819c8480}{add\+\_\+samples} (arma\+::mat new\+\_\+samples, arma\+::mat new\+\_\+target\+\_\+densities, arma\+::mat means, arma\+::cube inv\+\_\+chols)
+\item 
+std\+::tuple$<$ arma\+::mat, arma\+::vec, \hyperlink{classGMM}{G\+MM} $>$ \hyperlink{classSampleDatabase_aa1784badb57e66125725f2701d513382}{select\+\_\+newest\+\_\+samples} (int N)
+\item 
+\hyperlink{classGMM}{G\+MM} \hyperlink{classSampleDatabase_ab997776649b126365e25335782c1fa44}{get\+\_\+bg\+\_\+dist} (uvec active\+\_\+samples)
+\item 
+int {\bfseries get\+Num\+Samples} ()\hypertarget{classSampleDatabase_acc174c6265412a0fa14fc70e99ac5826}{}\label{classSampleDatabase_acc174c6265412a0fa14fc70e99ac5826}
+
+\item 
+int {\bfseries get\+Num\+Components} ()\hypertarget{classSampleDatabase_ac60d156aee4f7c99a05db259b2a7247f}{}\label{classSampleDatabase_ac60d156aee4f7c99a05db259b2a7247f}
+
+\item 
+arma\+::mat {\bfseries get\+Samples} ()\hypertarget{classSampleDatabase_a4aabc7d8ad5d3907b5eda51bc6612a4a}{}\label{classSampleDatabase_a4aabc7d8ad5d3907b5eda51bc6612a4a}
+
+\item 
+arma\+::mat {\bfseries get\+Samples} (arma\+::uvec indices)\hypertarget{classSampleDatabase_ab3e52f865350a6d88b16b089b61c3dd9}{}\label{classSampleDatabase_ab3e52f865350a6d88b16b089b61c3dd9}
+
+\item 
+arma\+::vec {\bfseries get\+Target\+Densities} ()\hypertarget{classSampleDatabase_a17fe9d9d904446ed71b717166ab452f3}{}\label{classSampleDatabase_a17fe9d9d904446ed71b717166ab452f3}
+
+\item 
+arma\+::mat {\bfseries get\+Means} ()\hypertarget{classSampleDatabase_a1a530510578faadad19e0e6e1c05b327}{}\label{classSampleDatabase_a1a530510578faadad19e0e6e1c05b327}
+
+\item 
+arma\+::mat {\bfseries get\+Means} (arma\+::uvec indices)\hypertarget{classSampleDatabase_a5cddca18d77ebe760a7fa1a7cee7b75a}{}\label{classSampleDatabase_a5cddca18d77ebe760a7fa1a7cee7b75a}
+
+\item 
+arma\+::cube {\bfseries get\+Inv\+Chols} ()\hypertarget{classSampleDatabase_ac33d23bf20bc1bb9b073f2189da233cd}{}\label{classSampleDatabase_ac33d23bf20bc1bb9b073f2189da233cd}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classSampleDatabase_aeeb03252a1ce66585a86efd38f9c0ef5}{add\+\_\+component} (arma\+::mat new\+\_\+mean, arma\+::mat new\+\_\+inv\+Chol)
+\item 
+int \hyperlink{classSampleDatabase_a4c4704c5cbe83fa5647f36b36528f49f}{get\+\_\+similar\+\_\+component} (arma\+::vec mean, arma\+::mat inv\+\_\+chol, double tol=1e-\/10)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries num\+\_\+dimensions}\hypertarget{classSampleDatabase_ad04c78bca974757aa2728460b9c8a836}{}\label{classSampleDatabase_ad04c78bca974757aa2728460b9c8a836}
+
+\item 
+int {\bfseries num\+\_\+latest\+\_\+comp\+\_\+to\+\_\+check}\hypertarget{classSampleDatabase_a07a7cd90ae7f6b9faa2f7ed228ea610b}{}\label{classSampleDatabase_a07a7cd90ae7f6b9faa2f7ed228ea610b}
+
+\item 
+int {\bfseries num\+\_\+samples}\hypertarget{classSampleDatabase_ac708e9898d20f820957afcb69c282618}{}\label{classSampleDatabase_ac708e9898d20f820957afcb69c282618}
+
+\item 
+arma\+::mat {\bfseries samples}\hypertarget{classSampleDatabase_aa1f521741803183aec5140167d9fbf36}{}\label{classSampleDatabase_aa1f521741803183aec5140167d9fbf36}
+
+\item 
+arma\+::vec {\bfseries target\+\_\+densities}\hypertarget{classSampleDatabase_a37680a91b533575f3d9adbe80b5df104}{}\label{classSampleDatabase_a37680a91b533575f3d9adbe80b5df104}
+
+\item 
+arma\+::uvec {\bfseries map\+\_\+samples\+\_\+to\+\_\+background\+Comp}\hypertarget{classSampleDatabase_a6dee618f017df3ce8cfc31b097310508}{}\label{classSampleDatabase_a6dee618f017df3ce8cfc31b097310508}
+
+\item 
+int {\bfseries num\+\_\+components}\hypertarget{classSampleDatabase_aa92541bbb40b1092d8f88907cd1f69b5}{}\label{classSampleDatabase_aa92541bbb40b1092d8f88907cd1f69b5}
+
+\item 
+arma\+::mat {\bfseries means}\hypertarget{classSampleDatabase_abf97526d7e8164c9f29b56ebc3ee3bcc}{}\label{classSampleDatabase_abf97526d7e8164c9f29b56ebc3ee3bcc}
+
+\item 
+arma\+::cube {\bfseries inv\+\_\+chols}\hypertarget{classSampleDatabase_a888d421279a6dff04d77d10551e48861}{}\label{classSampleDatabase_a888d421279a6dff04d77d10551e48861}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Sample\+Database@{Sample\+Database}!Sample\+Database@{Sample\+Database}}
+\index{Sample\+Database@{Sample\+Database}!Sample\+Database@{Sample\+Database}}
+\subsubsection[{\texorpdfstring{Sample\+Database(int num\+\_\+dimensions, int num\+\_\+lates\+\_\+comp\+\_\+to\+\_\+check=200)}{SampleDatabase(int num_dimensions, int num_lates_comp_to_check=200)}}]{\setlength{\rightskip}{0pt plus 5cm}Sample\+Database\+::\+Sample\+Database (
+\begin{DoxyParamCaption}
+\item[{int}]{num\+\_\+dimensions, }
+\item[{int}]{num\+\_\+lates\+\_\+comp\+\_\+to\+\_\+check = {\ttfamily 200}}
+\end{DoxyParamCaption}
+)}\hypertarget{classSampleDatabase_a92a9faa8a5c447708c1c4dda6ea2323a}{}\label{classSampleDatabase_a92a9faa8a5c447708c1c4dda6ea2323a}
+A \hyperlink{classSampleDatabase}{Sample\+Database} keeps track of samples and the Gaussian distributions that generated them. This information is used to create a concise \hyperlink{classGMM}{G\+MM} background distribution that can be used for computing importance weights. 
+
+\subsection{Member Function Documentation}
+\index{Sample\+Database@{Sample\+Database}!add\+\_\+component@{add\+\_\+component}}
+\index{add\+\_\+component@{add\+\_\+component}!Sample\+Database@{Sample\+Database}}
+\subsubsection[{\texorpdfstring{add\+\_\+component(arma\+::mat new\+\_\+mean, arma\+::mat new\+\_\+inv\+Chol)}{add_component(arma::mat new_mean, arma::mat new_invChol)}}]{\setlength{\rightskip}{0pt plus 5cm}void Sample\+Database\+::add\+\_\+component (
+\begin{DoxyParamCaption}
+\item[{arma\+::mat}]{new\+\_\+mean, }
+\item[{arma\+::mat}]{new\+\_\+inv\+Chol}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classSampleDatabase_aeeb03252a1ce66585a86efd38f9c0ef5}{}\label{classSampleDatabase_aeeb03252a1ce66585a86efd38f9c0ef5}
+Add a new component and allocate additional memory if necessary. The weights do not need to be specified, but are computed dynamically based on the number of usages \index{Sample\+Database@{Sample\+Database}!add\+\_\+samples@{add\+\_\+samples}}
+\index{add\+\_\+samples@{add\+\_\+samples}!Sample\+Database@{Sample\+Database}}
+\subsubsection[{\texorpdfstring{add\+\_\+samples(arma\+::mat new\+\_\+samples, arma\+::mat new\+\_\+target\+\_\+densities, arma\+::mat means, arma\+::cube inv\+\_\+chols)}{add_samples(arma::mat new_samples, arma::mat new_target_densities, arma::mat means, arma::cube inv_chols)}}]{\setlength{\rightskip}{0pt plus 5cm}void Sample\+Database\+::add\+\_\+samples (
+\begin{DoxyParamCaption}
+\item[{arma\+::mat}]{new\+\_\+samples, }
+\item[{arma\+::mat}]{new\+\_\+target\+\_\+densities, }
+\item[{arma\+::mat}]{means, }
+\item[{arma\+::cube}]{inv\+\_\+chols}
+\end{DoxyParamCaption}
+)}\hypertarget{classSampleDatabase_a3dc15b26c93e6f426ed0da35819c8480}{}\label{classSampleDatabase_a3dc15b26c93e6f426ed0da35819c8480}
+Adds new\+\_\+samples and the corresponding log\+\_\+densities. The parameters means and inv\+\_\+chols describe the components that generated each sample, such that the number of components should correspond to the number of columns in new\+\_\+samples. Side effects\+: For each sample this call will check whether the component already exists in this background \hyperlink{classGMM}{G\+MM}. If if does exist, the number of usages is increased. If it does not exist a new component will be added to the background \hyperlink{classGMM}{G\+MM} \index{Sample\+Database@{Sample\+Database}!get\+\_\+bg\+\_\+dist@{get\+\_\+bg\+\_\+dist}}
+\index{get\+\_\+bg\+\_\+dist@{get\+\_\+bg\+\_\+dist}!Sample\+Database@{Sample\+Database}}
+\subsubsection[{\texorpdfstring{get\+\_\+bg\+\_\+dist(uvec active\+\_\+samples)}{get_bg_dist(uvec active_samples)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf G\+MM} Sample\+Database\+::get\+\_\+bg\+\_\+dist (
+\begin{DoxyParamCaption}
+\item[{uvec}]{active\+\_\+samples}
+\end{DoxyParamCaption}
+)}\hypertarget{classSampleDatabase_ab997776649b126365e25335782c1fa44}{}\label{classSampleDatabase_ab997776649b126365e25335782c1fa44}
+Create a \hyperlink{classGMM}{G\+MM} background distribution for a given subset of samples 
+\begin{DoxyParams}{Parameters}
+{\em active\+\_\+samples} & -\/ vector specifying the sample indices for the subset \\
+\hline
+\end{DoxyParams}
+\index{Sample\+Database@{Sample\+Database}!get\+\_\+similar\+\_\+component@{get\+\_\+similar\+\_\+component}}
+\index{get\+\_\+similar\+\_\+component@{get\+\_\+similar\+\_\+component}!Sample\+Database@{Sample\+Database}}
+\subsubsection[{\texorpdfstring{get\+\_\+similar\+\_\+component(arma\+::vec mean, arma\+::mat inv\+\_\+chol, double tol=1e-\/10)}{get_similar_component(arma::vec mean, arma::mat inv_chol, double tol=1e-10)}}]{\setlength{\rightskip}{0pt plus 5cm}int Sample\+Database\+::get\+\_\+similar\+\_\+component (
+\begin{DoxyParamCaption}
+\item[{arma\+::vec}]{mean, }
+\item[{arma\+::mat}]{inv\+\_\+chol, }
+\item[{double}]{tol = {\ttfamily 1e-\/10}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classSampleDatabase_a4c4704c5cbe83fa5647f36b36528f49f}{}\label{classSampleDatabase_a4c4704c5cbe83fa5647f36b36528f49f}
+Check whether a component with similar mean and covariance (inverse cholesky is checked) exists Only considers the num\+\_\+latest\+\_\+comp\+\_\+to\+\_\+check most recently added components for performance reasons Returns\+: -\/1, iff no similar component exists the index to a similar component, otherwise \index{Sample\+Database@{Sample\+Database}!select\+\_\+newest\+\_\+samples@{select\+\_\+newest\+\_\+samples}}
+\index{select\+\_\+newest\+\_\+samples@{select\+\_\+newest\+\_\+samples}!Sample\+Database@{Sample\+Database}}
+\subsubsection[{\texorpdfstring{select\+\_\+newest\+\_\+samples(int N)}{select_newest_samples(int N)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ arma\+::mat, arma\+::vec, {\bf G\+MM} $>$ Sample\+Database\+::select\+\_\+newest\+\_\+samples (
+\begin{DoxyParamCaption}
+\item[{int}]{N}
+\end{DoxyParamCaption}
+)}\hypertarget{classSampleDatabase_aa1784badb57e66125725f2701d513382}{}\label{classSampleDatabase_aa1784badb57e66125725f2701d513382}
+Returns the N most recent samples along with their target\+\_\+densities and a concise \hyperlink{classGMM}{G\+MM} from which the samples could have been drawn from. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Sample\+Database.\+h\item 
+Sample\+Database.\+cpp\end{DoxyCompactItemize}

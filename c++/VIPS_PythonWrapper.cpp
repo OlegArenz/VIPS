@@ -10,10 +10,10 @@ VIPS_PythonWrapper::VIPS_PythonWrapper(int num_dimensions, int num_threads)
 VIPS_PythonWrapper::~VIPS_PythonWrapper(void) {}
 
 /**
-* Adds new components.
-* @params new_weights - new weights of the GMM (including existing components)
-* @params new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
-* @params new_covs - cube of size N_dimensions x N_dimensions x N_newComponents specifying the covariance matrices
+* Adds new components<br>.
+* @param new_weights - new weights of the GMM (including existing components)
+* @param new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
+* @param new_covs - cube of size N_dimensions x N_dimensions x N_newComponents specifying the covariance matrices
 * of the new components
 */
   void VIPS_PythonWrapper::add_components(
@@ -27,18 +27,18 @@ VIPS_PythonWrapper::~VIPS_PythonWrapper(void) {}
 }
 
 /**
-* Selects promising locations among the current samples and create new components at these positions.
-* The covariance matrices and weights are given by the weighted sums of the covariance matrices and weights of the
+* Selects promising locations among the current samples and create new components at these positions.<br>
+* The covariance matrices are given by the weighted sums of the covariance matrices and weights of the
 * current model, where the weights are given by the responsibilities of the model components for the new location.
 * Locations are promising if the residual given by
 * residual = log(p_intractable(x)) - log(p_model(x) + exp(max_exploration_bonus))
 * is high.
 *
-* @param N - the number of samples to be promoted
-* @param max_exploration_bonus - maximum bonus for samples that have low density on the current model
+* @param N - the number of samples to be promoted <br>
+* @param max_exploration_bonus - maximum bonus for samples that have low density on the current model <br>
 * @param only_check_active_samples - if set to true, the residual is computed on the active samples only,
-* otherwise, the residual is computed for all samples in the sample database.
-* @param max_samples - maximum number of samples to be considered
+* otherwise, the residual is computed for all samples in the sample database. <br>
+* @param max_samples - maximum number of samples to be considered <br>
 */
 void VIPS_PythonWrapper::promote_samples_to_components(int N, double max_exploration_bonus, double tau, bool only_check_active_samples, int max_samples) {
   learner.promote_samples_to_components(N, max_exploration_bonus, tau, only_check_active_samples, max_samples);
@@ -49,7 +49,7 @@ void VIPS_PythonWrapper::delete_low_weight_components(double min_weight) {
 }
 
 /**
-* Sample from the current GMM approximation, but use the specified the given component coefficient
+* Sample from the current GMM approximation, but use the specified the given component coefficient.
 * @param N - the numb er of samples to been drawn
 * @param weights - the weights (coefficients) to be used
 * @returns samples - N Samples drwan from the mixture with the given weights
@@ -79,6 +79,14 @@ void VIPS_PythonWrapper::draw_samples_weights(
   memcpy(*samples_out_ptr, samples.memptr(), sizeof(double) * (*samples_out_dim1) * (*samples_out_dim2));
 }
 
+/**
+* Sample from the current GMM approximation, but use the specified temperature to to adapt the weights, i.e.
+* the coefficient are replaced by p'(o) \tilde exp(log(p(o)*temperature))
+* @param N - the numb er of samples to been drawn
+* @param weights - the weights (coefficients) to be used
+* @returns samples - N Samples drwan from the mixture with the given weights
+* @returns indices - for each sample, the index of the component that was used for drawing it
+*/
 void VIPS_PythonWrapper::draw_samples(
         // inputs:
         double N, double temperature,
@@ -100,6 +108,16 @@ void VIPS_PythonWrapper::draw_samples(
   memcpy(*samples_out_ptr, samples.memptr(), sizeof(double) * (*samples_out_dim1) * (*samples_out_dim2));
 }
 
+/**
+ * Adds new samples to the database.
+ * Note that the samples will not be used for learning, until they have been activated (see activate_newest_samples).<br>
+ * The samples are assumed to have been drawn from the current model and the indices of the relevant components
+ * are to be provided for computing background distributions when necessary.
+ * @param new_samples - a matrix of size N_dimensions X N_samples
+ * @param new_target_densities - a vector of size N_samples containing the unnormalized densities on the target distribution
+ * @param used_components - a vector of size N_samples containing the indices of the components the corresponding samples have been drawn from
+ * @see activate_newest_samples
+ */
 void VIPS_PythonWrapper::add_samples(
         // inputs:
         double *samples_ptr, int samples_dim1, int samples_dim2,
@@ -111,6 +129,12 @@ void VIPS_PythonWrapper::add_samples(
   learner.add_samples_to_database(new_samples, new_target_densities, conv_to<uvec>::from(used_components));
 }
 
+/**
+ * Selects the N most recent samples and activates them (i.e. uses them for the upcoming learning iteration).<br>
+ * Makes sure, that all relevant data (e.g. densities, importance weights, etc.) gets updated
+ * @param N - the maximum number of recent samples to be activated, actually number of activated samples
+ * might be less, iff the sample database does not contain sufficient samples.
+ */
 void VIPS_PythonWrapper::activate_newest_samples(int N) {
   learner.activate_newest_samples(N);
 }
@@ -156,7 +180,7 @@ void VIPS_PythonWrapper::apply_lower_bound_on_weights(double * lb_weights_in, in
 
 
 /**
- * Updates the components p(s|o)
+ * Updates the components p(s|o).
  * @param max_kl_bound - hard upper bound for each KL bound
  * @param factor - factor for computing the KL bound for each component based on its number of effective samples
  * @param tau - entropy coefficient
@@ -388,18 +412,17 @@ void VIPS_PythonWrapper::get_entropy_estimate_on_gmm_samples(
     * num_components_out = learner.model.getNumComponents();
     }
 
-
 /**
-* Get various densities, importance weights, etc. for debug purposes
-* @return a tuple, s.t.
-* tuple[0] contains the samples
-* tuple[1] contains the unnormalized target densities
-* tuple[2] contains the log densities on each model p(s|o)
-* tuple[3] contains the joint log densities p(s,o)
-* tuple[4] contains the GMM densities p(s)
-* tuple[5] contains the log responsibilities p(o|s)
-* tuple[6] contains the densitis on the background distribution q(s)
-* tuple[7] contains the importance weights
+* Get various densities, importance weights, etc. for debug purposes.
+* @return a tuple, st. <br>
+* tuple[0] contains the samples <br>
+* tuple[1] contains the unnormalized target densities <br>
+* tuple[2] contains the log densities on each model p(s|o) <br>
+* tuple[3] contains the joint log densities p(s,o) <br>
+* tuple[4] contains the GMM densities p(s) <br>
+* tuple[5] contains the log responsibilities p(o|s) <br>
+* tuple[6] contains the densitis on the background distribution q(s) <br>
+* tuple[7] contains the importance weights <br>
 * tuple[8] contains the normalized importance weights
 */
 void VIPS_PythonWrapper::get_debug_info(

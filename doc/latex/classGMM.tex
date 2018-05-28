@@ -1,0 +1,433 @@
+\hypertarget{classGMM}{}\section{G\+MM Class Reference}
+\label{classGMM}\index{G\+MM@{G\+MM}}
+
+
+Inheritance diagram for G\+MM\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{classGMM__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGMM_a84d95fb2c6582568a9d9a1b0efe200a4}{G\+MM} (int dim, int max\+\_\+components=100000)
+\item 
+arma\+::cube \hyperlink{classGMM_acd0dd8e7f38a792f515d296dd467924a}{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points} (mat query\+\_\+points)
+\item 
+virtual void \hyperlink{classGMM_a00680c4a0c5f3befd742015bb8ad0a08}{add\+\_\+components\+\_\+at\+\_\+locations} (mat means)
+\item 
+virtual void \hyperlink{classGMM_ae33b6f52e8585c0cd590fd1d509956b0}{add\+\_\+components} (mat means, cube covs)
+\item 
+virtual void \hyperlink{classGMM_a07d7ade16c34458f6cf8fad958728c98}{add\+\_\+components\+\_\+inv\+Chols} (mat new\+\_\+means, cube new\+\_\+inv\+Chols)
+\item 
+void \hyperlink{classGMM_a82a84a6ad3ca8f5943b2ecaece9b6d1c}{delete\+\_\+components} (uvec indices)
+\item 
+virtual void \hyperlink{classGMM_a25c1ccd0c99b1ebd1e36592b912e74c2}{delete\+\_\+component} (int index)
+\item 
+void \hyperlink{classGMM_a929918e74c549b6ccca8c3cc246cd809}{prune\+\_\+to\+\_\+max\+\_\+components} (uvec protected\+\_\+components)
+\item 
+void \hyperlink{classGMM_a95ec14bd0e19af434ecb7b892288c6de}{change\+Component} (int index, mat new\+Chol, vec new\+Mean)
+\item 
+vec \hyperlink{classGMM_abcf7aa873a9bc0df374ff1284de786bc}{compute\+\_\+component\+\_\+densities} (int idx, mat samples, bool return\+\_\+log)
+\item 
+std\+::tuple$<$ mat, mat $>$ \hyperlink{classGMM_a8a9e502395f9d7f6a63eb7f56df5a73f}{compute\+\_\+joint\+\_\+densities} (mat samples, bool return\+\_\+log)
+\item 
+vec \hyperlink{classGMM_a1c2d04636a640ce56bf245df750e97ea}{evaluate\+\_\+\+G\+M\+M\+\_\+densities} (mat samples, bool return\+\_\+log)
+\item 
+vec \hyperlink{classGMM_a9a0e20b34d77c21fb31449dac5d1bd32}{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem} (mat samples)
+\item 
+std\+::tuple$<$ mat, mat, rowvec, rowvec, vec, mat $>$ \hyperlink{classGMM_a11d50f8336e3f0b4371fa4c7c023e11f}{compute\+\_\+log\+\_\+marginals} (mat samples)
+\item 
+std\+::tuple$<$ mat, rowvec, rowvec, vec, mat $>$ \hyperlink{classGMM_a03b69ac93de1b177102fc9378665f20b}{compute\+\_\+log\+\_\+marginals\+\_\+from\+\_\+comp\+\_\+densities} (mat log\+\_\+component\+\_\+marginals)
+\item 
+mat \hyperlink{classGMM_a5e5c1278fc67c3cb4b5cdeeb9390ab98}{sample\+\_\+from\+\_\+component} (int index, int n)
+\item 
+std\+::tuple$<$ mat, uvec $>$ \hyperlink{classGMM_ad7687ba93ab195673c26d02690d14d27}{sample\+\_\+from\+\_\+mixture\+\_\+weights} (double N, vec new\+\_\+weigths)
+\item 
+std\+::tuple$<$ mat, uvec $>$ \hyperlink{classGMM_afb3f91ba6e939739198a49c85c92ace4}{sample\+\_\+from\+\_\+mixture} (int n, double temperature=1.\+0)
+\item 
+void {\bfseries set\+Weights} (vec new\+\_\+weights)\hypertarget{classGMM_a1326b4c55a66445adb3888d1a77bb2cb}{}\label{classGMM_a1326b4c55a66445adb3888d1a77bb2cb}
+
+\item 
+void {\bfseries set\+Weights} (vec new\+\_\+weights, vec new\+\_\+log\+\_\+weights)\hypertarget{classGMM_a79c00e9de57111610b41fd98577b7b6a}{}\label{classGMM_a79c00e9de57111610b41fd98577b7b6a}
+
+\item 
+mat {\bfseries get\+Means} ()\hypertarget{classGMM_ae14f838f611896e02074e897247f461b}{}\label{classGMM_ae14f838f611896e02074e897247f461b}
+
+\item 
+mat {\bfseries get\+Means} (uvec indices)\hypertarget{classGMM_adeb0e2fd08493b3fd182286566a27a89}{}\label{classGMM_adeb0e2fd08493b3fd182286566a27a89}
+
+\item 
+cube {\bfseries get\+Covs} ()\hypertarget{classGMM_a88fd853731318d167e32b220debcf3c8}{}\label{classGMM_a88fd853731318d167e32b220debcf3c8}
+
+\item 
+cube {\bfseries get\+Chols} ()\hypertarget{classGMM_a84da191cb14375e572f192322b35ac6a}{}\label{classGMM_a84da191cb14375e572f192322b35ac6a}
+
+\item 
+cube {\bfseries get\+Inv\+Chols} ()\hypertarget{classGMM_a0cede71e7f6fb12cc7710567a3f4feef}{}\label{classGMM_a0cede71e7f6fb12cc7710567a3f4feef}
+
+\item 
+vec {\bfseries get\+Weights} ()\hypertarget{classGMM_a23d3f84a62535b3fbb3ef5cf9385f58b}{}\label{classGMM_a23d3f84a62535b3fbb3ef5cf9385f58b}
+
+\item 
+vec {\bfseries get\+Log\+Weights} ()\hypertarget{classGMM_a56ffba07ec2803f25444592f275b3d31}{}\label{classGMM_a56ffba07ec2803f25444592f275b3d31}
+
+\item 
+vec {\bfseries get\+Entropies} ()\hypertarget{classGMM_a9c9d5c5fa14d84de0a0d0fd249cf705e}{}\label{classGMM_a9c9d5c5fa14d84de0a0d0fd249cf705e}
+
+\item 
+vec {\bfseries get\+Determinants} ()\hypertarget{classGMM_a060c1a9c7a363ce01d7220500fc1db2d}{}\label{classGMM_a060c1a9c7a363ce01d7220500fc1db2d}
+
+\item 
+int {\bfseries get\+Num\+Components} ()\hypertarget{classGMM_a0db6332cddaa01a06caafada3c6354c7}{}\label{classGMM_a0db6332cddaa01a06caafada3c6354c7}
+
+\item 
+int {\bfseries get\+Num\+Dimensions} ()\hypertarget{classGMM_a6e11a4916285155c0acb69beb02560bd}{}\label{classGMM_a6e11a4916285155c0acb69beb02560bd}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries max\+\_\+components}\hypertarget{classGMM_af0c5335a6c9ac80c07d3212314e0d8b6}{}\label{classGMM_af0c5335a6c9ac80c07d3212314e0d8b6}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::tuple$<$ vec, vec, vec $>$ \hyperlink{classGMM_adfbd4c7449817315f02f54736751e1ce}{soft\+Max\+\_\+2D} (mat data)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double {\bfseries entropy\+\_\+offset}\hypertarget{classGMM_afbdca4e356f354e6ab36c2975aa7ae94}{}\label{classGMM_afbdca4e356f354e6ab36c2975aa7ae94}
+
+\item 
+int {\bfseries dim}\hypertarget{classGMM_a94d1cbf3cd1c15b81d2ac5809273304a}{}\label{classGMM_a94d1cbf3cd1c15b81d2ac5809273304a}
+
+\item 
+int {\bfseries num\+\_\+components}\hypertarget{classGMM_afa64fb9b37cff173b5ad1105c34abb2b}{}\label{classGMM_afa64fb9b37cff173b5ad1105c34abb2b}
+
+\item 
+mat {\bfseries means}\hypertarget{classGMM_ae8876c900c276e64c75ba799354fc46b}{}\label{classGMM_ae8876c900c276e64c75ba799354fc46b}
+
+\item 
+cube {\bfseries covs}\hypertarget{classGMM_abb060a06a7d148fb220ba3524030b7c9}{}\label{classGMM_abb060a06a7d148fb220ba3524030b7c9}
+
+\item 
+cube {\bfseries chols}\hypertarget{classGMM_ad6b6fd943a44e972792b01db68042eec}{}\label{classGMM_ad6b6fd943a44e972792b01db68042eec}
+
+\item 
+cube {\bfseries inv\+\_\+chols}\hypertarget{classGMM_a2b50c3568e366f5f774b2f73bb239977}{}\label{classGMM_a2b50c3568e366f5f774b2f73bb239977}
+
+\item 
+vec {\bfseries weights}\hypertarget{classGMM_ac92b4a601ede428eb4a6b20c9be252d9}{}\label{classGMM_ac92b4a601ede428eb4a6b20c9be252d9}
+
+\item 
+vec {\bfseries log\+\_\+weights}\hypertarget{classGMM_abfa4ad63087bb64e6324c231ad88478a}{}\label{classGMM_abfa4ad63087bb64e6324c231ad88478a}
+
+\item 
+vec {\bfseries entropies}\hypertarget{classGMM_a7b6ae5a12e6230d7a8ad06f6c86fb247}{}\label{classGMM_a7b6ae5a12e6230d7a8ad06f6c86fb247}
+
+\item 
+vec {\bfseries determinants}\hypertarget{classGMM_a18bbf0ad6127d7cd8f65fc688030d830}{}\label{classGMM_a18bbf0ad6127d7cd8f65fc688030d830}
+
+\item 
+std\+::default\+\_\+random\+\_\+engine {\bfseries rng}\hypertarget{classGMM_a6a5f6bf173dea2faf179b75065d1b806}{}\label{classGMM_a6a5f6bf173dea2faf179b75065d1b806}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{G\+MM@{G\+MM}!G\+MM@{G\+MM}}
+\index{G\+MM@{G\+MM}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{G\+M\+M(int dim, int max\+\_\+components=100000)}{GMM(int dim, int max_components=100000)}}]{\setlength{\rightskip}{0pt plus 5cm}G\+M\+M\+::\+G\+MM (
+\begin{DoxyParamCaption}
+\item[{int}]{dim, }
+\item[{int}]{max\+\_\+components = {\ttfamily 100000}}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_a84d95fb2c6582568a9d9a1b0efe200a4}{}\label{classGMM_a84d95fb2c6582568a9d9a1b0efe200a4}
+A Gaussian Mixture Model. 
+\begin{DoxyParams}{Parameters}
+{\em dim} & the number of dimensions \\
+\hline
+{\em max\+\_\+components} & maximum number of components this \hyperlink{classGMM}{G\+MM} may comprise \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{G\+MM@{G\+MM}!add\+\_\+components@{add\+\_\+components}}
+\index{add\+\_\+components@{add\+\_\+components}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{add\+\_\+components(mat means, cube covs)}{add_components(mat means, cube covs)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+M\+M\+::add\+\_\+components (
+\begin{DoxyParamCaption}
+\item[{mat}]{new\+\_\+means, }
+\item[{cube}]{new\+\_\+covs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classGMM_ae33b6f52e8585c0cd590fd1d509956b0}{}\label{classGMM_ae33b6f52e8585c0cd590fd1d509956b0}
+Adds new components. The weights will be initialized close to zero. 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+means} & -\/ matrix of size N\+\_\+dimensions x N\+\_\+new\+Components specifying the means of the new components \\
+\hline
+{\em new\+\_\+covs} & -\/ cube of size N\+\_\+dimensions x N\+\_\+dimensions x N\+\_\+new\+Components specifying the covariance matrices of the new components \\
+\hline
+\end{DoxyParams}
+\index{G\+MM@{G\+MM}!add\+\_\+components\+\_\+at\+\_\+locations@{add\+\_\+components\+\_\+at\+\_\+locations}}
+\index{add\+\_\+components\+\_\+at\+\_\+locations@{add\+\_\+components\+\_\+at\+\_\+locations}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{add\+\_\+components\+\_\+at\+\_\+locations(mat means)}{add_components_at_locations(mat means)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+M\+M\+::add\+\_\+components\+\_\+at\+\_\+locations (
+\begin{DoxyParamCaption}
+\item[{mat}]{new\+\_\+means}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classGMM_a00680c4a0c5f3befd742015bb8ad0a08}{}\label{classGMM_a00680c4a0c5f3befd742015bb8ad0a08}
+Creates new components on the given positions.~\newline
+ The covariance matrices are initialized by interpolating the covariance matrices of the existing components weighted by their responsibilities for the new mean.~\newline
+ The weights are initialized to low values, such that the change of the mixture is negligible 
+\begin{DoxyParams}{Parameters}
+{\em means} & -\/ matrix of size N\+\_\+dimensions x N\+\_\+new\+Components specifying at which positions new components are to be added \\
+\hline
+\end{DoxyParams}
+\index{G\+MM@{G\+MM}!add\+\_\+components\+\_\+inv\+Chols@{add\+\_\+components\+\_\+inv\+Chols}}
+\index{add\+\_\+components\+\_\+inv\+Chols@{add\+\_\+components\+\_\+inv\+Chols}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{add\+\_\+components\+\_\+inv\+Chols(mat new\+\_\+means, cube new\+\_\+inv\+Chols)}{add_components_invChols(mat new_means, cube new_invChols)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+M\+M\+::add\+\_\+components\+\_\+inv\+Chols (
+\begin{DoxyParamCaption}
+\item[{mat}]{new\+\_\+means, }
+\item[{cube}]{new\+\_\+inv\+Chols}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classGMM_a07d7ade16c34458f6cf8fad958728c98}{}\label{classGMM_a07d7ade16c34458f6cf8fad958728c98}
+Adds new components. Second parameter is interpreted as inverse cholesky matrix. The weights will be initialized close to zero 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+means} & -\/ matrix of size N\+\_\+dimensions x N\+\_\+new\+Components specifying the means of the new components \\
+\hline
+{\em new\+\_\+\+Inv\+Chols} & -\/ cube of size N\+\_\+dimensions x N\+\_\+dimensions x N\+\_\+new\+Components specifying the inverse cholesky matrices of the new components \\
+\hline
+\end{DoxyParams}
+\index{G\+MM@{G\+MM}!change\+Component@{change\+Component}}
+\index{change\+Component@{change\+Component}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{change\+Component(int index, mat new\+Chol, vec new\+Mean)}{changeComponent(int index, mat newChol, vec newMean)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+M\+M\+::change\+Component (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{mat}]{new\+Chol, }
+\item[{vec}]{new\+Mean}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_a95ec14bd0e19af434ecb7b892288c6de}{}\label{classGMM_a95ec14bd0e19af434ecb7b892288c6de}
+Change the Mean and Covariance of the specified component 
+\begin{DoxyParams}{Parameters}
+{\em index} & -\/ an index specifying which component to modify \\
+\hline
+{\em new\+Chol} & -\/ new cholesky decomposition of the covariance matrix \\
+\hline
+{\em new\+Mean} & -\/ new mean \\
+\hline
+\end{DoxyParams}
+\index{G\+MM@{G\+MM}!compute\+\_\+component\+\_\+densities@{compute\+\_\+component\+\_\+densities}}
+\index{compute\+\_\+component\+\_\+densities@{compute\+\_\+component\+\_\+densities}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{compute\+\_\+component\+\_\+densities(int idx, mat samples, bool return\+\_\+log)}{compute_component_densities(int idx, mat samples, bool return_log)}}]{\setlength{\rightskip}{0pt plus 5cm}vec G\+M\+M\+::compute\+\_\+component\+\_\+densities (
+\begin{DoxyParamCaption}
+\item[{int}]{idx, }
+\item[{mat}]{samples, }
+\item[{bool}]{return\+\_\+log}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_abcf7aa873a9bc0df374ff1284de786bc}{}\label{classGMM_abcf7aa873a9bc0df374ff1284de786bc}
+Evaluates the given query samples on the given component. \begin{DoxyReturn}{Returns}
+a vector of size num\+\_\+samples containing p(s$\vert$o\+\_\+idx) 
+\end{DoxyReturn}
+\index{G\+MM@{G\+MM}!compute\+\_\+joint\+\_\+densities@{compute\+\_\+joint\+\_\+densities}}
+\index{compute\+\_\+joint\+\_\+densities@{compute\+\_\+joint\+\_\+densities}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{compute\+\_\+joint\+\_\+densities(mat samples, bool return\+\_\+log)}{compute_joint_densities(mat samples, bool return_log)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ mat, mat $>$ G\+M\+M\+::compute\+\_\+joint\+\_\+densities (
+\begin{DoxyParamCaption}
+\item[{mat}]{samples, }
+\item[{bool}]{return\+\_\+log}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_a8a9e502395f9d7f6a63eb7f56df5a73f}{}\label{classGMM_a8a9e502395f9d7f6a63eb7f56df5a73f}
+evaluates all components on the given samples. \begin{DoxyReturn}{Returns}
+a tuple of two matrices with size num\+\_\+components X num\+\_\+samples~\newline
+ tuple\mbox{[}0\mbox{]} contains the joint densities p(s,o)~\newline
+ tuple\mbox{[}1\mbox{]} contains the marginal densities p(s$\vert$o) 
+\end{DoxyReturn}
+\index{G\+MM@{G\+MM}!compute\+\_\+log\+\_\+marginals@{compute\+\_\+log\+\_\+marginals}}
+\index{compute\+\_\+log\+\_\+marginals@{compute\+\_\+log\+\_\+marginals}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{compute\+\_\+log\+\_\+marginals(mat samples)}{compute_log_marginals(mat samples)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ mat, mat, rowvec, rowvec, vec, mat $>$ G\+M\+M\+::compute\+\_\+log\+\_\+marginals (
+\begin{DoxyParamCaption}
+\item[{mat}]{samples}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_a11d50f8336e3f0b4371fa4c7c023e11f}{}\label{classGMM_a11d50f8336e3f0b4371fa4c7c023e11f}
+This function mainly computes the log\+\_\+responsibilities \mbox{[}log(p(comp$\vert$sample))\mbox{]} and the the log densities \mbox{[}log(\+G\+M\+M(samples))\mbox{]}. However, intermediate computations are returned as well, as they are required for efficient computation.~\newline
+ For example, when recomputing the log\+\_\+responsibilites in a numerical stable way after adding more samples, tuple\mbox{[}2\mbox{]} and tuple\mbox{[}3\mbox{]} can be exploited to avoid unnecessary computations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em samples,a} & matrix N\+\_\+\+Dim x N\+\_\+\+Samples containing the samples to be evaluated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a tuple, such that~\newline
+ tuple\mbox{[}0\mbox{]}\+: a matrix N\+\_\+\+Components x N\+\_\+\+Samples containing the log of joint densities log(p(s,o))~\newline
+ tuple\mbox{[}1\mbox{]}\+: a matrix N\+\_\+\+Components x N\+\_\+\+Samples containing the log of component marginals log(p(s$\vert$o))~\newline
+ tuple\mbox{[}2\mbox{]}\+: a row-\/vector containing column-\/wise, negated maxima of tuple\mbox{[}1\mbox{]}~\newline
+ tuple\mbox{[}3\mbox{]}\+: a row-\/vector containing the column-\/wise summations, sum(exp(log(tuple\mbox{[}1\mbox{]}+tuple\mbox{[}2\mbox{]}))~\newline
+ tuple\mbox{[}4\mbox{]}\+: a vector containing the \hyperlink{classGMM}{G\+MM} log densities for each sample (log(tuple\mbox{[}3\mbox{]}) -\/ tuple\mbox{[}2\mbox{]}, i.\+e. log(p(s))~\newline
+ tuple\mbox{[}5\mbox{]}\+: a matrix containing the log responsibilities (row-\/wise subtraction of tuple\mbox{[}4\mbox{]} from tuple\mbox{[}2\mbox{]}, i.\+e. p(o$\vert$s)) 
+\end{DoxyReturn}
+\index{G\+MM@{G\+MM}!compute\+\_\+log\+\_\+marginals\+\_\+from\+\_\+comp\+\_\+densities@{compute\+\_\+log\+\_\+marginals\+\_\+from\+\_\+comp\+\_\+densities}}
+\index{compute\+\_\+log\+\_\+marginals\+\_\+from\+\_\+comp\+\_\+densities@{compute\+\_\+log\+\_\+marginals\+\_\+from\+\_\+comp\+\_\+densities}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{compute\+\_\+log\+\_\+marginals\+\_\+from\+\_\+comp\+\_\+densities(mat log\+\_\+component\+\_\+marginals)}{compute_log_marginals_from_comp_densities(mat log_component_marginals)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ mat, rowvec, rowvec, vec, mat $>$ G\+M\+M\+::compute\+\_\+log\+\_\+marginals\+\_\+from\+\_\+comp\+\_\+densities (
+\begin{DoxyParamCaption}
+\item[{mat}]{log\+\_\+component\+\_\+marginals}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_a03b69ac93de1b177102fc9378665f20b}{}\label{classGMM_a03b69ac93de1b177102fc9378665f20b}
+This function mainly computes the log\+\_\+responsibilities \mbox{[}log(p(comp$\vert$sample))\mbox{]} and the the log densities \mbox{[}log(\+G\+M\+M(samples))\mbox{]}. However, intermediate computations are returned as well, as they are required for efficient computation.~\newline
+ For example, when recomputing the log\+\_\+responsibilites in a numerical stable way after adding more samples, tuple\mbox{[}1\mbox{]} and tuple\mbox{[}2\mbox{]} can be exploited to avoid unnecessary computations.
+
+
+\begin{DoxyParams}{Parameters}
+{\em log\+\_\+component\+\_\+marginals,a} & matrix N\+\_\+\+Components x N\+\_\+\+Samples containing the log of component marginals log(p(s$\vert$o)) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a tuple, such that~\newline
+ tuple\mbox{[}0\mbox{]}\+: a matrix N\+\_\+\+Components x N\+\_\+\+Samples containing the log of joint densities log(p(s,o))~\newline
+ tuple\mbox{[}1\mbox{]}\+: a row-\/vector containing column-\/wise, negated maxima of tuple\mbox{[}0\mbox{]}~\newline
+ tuple\mbox{[}2\mbox{]}\+: a row-\/vector containing the column-\/wise summations, sum(exp(log(tuple\mbox{[}0\mbox{]}+tuple\mbox{[}1\mbox{]}))~\newline
+ tuple\mbox{[}3\mbox{]}\+: a vector containing the \hyperlink{classGMM}{G\+MM} log densities for each sample (log(tuple\mbox{[}2\mbox{]}) -\/ tuple\mbox{[}1\mbox{]}, i.\+e. log(p(s))~\newline
+ tuple\mbox{[}4\mbox{]}\+: a matrix containing the log responsibilities (row-\/wise subtraction of tuple\mbox{[}3\mbox{]} from tuple\mbox{[}1\mbox{]}, i.\+e. p(o$\vert$s)) 
+\end{DoxyReturn}
+\index{G\+MM@{G\+MM}!delete\+\_\+component@{delete\+\_\+component}}
+\index{delete\+\_\+component@{delete\+\_\+component}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{delete\+\_\+component(int index)}{delete_component(int index)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+M\+M\+::delete\+\_\+component (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classGMM_a25c1ccd0c99b1ebd1e36592b912e74c2}{}\label{classGMM_a25c1ccd0c99b1ebd1e36592b912e74c2}
+Delete a single componentent and renormalize the weights afterwards. 
+\begin{DoxyParams}{Parameters}
+{\em index} & specifying which component to delete \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classVIPS__Model_a6b0edde4a9a744639e1588cff6a5fa23}{V\+I\+P\+S\+\_\+\+Model}.
+
+\index{G\+MM@{G\+MM}!delete\+\_\+components@{delete\+\_\+components}}
+\index{delete\+\_\+components@{delete\+\_\+components}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{delete\+\_\+components(uvec indices)}{delete_components(uvec indices)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+M\+M\+::delete\+\_\+components (
+\begin{DoxyParamCaption}
+\item[{uvec}]{indices}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_a82a84a6ad3ca8f5943b2ecaece9b6d1c}{}\label{classGMM_a82a84a6ad3ca8f5943b2ecaece9b6d1c}
+Delete the components given by the indices and renormalize the weights afterwards. 
+\begin{DoxyParams}{Parameters}
+{\em indices} & specifying which component to delete \\
+\hline
+\end{DoxyParams}
+\index{G\+MM@{G\+MM}!evaluate\+\_\+\+G\+M\+M\+\_\+densities@{evaluate\+\_\+\+G\+M\+M\+\_\+densities}}
+\index{evaluate\+\_\+\+G\+M\+M\+\_\+densities@{evaluate\+\_\+\+G\+M\+M\+\_\+densities}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{evaluate\+\_\+\+G\+M\+M\+\_\+densities(mat samples, bool return\+\_\+log)}{evaluate_GMM_densities(mat samples, bool return_log)}}]{\setlength{\rightskip}{0pt plus 5cm}vec G\+M\+M\+::evaluate\+\_\+\+G\+M\+M\+\_\+densities (
+\begin{DoxyParamCaption}
+\item[{mat}]{samples, }
+\item[{bool}]{return\+\_\+log}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_a1c2d04636a640ce56bf245df750e97ea}{}\label{classGMM_a1c2d04636a640ce56bf245df750e97ea}
+Evaluates the \hyperlink{classGMM}{G\+MM} on the given samples. \begin{DoxyReturn}{Returns}
+a vector of size num\+\_\+samples containing p(s) 
+\end{DoxyReturn}
+\index{G\+MM@{G\+MM}!evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem@{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem}}
+\index{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem@{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem(mat samples)}{evaluate_GMM_densities_low_mem(mat samples)}}]{\setlength{\rightskip}{0pt plus 5cm}vec G\+M\+M\+::evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem (
+\begin{DoxyParamCaption}
+\item[{mat}]{samples}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_a9a0e20b34d77c21fb31449dac5d1bd32}{}\label{classGMM_a9a0e20b34d77c21fb31449dac5d1bd32}
+Evaluates the \hyperlink{classGMM}{G\+MM} on the given samples in a memory efficient way. This function is recommended for very large number of samples or components 
+\begin{DoxyParams}{Parameters}
+{\em samples} & -\/ a matrix of size N\+\_\+dim x N\+\_\+samples of samples to be evaluated \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the log \hyperlink{classGMM}{G\+MM} densities log(p(s)) 
+\end{DoxyReturn}
+\index{G\+MM@{G\+MM}!interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points@{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points}}
+\index{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points@{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points(mat query\+\_\+points)}{interpolate_covs_for_query_points(mat query_points)}}]{\setlength{\rightskip}{0pt plus 5cm}cube G\+M\+M\+::interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points (
+\begin{DoxyParamCaption}
+\item[{mat}]{query\+\_\+points}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_acd0dd8e7f38a792f515d296dd467924a}{}\label{classGMM_acd0dd8e7f38a792f515d296dd467924a}
+Compute a covariance matrix for each given query point by interpolating the covariance matrices of the \hyperlink{classGMM}{G\+MM} components weighted by the their responsibility for the given query point.~\newline
+ This can be used, for example, for initializing new components.~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em query\+\_\+points} & -\/ D X N matrix containing the query points \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a cube of size N x D X D containing the covariance matrices 
+\end{DoxyReturn}
+\index{G\+MM@{G\+MM}!prune\+\_\+to\+\_\+max\+\_\+components@{prune\+\_\+to\+\_\+max\+\_\+components}}
+\index{prune\+\_\+to\+\_\+max\+\_\+components@{prune\+\_\+to\+\_\+max\+\_\+components}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{prune\+\_\+to\+\_\+max\+\_\+components(uvec protected\+\_\+components)}{prune_to_max_components(uvec protected_components)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+M\+M\+::prune\+\_\+to\+\_\+max\+\_\+components (
+\begin{DoxyParamCaption}
+\item[{uvec}]{protected\+\_\+components}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_a929918e74c549b6ccca8c3cc246cd809}{}\label{classGMM_a929918e74c549b6ccca8c3cc246cd809}
+If the \hyperlink{classGMM}{G\+MM} currently contains more than max\+\_\+components, removes the N=(num\+\_\+components -\/ max\+\_\+components) components with lowest weight. However, does not delete components with an index that is contained in protected\+\_\+components. 
+\begin{DoxyParams}{Parameters}
+{\em protected\+\_\+components} & -\/ indices of such components that should not be deleted. \\
+\hline
+\end{DoxyParams}
+\index{G\+MM@{G\+MM}!sample\+\_\+from\+\_\+component@{sample\+\_\+from\+\_\+component}}
+\index{sample\+\_\+from\+\_\+component@{sample\+\_\+from\+\_\+component}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{sample\+\_\+from\+\_\+component(int index, int n)}{sample_from_component(int index, int n)}}]{\setlength{\rightskip}{0pt plus 5cm}mat G\+M\+M\+::sample\+\_\+from\+\_\+component (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_a5e5c1278fc67c3cb4b5cdeeb9390ab98}{}\label{classGMM_a5e5c1278fc67c3cb4b5cdeeb9390ab98}
+Draw n samples from the specified component \index{G\+MM@{G\+MM}!sample\+\_\+from\+\_\+mixture@{sample\+\_\+from\+\_\+mixture}}
+\index{sample\+\_\+from\+\_\+mixture@{sample\+\_\+from\+\_\+mixture}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{sample\+\_\+from\+\_\+mixture(int n, double temperature=1.\+0)}{sample_from_mixture(int n, double temperature=1.0)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ mat, uvec $>$ G\+M\+M\+::sample\+\_\+from\+\_\+mixture (
+\begin{DoxyParamCaption}
+\item[{int}]{n, }
+\item[{double}]{temperature = {\ttfamily 1.0}}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_afb3f91ba6e939739198a49c85c92ace4}{}\label{classGMM_afb3f91ba6e939739198a49c85c92ace4}
+Return samples and the corresponding indices of the components. temperature can be used to scale the weights \index{G\+MM@{G\+MM}!sample\+\_\+from\+\_\+mixture\+\_\+weights@{sample\+\_\+from\+\_\+mixture\+\_\+weights}}
+\index{sample\+\_\+from\+\_\+mixture\+\_\+weights@{sample\+\_\+from\+\_\+mixture\+\_\+weights}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{sample\+\_\+from\+\_\+mixture\+\_\+weights(double N, vec new\+\_\+weigths)}{sample_from_mixture_weights(double N, vec new_weigths)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ mat, uvec $>$ G\+M\+M\+::sample\+\_\+from\+\_\+mixture\+\_\+weights (
+\begin{DoxyParamCaption}
+\item[{double}]{N, }
+\item[{vec}]{new\+\_\+weights}
+\end{DoxyParamCaption}
+)}\hypertarget{classGMM_ad7687ba93ab195673c26d02690d14d27}{}\label{classGMM_ad7687ba93ab195673c26d02690d14d27}
+Sample from the current \hyperlink{classGMM}{G\+MM}, but use the specified the given component coefficient. 
+\begin{DoxyParams}{Parameters}
+{\em N} & -\/ the numb er of samples to been drawn \\
+\hline
+{\em weights} & -\/ the weights (coefficients) to be used \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+samples -\/ N Samples drwan from the mixture with the given weights 
+
+indices -\/ for each sample, the index of the component that was used for drawing it 
+\end{DoxyReturn}
+\index{G\+MM@{G\+MM}!soft\+Max\+\_\+2D@{soft\+Max\+\_\+2D}}
+\index{soft\+Max\+\_\+2D@{soft\+Max\+\_\+2D}!G\+MM@{G\+MM}}
+\subsubsection[{\texorpdfstring{soft\+Max\+\_\+2\+D(mat data)}{softMax_2D(mat data)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ vec, vec, vec $>$ G\+M\+M\+::soft\+Max\+\_\+2D (
+\begin{DoxyParamCaption}
+\item[{mat}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classGMM_adfbd4c7449817315f02f54736751e1ce}{}\label{classGMM_adfbd4c7449817315f02f54736751e1ce}
+computes log(sum(exp(data))) columnwise \begin{DoxyReturn}{Returns}
+a tuple containing~\newline
+ tuple\mbox{[}0\mbox{]}\+: a vector containing the column-\/wise softmaxs, max(data) + log(sum(exp(data-\/max(data)))~\newline
+ tuple\mbox{[}1\mbox{]}\+: a vector containing column-\/wise offsets, i.\+e. -\/max(data)~\newline
+ tuple\mbox{[}2\mbox{]}\+: a vector containing the column-\/wise summations, sum(exp(data-\/max(data))) 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+G\+M\+M.\+h\item 
+G\+M\+M.\+cpp\end{DoxyCompactItemize}

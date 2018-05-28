@@ -1,3 +1,9 @@
+/*! \mainpage Variational Inference by Policy Search
+ *
+ * For API documentation, we recommend starting at VIPS or VIPS_PythonWrapper.<br>
+ * For more details about the algorithm, a link to the paper as well as installation instructions we refer to the <a href="https://github.com/OlegArenz/VIPS">project page</a>
+ */
+
 #include "VIPS.h"
 #include "Reps.h"
 #include "More.h"
@@ -9,6 +15,8 @@ using namespace arma;
 
 /**
  * Main class implementing the Learn-To-Sample algorithm
+ * @param num_dimensions - dimensionality of the sampling problem
+ * @param num_threads - number of threads to use
  */
 VIPS::VIPS(int num_dimensions, int num_threads)
         : model(num_dimensions), sampleDatabase(num_dimensions), num_dimensions(num_dimensions),
@@ -101,12 +109,13 @@ void VIPS::delete_low_weight_components(double min_weight) {
 
 /**
  * Adds new samples to the database.
- * Note that the samples will not be used for learning, until they have been activated (@see activate_newest_samples)
+ * Note that the samples will not be used for learning, until they have been activated (see activate_newest_samples).<br>
  * The samples are assumed to have been drawn from the current model and the indices of the relevant components
  * are to be provided for computing background distributions when necessary.
  * @param new_samples - a matrix of size N_dimensions X N_samples
  * @param new_target_densities - a vector of size N_samples containing the unnormalized densities on the target distribution
  * @param used_components - a vector of size N_samples containing the indices of the components the corresponding samples have been drawn from
+ * @see activate_newest_samples
  */
 void VIPS::add_samples_to_database(arma::mat new_samples, arma::vec new_target_densities, arma::uvec used_components) {
   cube invChols = model.getInvChols();
@@ -118,7 +127,7 @@ void VIPS::add_samples_to_database(arma::mat new_samples, arma::vec new_target_d
 }
 
 /**
- * Recomputes the densities of various distributions as well as the importance weights.
+ * Recomputes the densities of various distributions as well as the importance weights.<br>
  * Manual invocation is in general not necessary, as the densities are automatic updated,
  * e.g. after weight changes, component changes, adding components, etc.
  * @param update_log_densities_on_model_comps - if this flag is set to false, assume that the density-evaluations for each
@@ -153,7 +162,7 @@ void VIPS::recompute_densities(bool update_log_densities_on_model_comps, bool up
 }
 
 /**
- * Selects the N most recent samples and activates them (i.e. uses them for the upcoming learning iteration).
+ * Selects the N most recent samples and activates them (i.e. uses them for the upcoming learning iteration).<br>
  * Makes sure, that all relevant data (e.g. densities, importance weights, etc.) gets updated
  * @param N - the maximum number of recent samples to be activated, actually number of activated samples
  * might be less, iff the sample database does not contain sufficient samples.
@@ -175,7 +184,7 @@ void VIPS::update_targets_for_KL_bounds(bool update_weight_targets, bool update_
 }
 
 /**
- * update the component weights p(o)
+ * update the component weights p(o).
  * @param epsilon is the KL bound
  * @param tau is the entropy coefficient
  * @return a tuple, s.t.
@@ -210,7 +219,7 @@ void VIPS::update_targets_for_KL_bounds(bool update_weight_targets, bool update_
 }
 
 /**
- * Adapts the KL bound based on the number of effective samples.
+ * Adapts the KL bound based on the number of effective samples.<br>
  * The KL bound for each component is set to min(max_kl_bound, factor * num_eff_samples(o))
  * @param max_kl_bound - hard upper bound for KL
  * @param factor - factor for computing the KL bound based on the number of effective samples
@@ -226,11 +235,14 @@ vec VIPS::adapt_KL_bound_for_comp_update(double max_kl_bound, double factor) {
 }
 
 /**
- * Updates the components p(s|o)
+ * Updates the components p(s|o).
  * @param max_kl_bound - hard upper bound for each KL bound
  * @param factor - factor for computing the KL bound for each component based on its number of effective samples
  * @param tau - entropy coefficient
  * @param ridge_coefficient - coefficient used for regularization when fitting the quadratic surrogate
+ * @param entropy_bounds - lower bound on entropy
+ * @param max_active_samples - size of the subset of samples that should be used for each component update
+ * @param dont_learn_correlations - iff true, fit a quadratic surrogate where R is diagonal (experimental)
  */
 vec VIPS::update_components(double max_kl_bound, double factor, double tau, double ridge_coefficient,
                             vec entropy_bounds, double max_active_samples, bool dont_learn_correlations) {
@@ -307,9 +319,9 @@ vec VIPS::update_components(double max_kl_bound, double factor, double tau, doub
 
 /**
 * Adds new components.
-* @params new_weights_total - new weights of the GMM (including existing components)
-* @params new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
-* @params new_covs - cube of size N_dimensions x N_dimensions x N_newComponents specifying the covariance matrices
+* @param new_weights_total - new weights of the GMM (including existing components)
+* @param new_means - matrix of size N_dimensions x N_newComponents specifying the means of the new components
+* @param new_covs - cube of size N_dimensions x N_dimensions x N_newComponents specifying the covariance matrices
 * of the new components
 */
 void VIPS::add_components(arma::vec new_weights_total, arma::mat new_means, arma::cube new_covs) {
@@ -325,8 +337,9 @@ void VIPS::add_components(arma::vec new_weights_total, arma::mat new_means, arma
  * fast.
  * However, if the number of active samples is still low or the samples are not "fresh" (low importance weights),
  * the estimate can be quite bad.
- * @see get_entropy_estimate_on_gmm_samples() for a slower, but usually more accurate estimate.
+ * see get_entropy_estimate_on_gmm_samples() for a slower, but usually more accurate estimate.
  * @return a Monte-Carlo estimate of the entropy of the learned Gaussian Mixture Model
+ * @see get_entropy_estimate_on_gmm_samples()
  */
 double VIPS::get_entropy_estimate_on_active_samples() {
   vec weighted_importance_weights = log_densities_on_model - log_densities_on_background_dist;
@@ -338,11 +351,12 @@ double VIPS::get_entropy_estimate_on_active_samples() {
 
 /**
  * Returns a Monte-Carlo estimate of the entropy of the learned model.
- * This methods draws new samples from the learned model and evaluated their log-densities log(p(x))
- * The entropy of the learned model is then approximated as H(p) \approx -1/N \sum_x log(p(x))
- * @see get_entropy_estimate_on_active_samples() for a faster, but usually less accurate estimate.
+ * This methods draws new samples from the learned model and evaluated their log-densities log(p(x)).
+ * The entropy of the learned model is then approximated as H(p) \approx -1/N \sum_x log(p(x)).
+ * see get_entropy_estimate_on_active_samples() for a faster, but usually less accurate estimate.
  * @param N - the number of samples that should be drawn for computing the estimate
  * @return a Monte-Carlo estimate of the entropy of the learned Gaussian Mixture Model
+ * @see get_entropy_estimate_on_active_samples()
  */
 double VIPS::get_entropy_estimate_on_gmm_samples(int N) {
   mat my_samples = std::get<0>(model.sample_from_mixture(N, 1.0));
@@ -351,16 +365,16 @@ double VIPS::get_entropy_estimate_on_gmm_samples(int N) {
 }
 
 /**
-* Get various densities, importance weights, etc. for debug purposes
-* @return a tuple, st.
-* tuple[0] contains the samples
-* tuple[1] contains the unnormalized target densities
-* tuple[2] contains the log densities on each model p(s|o)
-* tuple[3] contains the joint log densities p(s,o)
-* tuple[4] contains the GMM densities p(s)
-* tuple[5] contains the log responsibilities p(o|s)
-* tuple[6] contains the densitis on the background distribution q(s)
-* tuple[7] contains the importance weights
+* Get various densities, importance weights, etc. for debug purposes.
+* @return a tuple, st. <br>
+* tuple[0] contains the samples <br>
+* tuple[1] contains the unnormalized target densities <br>
+* tuple[2] contains the log densities on each model p(s|o) <br>
+* tuple[3] contains the joint log densities p(s,o) <br>
+* tuple[4] contains the GMM densities p(s) <br>
+* tuple[5] contains the log responsibilities p(o|s) <br>
+* tuple[6] contains the densitis on the background distribution q(s) <br>
+* tuple[7] contains the importance weights <br>
 * tuple[8] contains the normalized importance weights
 */
 std::tuple<mat, vec, mat, mat, vec, mat, mat, mat, mat> VIPS::get_debug_info() {
