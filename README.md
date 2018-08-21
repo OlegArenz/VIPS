@@ -18,40 +18,43 @@ Instructions are based on https://gist.github.com/BERENZ/ff274ebbf00ee111c708.
 In some temporary directory run:
 
 ```bash
-$ git clone git://github.com/xianyi/OpenBLAS.git
-$ cd OpenBLAS/
-$ git checkout develop
-$ mkdir ~/libs
-$ USE_OPENMP=1 NO_SHARED=1 COMMON_OPT=" -O2 -march=native" make
-$ make PREFIX=~/libs/OpenBlas NO_SHARED=1 install
+cd /tmp
+git clone git://github.com/xianyi/OpenBLAS.git
+cd OpenBLAS/
+git checkout develop
+mkdir ~/libs
+USE_OPENMP=1 NO_SHARED=1 COMMON_OPT=" -O2 -march=native" make
+make PREFIX=~/libs/OpenBlas NO_SHARED=1 install
 ```
 
 #### Install armadillo
 Download armadillo into ~/libs
 
 ```bash
-$ cd ~/libs
-~/libs$ wget http://sourceforge.net/projects/arma/files/armadillo-8.300.3.tar.xz
+cd ~/libs
+wget http://sourceforge.net/projects/arma/files/armadillo-8.300.3.tar.xz
 ```
 You can also check for a newer version at http://arma.sourceforge.net/download.html
 
 Unpack and configure it (Don't make it, we just need the headers)
 
 ```bash
-~/libs$ tar xJvf armadillo-8.300.3.tar.xz
-~/libs$ mv armadillo-8.300.3 armadillo
-~/libs$ rm armadillo-8.300.3.tar.xz
-$ cd armadillo
-$ ./configure
+tar xJvf armadillo-8.300.3.tar.xz
+mv armadillo-8.300.3 armadillo
+rm armadillo-8.300.3.tar.xz
+cd armadillo
+./configure
 ```
 
 #### Install NLOPT
 ```bash
-$ wget http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz
-$ tar xzvf nlopt-2.4.2.tar.gz
-$ cd nlopt-2.4.2/
-$ ./configure --enable-shared --prefix=$HOME/libs/nlopt && make && make install
+wget http://ab-initio.mit.edu/nlopt/nlopt-2.4.2.tar.gz
+tar xzvf nlopt-2.4.2.tar.gz
+cd nlopt-2.4.2/
+./configure --enable-shared --prefix=$HOME/libs/nlopt && make && make install
+```
 add the following lines to your ~/.bashrc:
+```
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/libs/nlopt/lib
 export LD_LIBRARY_PATH
 ```
@@ -60,15 +63,15 @@ export LD_LIBRARY_PATH
 Make sure that swig is installed
 
 ```
-$ sudo apt install swig
+sudo apt install swig
 ```
 Change into ./c++ and compile the project:
 
 ```
-$ mkdir build
-$ cd build
-$ cmake ..
-$ make install -j4
+mkdir build
+cd build
+cmake ..
+make install -j4
 ```
 
 ### Getting Started
