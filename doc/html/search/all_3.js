@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['delete_5fcomponent',['delete_component',['../classGMM.html#a25c1ccd0c99b1ebd1e36592b912e74c2',1,'GMM::delete_component()'],['../classVIPS__Model.html#a6b0edde4a9a744639e1588cff6a5fa23',1,'VIPS_Model::delete_component()']]],
-  ['delete_5fcomponents',['delete_components',['../classGMM.html#a82a84a6ad3ca8f5943b2ecaece9b6d1c',1,'GMM']]],
-  ['delete_5flow_5fweight_5fcomponents',['delete_low_weight_components',['../classVIPS.html#aba18c184ad6826ac8458fb573af7bcbc',1,'VIPS::delete_low_weight_components()'],['../classVIPS__Model.html#abbaa2af1802ba723708f11739525519b',1,'VIPS_Model::delete_low_weight_components()']]],
-  ['draw_5fsamples',['draw_samples',['../classVIPS__PythonWrapper.html#ac0ae21747614c8e406953e9151578053',1,'VIPS_PythonWrapper']]],
-  ['draw_5fsamples_5fweights',['draw_samples_weights',['../classVIPS__PythonWrapper.html#adc5d4067954f4164c25426e032b5335d',1,'VIPS_PythonWrapper']]],
-  ['dual_5ffunction_5fgaussian',['dual_function_gaussian',['../classMore.html#aa3fdb202ca291e253f7c157d8a13040b',1,'More']]]
+  ['changecomponent',['changeComponent',['../classGMM.html#a95ec14bd0e19af434ecb7b892288c6de',1,'GMM']]],
+  ['compute_5fcomponent_5fdensities',['compute_component_densities',['../classGMM.html#abcf7aa873a9bc0df374ff1284de786bc',1,'GMM']]],
+  ['compute_5fjoint_5fdensities',['compute_joint_densities',['../classGMM.html#a8a9e502395f9d7f6a63eb7f56df5a73f',1,'GMM']]],
+  ['compute_5flog_5fmarginals',['compute_log_marginals',['../classGMM.html#a11d50f8336e3f0b4371fa4c7c023e11f',1,'GMM']]],
+  ['compute_5flog_5fmarginals_5ffrom_5fcomp_5fdensities',['compute_log_marginals_from_comp_densities',['../classGMM.html#a03b69ac93de1b177102fc9378665f20b',1,'GMM']]]
 ];

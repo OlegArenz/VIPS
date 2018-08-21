@@ -1,7 +1,7 @@
 var indexSectionsWithContent =
 {
-  0: "abcdegimprsuv",
-  1: "gmrsv",
+  0: "_abcdegimprsuv",
+  1: "_gmprsv",
   2: "abcdegiprsuv",
   3: "v"
 };

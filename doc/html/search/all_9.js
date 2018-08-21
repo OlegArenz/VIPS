@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['recompute_5fdensities',['recompute_densities',['../classVIPS.html#a8e90dcdcf50ffca10fbb9dbfd8176e22',1,'VIPS::recompute_densities()'],['../classVIPS__PythonWrapper.html#abf63652a9d7589cc189837ba41bcf322',1,'VIPS_PythonWrapper::recompute_densities()']]],
-  ['reps',['Reps',['../classReps.html',1,'']]],
-  ['restore_5flearner',['restore_learner',['../classVIPS__PythonWrapper.html#a3819321597ef3f522bd577f479ff81b0',1,'VIPS_PythonWrapper']]]
+  ['promote_5fsamples_5fto_5fcomponents',['promote_samples_to_components',['../classVIPS.html#afda46fdd2494774ae418a9fcccda905f',1,'VIPS::promote_samples_to_components()'],['../classVIPS__PythonWrapper.html#a66e3c05b6e653180186dfe64cbb0cbc8',1,'VIPS_PythonWrapper::promote_samples_to_components()']]],
+  ['prune_5fto_5fmax_5fcomponents',['prune_to_max_components',['../classGMM.html#a929918e74c549b6ccca8c3cc246cd809',1,'GMM']]],
+  ['pyheaptypeobject',['PyHeapTypeObject',['../structPyHeapTypeObject.html',1,'']]]
 ];
