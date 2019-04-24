@@ -85,9 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classVIPS__PythonWrapper-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -106,41 +104,38 @@ Collaboration diagram for VIPS_PythonWrapper:</div>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper_1_1__object.html">_object</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper_1_1VIPS__PythonWrapper.html">VIPS_PythonWrapper</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4e4c340a7b224932307954327bd2cb1f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e4c340a7b224932307954327bd2cb1f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>VIPS_PythonWrapper</b> (int num_dimensions, int num_threads)</td></tr>
-<tr class="separator:a4e4c340a7b224932307954327bd2cb1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5cc2281cd1d3abcd50618535c25b635"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5cc2281cd1d3abcd50618535c25b635"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>VIPS_PythonWrapper</b> (int num_dimensions, int num_threads, double min_kl_bound, double max_kl_bound)</td></tr>
+<tr class="separator:ad5cc2281cd1d3abcd50618535c25b635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a51f6e59a9b843e4a21262e4c119bbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a0a51f6e59a9b843e4a21262e4c119bbd">add_components</a> (double *new_weights_in, int new_weights_in_dim1, double *new_means_in, int new_means_in_dim1, int new_means_in_dim2, double *new_covs_in, int new_covs_in_dim1, int new_covs_in_dim2, int new_covs_in_dim3)</td></tr>
 <tr class="separator:a0a51f6e59a9b843e4a21262e4c119bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66e3c05b6e653180186dfe64cbb0cbc8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a66e3c05b6e653180186dfe64cbb0cbc8">promote_samples_to_components</a> (int N, double max_exploration_bonus, double tau, bool only_check_active_samples, int max_samples)</td></tr>
-<tr class="separator:a66e3c05b6e653180186dfe64cbb0cbc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbf65f23a6bea8ba1571813c8916f8f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afbf65f23a6bea8ba1571813c8916f8f3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_low_weight_components</b> (double min_weight)</td></tr>
-<tr class="separator:afbf65f23a6bea8ba1571813c8916f8f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b17b5e96e7535358411ab8adcbcd934"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a8b17b5e96e7535358411ab8adcbcd934">promote_samples_to_components</a> (int N, double max_exploration_bonus, double tau, bool only_check_active_samples, int max_samples, bool scale_entropy=true, bool isotropic=false)</td></tr>
+<tr class="separator:a8b17b5e96e7535358411ab8adcbcd934"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeff812cf743741fcfce1871331ea14fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeff812cf743741fcfce1871331ea14fb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_low_weight_components</b> (double min_weight, int n_del=300)</td></tr>
+<tr class="separator:aeff812cf743741fcfce1871331ea14fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0ae21747614c8e406953e9151578053"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#ac0ae21747614c8e406953e9151578053">draw_samples</a> (double N, double temperature, double **samples_out_ptr, int *samples_out_dim1, int *samples_out_dim2, int **indices_out, int *indices_out_dim1)</td></tr>
 <tr class="separator:ac0ae21747614c8e406953e9151578053"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc5d4067954f4164c25426e032b5335d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#adc5d4067954f4164c25426e032b5335d">draw_samples_weights</a> (double N, double *new_weights_in, int new_weights_in_dim1, double **samples_out_ptr, int *samples_out_dim1, int *samples_out_dim2, int **indices_out, int *indices_out_dim1)</td></tr>
 <tr class="separator:adc5d4067954f4164c25426e032b5335d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0437be0c6fedcf4ba567ad83a9f2ced0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a0437be0c6fedcf4ba567ad83a9f2ced0">add_samples</a> (double *samples_ptr, int samples_dim1, int samples_dim2, int *indices_ptr, int indices_dim1, double *target_densiies_ptr, int td_dim1)</td></tr>
-<tr class="separator:a0437be0c6fedcf4ba567ad83a9f2ced0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf716ef12426cda0f1b5f1d3aea52076"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#adf716ef12426cda0f1b5f1d3aea52076">activate_newest_samples</a> (int N)</td></tr>
-<tr class="separator:adf716ef12426cda0f1b5f1d3aea52076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c0a069ddf27394166c523834677165a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a9c0a069ddf27394166c523834677165a">add_samples_mean_cov</a> (double *samples_ptr, int samples_dim1, int samples_dim2, double *target_densities_ptr, int td_dim1, double *mean_in, int mean_in_dim1, double *cov_in, int cov_in_dim1, int cov_in_dim2)</td></tr>
+<tr class="separator:a9c0a069ddf27394166c523834677165a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a54eb8d14b32740b286f5f91660b6c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a5a54eb8d14b32740b286f5f91660b6c2">add_samples</a> (double *samples_ptr, int samples_dim1, int samples_dim2, int *indices_ptr, int indices_dim1, double *target_densities_ptr, int td_dim1)</td></tr>
+<tr class="separator:a5a54eb8d14b32740b286f5f91660b6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a2c8975cee0e96085040518a871184c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a1a2c8975cee0e96085040518a871184c">activate_newest_samples</a> (int N, bool keep_old)</td></tr>
+<tr class="separator:a1a2c8975cee0e96085040518a871184c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad93d42f4b18f28193aaba35129e7c068"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#ad93d42f4b18f28193aaba35129e7c068">select_active_samples</a> (int num_comps, int num_samples, double temperature, double **num_eff_out_ptr, int *num_eff_out_dim1)</td></tr>
+<tr class="separator:ad93d42f4b18f28193aaba35129e7c068"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e0bab32cbad5c82966440fd5d7e91db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a0e0bab32cbad5c82966440fd5d7e91db">update_targets_for_KL_bounds</a> (bool update_weight_targets, bool update_comp_targets)</td></tr>
 <tr class="separator:a0e0bab32cbad5c82966440fd5d7e91db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0740ed7e521f3ace439565f1d97f83a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a0740ed7e521f3ace439565f1d97f83a7">update_weights</a> (double epsilon, double tau, double max_entropy_decrease)</td></tr>
-<tr class="separator:a0740ed7e521f3ace439565f1d97f83a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79046b01fe1129abfd723c4d48ca1d45"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a79046b01fe1129abfd723c4d48ca1d45">update_weights</a> (double epsilon, double tau, double max_entropy_decrease, bool be_greedy)</td></tr>
+<tr class="separator:a79046b01fe1129abfd723c4d48ca1d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5a7f4052cffe00c4fee8950387af61d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#ae5a7f4052cffe00c4fee8950387af61d">apply_lower_bound_on_weights</a> (double *lb_weights_in, int lb_weights_in_dim1)</td></tr>
 <tr class="separator:ae5a7f4052cffe00c4fee8950387af61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a101ecaa2b2d445350e730a8e3b8064"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a2a101ecaa2b2d445350e730a8e3b8064">update_components</a> (double max_kl_bound, double factor, double tau, double ridge_coefficient, double max_entropy_decrease, double max_active_samples, bool dont_learn_correlations)</td></tr>
-<tr class="separator:a2a101ecaa2b2d445350e730a8e3b8064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a948b081338679c050ed174c6598383d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a948b081338679c050ed174c6598383d3">update_components</a> (double tau, double ridge_coefficient, double max_entropy_decrease, double max_active_samples, bool dont_learn_correlations, bool dont_recompute_densities, bool adapt_ridge_multipliers)</td></tr>
+<tr class="separator:a948b081338679c050ed174c6598383d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf63652a9d7589cc189837ba41bcf322"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#abf63652a9d7589cc189837ba41bcf322">recompute_densities</a> (bool only_weights_changed)</td></tr>
 <tr class="separator:abf63652a9d7589cc189837ba41bcf322"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb7c2dea0de7913cc96a8d9511cd96a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#acb7c2dea0de7913cc96a8d9511cd96a8">get_model</a> (double **weights_out_ptr, int *weights_out_dim1, double **means_out_ptr, int *means_out_dim1, int *means_out_dim2, double **covs_out_ptr, int *covs_out_dim1, int *covs_out_dim2, int *covs_out_dim3)</td></tr>
@@ -157,6 +152,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_low_weight_com
 <tr class="separator:aa650a92bb89042882d548a16fdf46205"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acafd12e5bc30f51b703a73606d76de40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#acafd12e5bc30f51b703a73606d76de40">get_expected_rewards</a> (double **expected_rewards_out, int *expected_rewards_out_dim1, double **expected_target_densities_out, int *expected_target_densities_out_dim1, double **comp_etd_history_out_ptr, int *comp_etd_history_out_dim1, int *comp_etd_history_out_dim2, double **comp_reward_history_out_ptr, int *comp_reward_history_out_dim1, int *comp_reward_history_out_dim2)</td></tr>
 <tr class="separator:acafd12e5bc30f51b703a73606d76de40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84f192f13f7e83da0fff4801121a49c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a84f192f13f7e83da0fff4801121a49c3">get_best_interpolation</a> (int index, double *samples_ptr, int samples_dim1, int samples_dim2, double *target_densities_ptr, int td_dim1, double *target_densities2_ptr, int td2_dim1, double scaling_factor)</td></tr>
+<tr class="separator:a84f192f13f7e83da0fff4801121a49c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cd577f2c0ae57ba85fff0746f7c7d7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a4cd577f2c0ae57ba85fff0746f7c7d7a">get_log_densities_on_mixture</a> (double *samples_ptr, int samples_dim1, int samples_dim2, double **sample_densities_out, int *sample_densities_out_dim1)</td></tr>
 <tr class="separator:a4cd577f2c0ae57ba85fff0746f7c7d7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2be7ce5aaa742d979b35ade922139894"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a2be7ce5aaa742d979b35ade922139894">get_entropy_estimate_on_active_samples</a> (double *entropy)</td></tr>
@@ -165,18 +162,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>delete_low_weight_com
 <tr class="separator:a8065f48c6060b03eaa2b5c7f1f89c636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeef466a77710252e595fcd6e9909f975"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#aeef466a77710252e595fcd6e9909f975">get_num_components</a> (int *num_components_out)</td></tr>
 <tr class="separator:aeef466a77710252e595fcd6e9909f975"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3f8d3af3549a8296eecc25a115c31f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#af3f8d3af3549a8296eecc25a115c31f8">get_debug_info</a> (double **samples_out_ptr, int *samples_out_dim1, int *samples_out_dim2, double **target_densities_out_ptr, int *target_densities_out_dim1, double **log_densities_on_model_comps_out_ptr, int *log_densities_on_model_comps_out_dim1, int *log_densities_on_model_comps_out_dim2, double **log_joint_densities_out_ptr, int *log_joint_densities_out_dim1, int *log_joint_densities_out_dim2, double **log_densities_on_model_out_ptr, int *log_densities_on_model_out_dim1, double **log_responsibilities_out_ptr, int *log_responsibilities_out_dim1, int *log_responsibilities_out_dim2, double **log_densities_on_background_out_ptr, int *log_densities_on_background_out_dim1, double **importance_weights_out_ptr, int *importance_weights_out_dim1, int *importance_weights_out_dim2, double **importance_weights_normalized_out_ptr, int *importance_weights_normalized_out_dim1, int *importance_weights_normalized_out_dim2)</td></tr>
-<tr class="separator:af3f8d3af3549a8296eecc25a115c31f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64a647b24326d512082dbb60932eaa29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a64a647b24326d512082dbb60932eaa29">get_debug_info</a> (double **samples_out_ptr, int *samples_out_dim1, int *samples_out_dim2, double **target_densities_out_ptr, int *target_densities_out_dim1, double **log_densities_on_model_comps_out_ptr, int *log_densities_on_model_comps_out_dim1, int *log_densities_on_model_comps_out_dim2, double **log_joint_densities_out_ptr, int *log_joint_densities_out_dim1, int *log_joint_densities_out_dim2, double **log_densities_on_model_out_ptr, int *log_densities_on_model_out_dim1, double **log_responsibilities_out_ptr, int *log_responsibilities_out_dim1, int *log_responsibilities_out_dim2, double **log_densities_on_background_out_ptr, int *log_densities_on_background_out_dim1, double **importance_weights_out_ptr, int *importance_weights_out_dim1, int *importance_weights_out_dim2, double **importance_weights_normalized_out_ptr, int *importance_weights_normalized_out_dim1, int *importance_weights_normalized_out_dim2, int **indices_out, int *indices_out_dim1, int **num_samples_history_out_ptr, int *num_samples_history_out_dim1, int *num_samples_history_out_dim2)</td></tr>
+<tr class="separator:a64a647b24326d512082dbb60932eaa29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d258a474d63f442b89358c1793ccf7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a8d258a474d63f442b89358c1793ccf7e">compute_KLs_between_GMM_and_DB_components</a> (bool reverse_KL, float **KL_mat_out_ptr, int *KL_mat_out_dim1, int *KL_mat_out_dim2)</td></tr>
+<tr class="separator:a8d258a474d63f442b89358c1793ccf7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a007140eac0ea0ea69de16a7eb8c13293"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a007140eac0ea0ea69de16a7eb8c13293">backup_learner</a> ()</td></tr>
 <tr class="separator:a007140eac0ea0ea69de16a7eb8c13293"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3819321597ef3f522bd577f479ff81b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__PythonWrapper.html#a3819321597ef3f522bd577f479ff81b0">restore_learner</a> ()</td></tr>
 <tr class="separator:a3819321597ef3f522bd577f479ff81b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:aa04e2827ddc5b63a00d4a4890424613f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa04e2827ddc5b63a00d4a4890424613f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>VIPS_PythonWrapper_swigregister</b> = _VIPS_PythonWrapper.VIPS_PythonWrapper_swigregister</td></tr>
-<tr class="separator:aa04e2827ddc5b63a00d4a4890424613f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -203,7 +196,7 @@ arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>last_expected_ta
 <tr class="separator:afd270b0737302fb8a3e755057f4363c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="adf716ef12426cda0f1b5f1d3aea52076"></a>
+<a class="anchor" id="a1a2c8975cee0e96085040518a871184c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -211,15 +204,27 @@ arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>last_expected_ta
           <td class="memname">void VIPS_PythonWrapper::activate_newest_samples </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>N</em></td><td>)</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>keep_old</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Selects the N most recent samples and activates them (i.e. uses them for the upcoming learning iteration).<br />
  Makes sure, that all relevant data (e.g. densities, importance weights, etc.) gets updated </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">N</td><td>- the maximum number of recent samples to be activated, actually number of activated samples might be less, iff the sample database does not contain sufficient samples. </td></tr>
+    <tr><td class="paramname">N</td><td>- the maximum number of recent samples to be activated, actually number of activated samples might be less, iff the sample database does not contain sufficient samples.<br />
+ </td></tr>
+    <tr><td class="paramname">keep_old</td><td>- iff set to true, the currently active sample will remain active </td></tr>
   </table>
   </dd>
 </dl>
@@ -303,7 +308,7 @@ arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>last_expected_ta
 
 </div>
 </div>
-<a class="anchor" id="a0437be0c6fedcf4ba567ad83a9f2ced0"></a>
+<a class="anchor" id="a5a54eb8d14b32740b286f5f91660b6c2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -360,12 +365,97 @@ arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>last_expected_ta
  The samples are assumed to have been drawn from the current model and the indices of the relevant components are to be provided for computing background distributions when necessary. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">new_samples</td><td>- a matrix of size N_dimensions X N_samples </td></tr>
-    <tr><td class="paramname">new_target_densities</td><td>- a vector of size N_samples containing the unnormalized densities on the target distribution </td></tr>
     <tr><td class="paramname">used_components</td><td>- a vector of size N_samples containing the indices of the components the corresponding samples have been drawn from </td></tr>
+    <tr><td class="paramname">new_target_densities</td><td>- a vector of size N_samples containing the unnormalized densities on the target distribution </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classVIPS__PythonWrapper.html#adf716ef12426cda0f1b5f1d3aea52076">activate_newest_samples</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classVIPS__PythonWrapper.html#a1a2c8975cee0e96085040518a871184c">activate_newest_samples</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9c0a069ddf27394166c523834677165a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VIPS_PythonWrapper::add_samples_mean_cov </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>samples_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>samples_dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>samples_dim2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>target_densities_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>td_dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>mean_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mean_in_dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>cov_in</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cov_in_dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cov_in_dim2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds new samples to the database. Note that the samples will not be used for learning, until they have been activated (see activate_newest_samples).<br />
+ The samples are assumed to have been drawn from a Gaussian with specified mean and covariance matrix </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_samples</td><td>- a matrix of size N_dimensions X N_samples </td></tr>
+    <tr><td class="paramname">new_target_densities</td><td>- a vector of size N_samples containing the unnormalized densities on the target distribution </td></tr>
+    <tr><td class="paramname">used_mean</td><td>- a vector containing the mean of the Gaussian used for drawing the samples </td></tr>
+    <tr><td class="paramname">used_cov</td><td>- a matrix containing the covariance matrix of the Gaussian used for drawing the samples </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classVIPS__PythonWrapper.html#a1a2c8975cee0e96085040518a871184c">activate_newest_samples</a> </dd></dl>
 
 </div>
 </div>
@@ -414,6 +504,51 @@ arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>last_expected_ta
       </table>
 </div><div class="memdoc">
 <p>creates a backup of the the current state of the learner (overwriting previous backup). </p><dl class="section see"><dt>See also</dt><dd>restore_backup() </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8d258a474d63f442b89358c1793ccf7e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VIPS_PythonWrapper::compute_KLs_between_GMM_and_DB_components </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>reverse_KL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float **&#160;</td>
+          <td class="paramname"><em>KL_mat_out_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>KL_mat_out_dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>KL_mat_out_dim2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>For each component of the current approximation compute the KL w.r.t. each component that is stored in the database. If the parameter reverse_KL is set to true, computes instead the KL for each database component w.r.t. each <a class="el" href="classGMM.html">GMM</a> component </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reverse_KL</td><td>- if set to bool compute the KL between database_componets w.r.t. <a class="el" href="classGMM.html">GMM</a> components </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a matrix of size components_in_gmm x components_in_database (or transposed if computing the reverse KL) containing the relative entropies. </dd></dl>
 
 </div>
 </div>
@@ -542,7 +677,7 @@ indices - for each sample, the index of the component that was used for drawing 
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Sample from the current <a class="el" href="classGMM.html">GMM</a> approximation, but use the specified the given component coefficient. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Sample from the current <a class="el" href="classGMM.html">GMM</a> approximation, but use the specified component coefficients. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">N</td><td>- the numb er of samples to been drawn </td></tr>
     <tr><td class="paramname">weights</td><td>- the weights (coefficients) to be used </td></tr>
@@ -628,7 +763,94 @@ covs - covariance matrices for each component </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="af3f8d3af3549a8296eecc25a115c31f8"></a>
+<a class="anchor" id="a84f192f13f7e83da0fff4801121a49c3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VIPS_PythonWrapper::get_best_interpolation </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>samples_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>samples_dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>samples_dim2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>target_densities_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>td_dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>target_densities2_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>td2_dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>scaling_factor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>For a given component, find the best interpolation between the current covariance matrix and a spherical one using a linear linesearch. <br />
+ The quality of the covariance matrix is estimated based on an importance weighted Monte Carlo estimate of the expected loglikelihood on the target distribution. <br />
+ The Monte Carlo estimate is computed based on a given set of samples, the corresponding target loglikelihoods and the loglikelihood of the sampling distribution. <br />
+ IMPORTANT: This method will change the component to the best interpolation. <br />
+ </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- index specifying which component of the current model should be adapted <br />
+ </td></tr>
+    <tr><td class="paramname">samples_ptr</td><td>- samples for the Monte Carlo estimate <br />
+ </td></tr>
+    <tr><td class="paramname">target_densities_ptr</td><td>- vector containing the loglikelihood under the target distribution for each sample <br />
+ </td></tr>
+    <tr><td class="paramname">target_densities2_ptr</td><td>- vector containing the loglikelihood of the distribution that was used for drawing the samples <br />
+ </td></tr>
+    <tr><td class="paramname">scaling_factor</td><td>- the spherical covariance matrix is given by scaling_factor * eye() <br />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a64a647b24326d512082dbb60932eaa29"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -774,7 +996,37 @@ covs - covariance matrices for each component </dd></dl>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int *&#160;</td>
-          <td class="paramname"><em>importance_weights_normalized_out_dim2</em>&#160;</td>
+          <td class="paramname"><em>importance_weights_normalized_out_dim2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **&#160;</td>
+          <td class="paramname"><em>indices_out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>indices_out_dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int **&#160;</td>
+          <td class="paramname"><em>num_samples_history_out_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>num_samples_history_out_dim1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>num_samples_history_out_dim2</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -792,7 +1044,9 @@ covs - covariance matrices for each component </dd></dl>
  tuple[5] contains the log responsibilities p(o|s) <br />
  tuple[6] contains the densitis on the background distribution q(s) <br />
  tuple[7] contains the importance weights <br />
- tuple[8] contains the normalized importance weights </dd></dl>
+ tuple[8] contains the normalized importance weights <br />
+ tuple[9] contains the indices of the active samples <br />
+ tuple[10] contains the history of the number of samples drawn from each component </dd></dl>
 
 </div>
 </div>
@@ -1198,7 +1452,7 @@ log_weights_out_ptr, the log-weights log(p(o)) </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a66e3c05b6e653180186dfe64cbb0cbc8"></a>
+<a class="anchor" id="a8b17b5e96e7535358411ab8adcbcd934"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1230,7 +1484,19 @@ log_weights_out_ptr, the log-weights log(p(o)) </dd></dl>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>max_samples</em>&#160;</td>
+          <td class="paramname"><em>max_samples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>scale_entropy</em> = <code>true</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isotropic</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1249,8 +1515,11 @@ log_weights_out_ptr, the log-weights log(p(o)) </dd></dl>
  </td></tr>
     <tr><td class="paramname">only_check_active_samples</td><td>- if set to true, the residual is computed on the active samples only, otherwise, the residual is computed for all samples in the sample database. <br />
  </td></tr>
+    <tr><td class="paramname">tau</td><td>- can be used to assign higher weight to the bonus for samples that have low density on the current model </td></tr>
     <tr><td class="paramname">max_samples</td><td>- maximum number of samples to be considered <br />
  </td></tr>
+    <tr><td class="paramname">scale_entropy</td><td>- if true, scale the entropy of the newly created component such that it corresponds to the average entropy  p(o) H(p(x|o)) </td></tr>
+    <tr><td class="paramname">isotropic</td><td>- if true, initialize new components as isotropic (identity-matrix if scale_entropy = False) instead of interpolating. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1295,25 +1564,71 @@ log_weights_out_ptr, the log-weights log(p(o)) </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a2a101ecaa2b2d445350e730a8e3b8064"></a>
+<a class="anchor" id="ad93d42f4b18f28193aaba35129e7c068"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VIPS_PythonWrapper::select_active_samples </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_comps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_samples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>temperature</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>num_eff_out_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>num_eff_out_dim1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function is used for building a mixture model for importance sampling.<br />
+ For each component p(x|o) in the current approximation, iteratively sample num_comps components p(x|i) from the sample database (these have been used for drawing samples before) according to p  p(mu_i|o) - n_usages Adds all samples from each chosen component and stops if num_samples are selected <br />
+ </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num_comps</td><td>- maximum number of components that should be selected for each component in the approximation <br />
+ </td></tr>
+    <tr><td class="paramname">num_samples</td><td>- maximum number of samples that should be aselected for each component in the approximation <br />
+ </td></tr>
+    <tr><td class="paramname">temperature</td><td>- temperature for scaling the probability for sampling components <br />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing the number of effective samples for each component </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a948b081338679c050ed174c6598383d3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void VIPS_PythonWrapper::update_components </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>max_kl_bound</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>factor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>tau</em>, </td>
         </tr>
@@ -1339,7 +1654,19 @@ log_weights_out_ptr, the log-weights log(p(o)) </dd></dl>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>dont_learn_correlations</em>&#160;</td>
+          <td class="paramname"><em>dont_learn_correlations</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>dont_recompute_densities</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>adapt_ridge_multipliers</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1350,11 +1677,20 @@ log_weights_out_ptr, the log-weights log(p(o)) </dd></dl>
 </div><div class="memdoc">
 <p>Updates the components p(s|o). </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">max_kl_bound</td><td>- hard upper bound for each KL bound </td></tr>
-    <tr><td class="paramname">factor</td><td>- factor for computing the KL bound for each component based on its number of effective samples </td></tr>
-    <tr><td class="paramname">tau</td><td>- entropy coefficient </td></tr>
-    <tr><td class="paramname">ridge_coefficient</td><td>- coefficient used for regularization when fitting the quadratic surrogate </td></tr>
-    <tr><td class="paramname">max_entropy_decrease</td><td>- maximum allowed decrease in entropy for each component </td></tr>
+    <tr><td class="paramname">tau</td><td>- entropy coefficient <br />
+ </td></tr>
+    <tr><td class="paramname">ridge_coefficient</td><td>- coefficient used for regularization when fitting the quadratic surrogate <br />
+ </td></tr>
+    <tr><td class="paramname">max_entropy_decrease</td><td>- maximum allowed decrease in entropy for each component <br />
+ </td></tr>
+    <tr><td class="paramname">max_active_samples</td><td>- size of the subset of samples that should be used for each component update <br />
+ </td></tr>
+    <tr><td class="paramname">dont_learn_correlations</td><td>- iff true, fit a quadratic surrogate where R is diagonal (experimental) <br />
+ </td></tr>
+    <tr><td class="paramname">dont_recompute_densities</td><td>- do not recompute the densities after the component update <br />
+ </td></tr>
+    <tr><td class="paramname">adapt_ridge_multipliers</td><td>- if true, the ridge_coefficient will be adapted for each component <br />
+ </td></tr>
   </table>
   </dd>
 </dl>
@@ -1388,7 +1724,7 @@ log_weights_out_ptr, the log-weights log(p(o)) </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a0740ed7e521f3ace439565f1d97f83a7"></a>
+<a class="anchor" id="a79046b01fe1129abfd723c4d48ca1d45"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1408,7 +1744,13 @@ log_weights_out_ptr, the log-weights log(p(o)) </dd></dl>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>max_entropy_decrease</em>&#160;</td>
+          <td class="paramname"><em>max_entropy_decrease</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>be_greedy</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1419,9 +1761,13 @@ log_weights_out_ptr, the log-weights log(p(o)) </dd></dl>
 </div><div class="memdoc">
 <p>update the component weights p(o) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">epsilon</td><td>- KL bound </td></tr>
-    <tr><td class="paramname">tau</td><td>- entropy coefficient </td></tr>
-    <tr><td class="paramname">max_entropy_decrease</td><td>- lower bound on entropy </td></tr>
+    <tr><td class="paramname">epsilon</td><td>- KL bound <br />
+ </td></tr>
+    <tr><td class="paramname">tau</td><td>- entropy coefficient <br />
+ </td></tr>
+    <tr><td class="paramname">max_entropy_decrease</td><td>- lower bound on entropy <br />
+ </td></tr>
+    <tr><td class="paramname">be_greedy</td><td>- if true, don't perform KL-bound optimization but use the greedy optimal weights </td></tr>
   </table>
   </dd>
 </dl>
@@ -1430,7 +1776,6 @@ log_weights_out_ptr, the log-weights log(p(o)) </dd></dl>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="VIPS__PythonWrapper_8h_source.html">VIPS_PythonWrapper.h</a></li>
-<li>VIPS_PythonWrapper.py</li>
 <li>VIPS_PythonWrapper.cpp</li>
 </ul>
 </div><!-- contents -->

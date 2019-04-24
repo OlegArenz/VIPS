@@ -98,10 +98,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a92a9faa8a5c447708c1c4dda6ea2323a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#a92a9faa8a5c447708c1c4dda6ea2323a">SampleDatabase</a> (int num_dimensions, int num_lates_comp_to_check=200)</td></tr>
 <tr class="separator:a92a9faa8a5c447708c1c4dda6ea2323a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3dc15b26c93e6f426ed0da35819c8480"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#a3dc15b26c93e6f426ed0da35819c8480">add_samples</a> (arma::mat new_samples, arma::mat new_target_densities, arma::mat means, arma::cube inv_chols)</td></tr>
-<tr class="separator:a3dc15b26c93e6f426ed0da35819c8480"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1784badb57e66125725f2701d513382"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; arma::mat, arma::vec, <a class="el" href="classGMM.html">GMM</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#aa1784badb57e66125725f2701d513382">select_newest_samples</a> (int N)</td></tr>
-<tr class="separator:aa1784badb57e66125725f2701d513382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c83808dd741f3ea9018856ad54a44fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#a0c83808dd741f3ea9018856ad54a44fa">add_samples</a> (arma::mat new_samples, arma::mat new_target_densities, <a class="el" href="classGMM.html">GMM</a> gmm, arma::uvec map_samples_to_GMM_comp)</td></tr>
+<tr class="separator:a0c83808dd741f3ea9018856ad54a44fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca5e710e5acc96b405fdf8ff40ab5320"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#aca5e710e5acc96b405fdf8ff40ab5320">add_samples</a> (arma::mat new_samples, arma::mat new_target_densities, arma::mat means, arma::cube inv_chols, arma::cube covs)</td></tr>
+<tr class="separator:aca5e710e5acc96b405fdf8ff40ab5320"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af24089703aa5c0f8ff54e97cba9a589a"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; arma::mat, arma::vec, <a class="el" href="classGMM.html">GMM</a>, arma::uvec &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#af24089703aa5c0f8ff54e97cba9a589a">activate_samples</a> (uvec active_samples)</td></tr>
+<tr class="separator:af24089703aa5c0f8ff54e97cba9a589a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af24f4ab493dae5d10f0755c7118b3a12"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; arma::mat, arma::vec, <a class="el" href="classGMM.html">GMM</a>, arma::uvec &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#af24f4ab493dae5d10f0755c7118b3a12">select_newest_samples</a> (int N)</td></tr>
+<tr class="separator:af24f4ab493dae5d10f0755c7118b3a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fed863851888d772c34c7b004339ebb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#a1fed863851888d772c34c7b004339ebb">update_component_usages</a> (uvec component_indices)</td></tr>
+<tr class="separator:a1fed863851888d772c34c7b004339ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe4868c9ead9509438329db4a360c643"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; arma::uvec, arma::uvec &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#abe4868c9ead9509438329db4a360c643">select_top_N_samples</a> (uvec component_indices, int N)</td></tr>
+<tr class="separator:abe4868c9ead9509438329db4a360c643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13e18ef0d699d8a8c3c666bea9d8c8e8"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; arma::fmat, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#a13e18ef0d699d8a8c3c666bea9d8c8e8">compute_KLs_between_GMM_and_DB_components</a> (<a class="el" href="classGMM.html">GMM</a> gmm, bool reverse_KL, int max_sampling_components=5000)</td></tr>
+<tr class="separator:a13e18ef0d699d8a8c3c666bea9d8c8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab997776649b126365e25335782c1fa44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGMM.html">GMM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#ab997776649b126365e25335782c1fa44">get_bg_dist</a> (uvec active_samples)</td></tr>
 <tr class="separator:ab997776649b126365e25335782c1fa44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc174c6265412a0fa14fc70e99ac5826"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc174c6265412a0fa14fc70e99ac5826"></a>
@@ -128,11 +138,17 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>getMeans</b> (ar
 <tr class="memitem:ac33d23bf20bc1bb9b073f2189da233cd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac33d23bf20bc1bb9b073f2189da233cd"></a>
 arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>getInvChols</b> ()</td></tr>
 <tr class="separator:ac33d23bf20bc1bb9b073f2189da233cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0728ae1d8dc7fad5d5f0c664478552ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0728ae1d8dc7fad5d5f0c664478552ae"></a>
+arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>getCovs</b> ()</td></tr>
+<tr class="separator:a0728ae1d8dc7fad5d5f0c664478552ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc5cb375e4a7592cd2ceab8550e6936e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc5cb375e4a7592cd2ceab8550e6936e"></a>
+arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>getNumSamplingUsages</b> ()</td></tr>
+<tr class="separator:abc5cb375e4a7592cd2ceab8550e6936e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aeeb03252a1ce66585a86efd38f9c0ef5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#aeeb03252a1ce66585a86efd38f9c0ef5">add_component</a> (arma::mat new_mean, arma::mat new_invChol)</td></tr>
-<tr class="separator:aeeb03252a1ce66585a86efd38f9c0ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc5a73cc01e5d63513eea7f8d7f5565d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#adc5a73cc01e5d63513eea7f8d7f5565d">add_component</a> (arma::mat new_mean, arma::mat new_invChol, arma::mat new_Cov)</td></tr>
+<tr class="separator:adc5a73cc01e5d63513eea7f8d7f5565d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c4704c5cbe83fa5647f36b36528f49f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSampleDatabase.html#a4c4704c5cbe83fa5647f36b36528f49f">get_similar_component</a> (arma::vec mean, arma::mat inv_chol, double tol=1e-10)</td></tr>
 <tr class="separator:a4c4704c5cbe83fa5647f36b36528f49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -159,12 +175,18 @@ arma::uvec&#160;</td><td class="memItemRight" valign="bottom"><b>map_samples_to_
 <tr class="memitem:aa92541bbb40b1092d8f88907cd1f69b5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa92541bbb40b1092d8f88907cd1f69b5"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>num_components</b></td></tr>
 <tr class="separator:aa92541bbb40b1092d8f88907cd1f69b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa410414e9e1a2924db3bd9d7c75f22b0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa410414e9e1a2924db3bd9d7c75f22b0"></a>
+arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>num_sampling_usages</b></td></tr>
+<tr class="separator:aa410414e9e1a2924db3bd9d7c75f22b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf97526d7e8164c9f29b56ebc3ee3bcc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf97526d7e8164c9f29b56ebc3ee3bcc"></a>
 arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>means</b></td></tr>
 <tr class="separator:abf97526d7e8164c9f29b56ebc3ee3bcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a888d421279a6dff04d77d10551e48861"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a888d421279a6dff04d77d10551e48861"></a>
 arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>inv_chols</b></td></tr>
 <tr class="separator:a888d421279a6dff04d77d10551e48861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a585cd3b7db81be3e053d56e6a490b802"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a585cd3b7db81be3e053d56e6a490b802"></a>
+arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>covs</b></td></tr>
+<tr class="separator:a585cd3b7db81be3e053d56e6a490b802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a92a9faa8a5c447708c1c4dda6ea2323a"></a>
@@ -195,7 +217,24 @@ arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>inv_chols</b></
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aeeb03252a1ce66585a86efd38f9c0ef5"></a>
+<a class="anchor" id="af24089703aa5c0f8ff54e97cba9a589a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; arma::mat, arma::vec, <a class="el" href="classGMM.html">GMM</a>, arma::uvec &gt; SampleDatabase::activate_samples </td>
+          <td>(</td>
+          <td class="paramtype">uvec&#160;</td>
+          <td class="paramname"><em>active_samples</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the samples with given indices along with their target_densities and a concise <a class="el" href="classGMM.html">GMM</a> from which the samples could have been drawn from. </p>
+
+</div>
+</div>
+<a class="anchor" id="adc5a73cc01e5d63513eea7f8d7f5565d"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -212,7 +251,13 @@ arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>inv_chols</b></
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">arma::mat&#160;</td>
-          <td class="paramname"><em>new_invChol</em>&#160;</td>
+          <td class="paramname"><em>new_invChol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">arma::mat&#160;</td>
+          <td class="paramname"><em>new_Cov</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -226,11 +271,73 @@ arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>inv_chols</b></
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Add a new component and allocate additional memory if necessary. The weights do not need to be specified, but are computed dynamically based on the number of usages </p>
+<p>Add a new component and allocate additional memory if necessary. The weights do not need to be specified, but are computed dynamically based on the number of usages  mean - mean of the new component </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_invChol</td><td>- This should be inv(chol(new_Cov)), not checked! </td></tr>
+    <tr><td class="paramname">new_Cov</td><td>- the covariance matrix of the new component </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a class="anchor" id="a3dc15b26c93e6f426ed0da35819c8480"></a>
+<a class="anchor" id="a0c83808dd741f3ea9018856ad54a44fa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SampleDatabase::add_samples </td>
+          <td>(</td>
+          <td class="paramtype">arma::mat&#160;</td>
+          <td class="paramname"><em>new_samples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">arma::mat&#160;</td>
+          <td class="paramname"><em>new_target_densities</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classGMM.html">GMM</a>&#160;</td>
+          <td class="paramname"><em>gmm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">arma::uvec&#160;</td>
+          <td class="paramname"><em>map_samples_to_GMM_comp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Adds new_samples and the corresponding log_densities. Each sample has to be drawn from a Gaussian distribution in order to compute a background <a class="el" href="classGMM.html">GMM</a>. The respective Gaussian for each sample is provided by specifying a <a class="el" href="classGMM.html">GMM</a> and a vector that contains for each sample, the index of the respective component of that gmm.<br />
+ Side effects:<br />
+ For each sample this call will check whether the component already exists in the background <a class="el" href="classGMM.html">GMM</a>.<br />
+ If if does exist, the number of usages is increased.<br />
+ If it does not exist a new component will be added to the background <a class="el" href="classGMM.html">GMM</a><br />
+ </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_samples</td><td>- matrix of size Dim x N, each column containing a sample<br />
+ </td></tr>
+    <tr><td class="paramname">new_target_densities</td><td>- vector of size N containing the respective evaluations of the target distribution<br />
+ </td></tr>
+    <tr><td class="paramname">gmm</td><td>- a Gaussian mixture model that includes for each sample, the Gaussian distribution that was used for obtaining it<br />
+ </td></tr>
+    <tr><td class="paramname">map_samples_to_GMM_comp</td><td>- vector of size N such that map_samples_to_GMM_comp[i] indexes the component of gmm that was used for obtaining the i-th sample.<br />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aca5e710e5acc96b405fdf8ff40ab5320"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -256,7 +363,13 @@ arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>inv_chols</b></
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">arma::cube&#160;</td>
-          <td class="paramname"><em>inv_chols</em>&#160;</td>
+          <td class="paramname"><em>inv_chols</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">arma::cube&#160;</td>
+          <td class="paramname"><em>new_covs</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -265,7 +378,63 @@ arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>inv_chols</b></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Adds new_samples and the corresponding log_densities. The parameters means and inv_chols describe the components that generated each sample, such that the number of components should correspond to the number of columns in new_samples. Side effects: For each sample this call will check whether the component already exists in this background <a class="el" href="classGMM.html">GMM</a>. If if does exist, the number of usages is increased. If it does not exist a new component will be added to the background <a class="el" href="classGMM.html">GMM</a> </p>
+<p>Adds new_samples and the corresponding log_densities. The parameters means and inv_chols describe the components that generated each sample, such that the number of components should correspond to the number of columns in new_samples. Side effects: For each sample this call will check whether the component already exists in this background <a class="el" href="classGMM.html">GMM</a>. If if does exist, the number of usages is increased. If it does not exist a new component will be added to the background <a class="el" href="classGMM.html">GMM</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_samples</td><td>- matrix of size Dim x N, each column containing a sample<br />
+ </td></tr>
+    <tr><td class="paramname">new_target_densities</td><td>- vector of size N containing the respective evaluations of the target distribution<br />
+ </td></tr>
+    <tr><td class="paramname">means</td><td>- matrix of size Dim x N, each column containing the mean of the component used for drawing the respective sample <br />
+ </td></tr>
+    <tr><td class="paramname">inv_chols</td><td>- tensor of size N x Dim x Dim, each slice containing inv(chol(new_covs.slice(i)) (not checked) <br />
+ </td></tr>
+    <tr><td class="paramname">new_covs</td><td>- tensor of size N x Dim x Dim, each slice containing the covariance matrix used for drawing the respective sample </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a13e18ef0d699d8a8c3c666bea9d8c8e8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; arma::fmat, int &gt; SampleDatabase::compute_KLs_between_GMM_and_DB_components </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGMM.html">GMM</a>&#160;</td>
+          <td class="paramname"><em>gmm</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>reverse_KL</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_sampling_components</em> = <code>5000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>For each component in a given Gaussian Mixture Model compute the KL w.r.t. each component that is stored in the database.<br />
+ If the parameter reverse_KL is set to true, computes instead the KL for each database component w.r.t. each <a class="el" href="classGMM.html">GMM</a> component.<br />
+ </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gmm</td><td>- a Gaussian Mixture </td></tr>
+    <tr><td class="paramname">reverse_KL</td><td>- if set to bool compute the KL between database_componets w.r.t. <a class="el" href="classGMM.html">GMM</a> components </td></tr>
+    <tr><td class="paramname">max_sampling_component</td><td>- only consider the max_sampling_component newest components of the database </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a tuple, such that tuple[0] contains a matrix of size components_in_gmm x components_in_database containing the relative entropies. tuple[1] contains the index of the first sampling component for which a KL was computed (an offset caused by max_sampling_components) </dd></dl>
 
 </div>
 </div>
@@ -332,12 +501,12 @@ arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>inv_chols</b></
 
 </div>
 </div>
-<a class="anchor" id="aa1784badb57e66125725f2701d513382"></a>
+<a class="anchor" id="af24f4ab493dae5d10f0755c7118b3a12"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::tuple&lt; arma::mat, arma::vec, <a class="el" href="classGMM.html">GMM</a> &gt; SampleDatabase::select_newest_samples </td>
+          <td class="memname">std::tuple&lt; arma::mat, arma::vec, <a class="el" href="classGMM.html">GMM</a>, arma::uvec &gt; SampleDatabase::select_newest_samples </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>N</em></td><td>)</td>
@@ -346,6 +515,65 @@ arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>inv_chols</b></
       </table>
 </div><div class="memdoc">
 <p>Returns the N most recent samples along with their target_densities and a concise <a class="el" href="classGMM.html">GMM</a> from which the samples could have been drawn from. </p>
+
+</div>
+</div>
+<a class="anchor" id="abe4868c9ead9509438329db4a360c643"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::tuple&lt; arma::uvec, arma::uvec &gt; SampleDatabase::select_top_N_samples </td>
+          <td>(</td>
+          <td class="paramtype">uvec&#160;</td>
+          <td class="paramname"><em>component_indices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>N</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Takes a list of sampling component indices and iteratively adds all samples from the top X components, such that the total number of samples matches num_samples. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">component_indices</td><td>a vector containing indices of sampling components, such that preferred components are closer to the head. </td></tr>
+    <tr><td class="paramname">N</td><td>number of samples this function should return </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a tuple such that <br />
+ tuple[0] contains a vector of the indices of the chosen samples<br />
+ tuple[1] contains a vector of the indices of the used components<br />
+ </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1fed863851888d772c34c7b004339ebb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SampleDatabase::update_component_usages </td>
+          <td>(</td>
+          <td class="paramtype">uvec&#160;</td>
+          <td class="paramname"><em>component_indices</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Informs the sampling database that samples from the given sampling distributions have been activated for learning. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">component_indices</td><td>a vector containing the indices of sampling components that have been used </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

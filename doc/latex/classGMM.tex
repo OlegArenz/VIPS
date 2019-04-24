@@ -14,9 +14,9 @@ Inheritance diagram for G\+MM\+:\nopagebreak
 \item 
 \hyperlink{classGMM_a84d95fb2c6582568a9d9a1b0efe200a4}{G\+MM} (int dim, int max\+\_\+components=100000)
 \item 
-arma\+::cube \hyperlink{classGMM_acd0dd8e7f38a792f515d296dd467924a}{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points} (mat query\+\_\+points)
+arma\+::cube \hyperlink{classGMM_a5b867d2bbe2d3eebbd871bd1e99eabd2}{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points} (mat query\+\_\+points, bool scale\+\_\+entropy, bool isotropic)
 \item 
-virtual void \hyperlink{classGMM_a00680c4a0c5f3befd742015bb8ad0a08}{add\+\_\+components\+\_\+at\+\_\+locations} (mat means)
+virtual void \hyperlink{classGMM_a16b4be29710b9754b3276c649ede42b5}{add\+\_\+components\+\_\+at\+\_\+locations} (mat means, bool scale\+\_\+entropy, bool isotropic)
 \item 
 virtual void \hyperlink{classGMM_ae33b6f52e8585c0cd590fd1d509956b0}{add\+\_\+components} (mat means, cube covs)
 \item 
@@ -36,7 +36,7 @@ std\+::tuple$<$ mat, mat $>$ \hyperlink{classGMM_a8a9e502395f9d7f6a63eb7f56df5a7
 \item 
 vec \hyperlink{classGMM_a1c2d04636a640ce56bf245df750e97ea}{evaluate\+\_\+\+G\+M\+M\+\_\+densities} (mat samples, bool return\+\_\+log)
 \item 
-vec \hyperlink{classGMM_a9a0e20b34d77c21fb31449dac5d1bd32}{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem} (mat samples)
+vec \hyperlink{classGMM_ab7e827d443107567eb5c4e5791158005}{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem} (mat samples, bool uniform\+\_\+weights=false)
 \item 
 std\+::tuple$<$ mat, mat, rowvec, rowvec, vec, mat $>$ \hyperlink{classGMM_a11d50f8336e3f0b4371fa4c7c023e11f}{compute\+\_\+log\+\_\+marginals} (mat samples)
 \item 
@@ -92,11 +92,6 @@ int {\bfseries get\+Num\+Dimensions} ()\hypertarget{classGMM_a6e11a4916285155c0a
 \item 
 int {\bfseries max\+\_\+components}\hypertarget{classGMM_af0c5335a6c9ac80c07d3212314e0d8b6}{}\label{classGMM_af0c5335a6c9ac80c07d3212314e0d8b6}
 
-\end{DoxyCompactItemize}
-\subsection*{Protected Member Functions}
-\begin{DoxyCompactItemize}
-\item 
-std\+::tuple$<$ vec, vec, vec $>$ \hyperlink{classGMM_adfbd4c7449817315f02f54736751e1ce}{soft\+Max\+\_\+2D} (mat data)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -175,16 +170,22 @@ Adds new components. The weights will be initialized close to zero.
 \end{DoxyParams}
 \index{G\+MM@{G\+MM}!add\+\_\+components\+\_\+at\+\_\+locations@{add\+\_\+components\+\_\+at\+\_\+locations}}
 \index{add\+\_\+components\+\_\+at\+\_\+locations@{add\+\_\+components\+\_\+at\+\_\+locations}!G\+MM@{G\+MM}}
-\subsubsection[{\texorpdfstring{add\+\_\+components\+\_\+at\+\_\+locations(mat means)}{add_components_at_locations(mat means)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+M\+M\+::add\+\_\+components\+\_\+at\+\_\+locations (
+\subsubsection[{\texorpdfstring{add\+\_\+components\+\_\+at\+\_\+locations(mat means, bool scale\+\_\+entropy, bool isotropic)}{add_components_at_locations(mat means, bool scale_entropy, bool isotropic)}}]{\setlength{\rightskip}{0pt plus 5cm}void G\+M\+M\+::add\+\_\+components\+\_\+at\+\_\+locations (
 \begin{DoxyParamCaption}
-\item[{mat}]{new\+\_\+means}
+\item[{mat}]{new\+\_\+means, }
+\item[{bool}]{scale\+\_\+entropy, }
+\item[{bool}]{isotropic}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classGMM_a00680c4a0c5f3befd742015bb8ad0a08}{}\label{classGMM_a00680c4a0c5f3befd742015bb8ad0a08}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classGMM_a16b4be29710b9754b3276c649ede42b5}{}\label{classGMM_a16b4be29710b9754b3276c649ede42b5}
 Creates new components on the given positions.~\newline
  The covariance matrices are initialized by interpolating the covariance matrices of the existing components weighted by their responsibilities for the new mean.~\newline
  The weights are initialized to low values, such that the change of the mixture is negligible 
 \begin{DoxyParams}{Parameters}
-{\em means} & -\/ matrix of size N\+\_\+dimensions x N\+\_\+new\+Components specifying at which positions new components are to be added \\
+{\em means} & -\/ matrix of size N\+\_\+dimensions x N\+\_\+new\+Components specifying \\
+\hline
+{\em scale\+\_\+entropy} & -\/ if true, scale the entropy of the Gaussian such that it corresponds to the average entropy  p(o) H(p(x$\vert$o)) \\
+\hline
+{\em isotropic} & -\/ if true, return an isotropic (identity if scale\+\_\+entropy = False) covariance instead of interpolating. at which positions new components are to be added \\
 \hline
 \end{DoxyParams}
 \index{G\+MM@{G\+MM}!add\+\_\+components\+\_\+inv\+Chols@{add\+\_\+components\+\_\+inv\+Chols}}
@@ -333,14 +334,17 @@ a vector of size num\+\_\+samples containing p(s)
 \end{DoxyReturn}
 \index{G\+MM@{G\+MM}!evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem@{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem}}
 \index{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem@{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem}!G\+MM@{G\+MM}}
-\subsubsection[{\texorpdfstring{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem(mat samples)}{evaluate_GMM_densities_low_mem(mat samples)}}]{\setlength{\rightskip}{0pt plus 5cm}vec G\+M\+M\+::evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem (
+\subsubsection[{\texorpdfstring{evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem(mat samples, bool uniform\+\_\+weights=false)}{evaluate_GMM_densities_low_mem(mat samples, bool uniform_weights=false)}}]{\setlength{\rightskip}{0pt plus 5cm}vec G\+M\+M\+::evaluate\+\_\+\+G\+M\+M\+\_\+densities\+\_\+low\+\_\+mem (
 \begin{DoxyParamCaption}
-\item[{mat}]{samples}
+\item[{mat}]{samples, }
+\item[{bool}]{uniform\+\_\+weights = {\ttfamily false}}
 \end{DoxyParamCaption}
-)}\hypertarget{classGMM_a9a0e20b34d77c21fb31449dac5d1bd32}{}\label{classGMM_a9a0e20b34d77c21fb31449dac5d1bd32}
+)}\hypertarget{classGMM_ab7e827d443107567eb5c4e5791158005}{}\label{classGMM_ab7e827d443107567eb5c4e5791158005}
 Evaluates the \hyperlink{classGMM}{G\+MM} on the given samples in a memory efficient way. This function is recommended for very large number of samples or components 
 \begin{DoxyParams}{Parameters}
 {\em samples} & -\/ a matrix of size N\+\_\+dim x N\+\_\+samples of samples to be evaluated \\
+\hline
+{\em uniform\+\_\+weights} & -\/ evaluate the \hyperlink{classGMM}{G\+MM} densities assuming that p(o) is uniform \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -348,16 +352,23 @@ the log \hyperlink{classGMM}{G\+MM} densities log(p(s))
 \end{DoxyReturn}
 \index{G\+MM@{G\+MM}!interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points@{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points}}
 \index{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points@{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points}!G\+MM@{G\+MM}}
-\subsubsection[{\texorpdfstring{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points(mat query\+\_\+points)}{interpolate_covs_for_query_points(mat query_points)}}]{\setlength{\rightskip}{0pt plus 5cm}cube G\+M\+M\+::interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points (
+\subsubsection[{\texorpdfstring{interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points(mat query\+\_\+points, bool scale\+\_\+entropy, bool isotropic)}{interpolate_covs_for_query_points(mat query_points, bool scale_entropy, bool isotropic)}}]{\setlength{\rightskip}{0pt plus 5cm}cube G\+M\+M\+::interpolate\+\_\+covs\+\_\+for\+\_\+query\+\_\+points (
 \begin{DoxyParamCaption}
-\item[{mat}]{query\+\_\+points}
+\item[{mat}]{query\+\_\+points, }
+\item[{bool}]{scale\+\_\+entropy, }
+\item[{bool}]{isotropic}
 \end{DoxyParamCaption}
-)}\hypertarget{classGMM_acd0dd8e7f38a792f515d296dd467924a}{}\label{classGMM_acd0dd8e7f38a792f515d296dd467924a}
+)}\hypertarget{classGMM_a5b867d2bbe2d3eebbd871bd1e99eabd2}{}\label{classGMM_a5b867d2bbe2d3eebbd871bd1e99eabd2}
 Compute a covariance matrix for each given query point by interpolating the covariance matrices of the \hyperlink{classGMM}{G\+MM} components weighted by the their responsibility for the given query point.~\newline
  This can be used, for example, for initializing new components.~\newline
  
 \begin{DoxyParams}{Parameters}
-{\em query\+\_\+points} & -\/ D X N matrix containing the query points \\
+{\em query\+\_\+points} & -\/ D X N matrix containing the query points ~\newline
+ \\
+\hline
+{\em scale\+\_\+entropy} & -\/ if true, scale the entropy of the Gaussian such that it corresponds to the average entropy  p(o) H(p(x$\vert$o)) \\
+\hline
+{\em isotropic} & -\/ if true, return an isotropic (identity if scale\+\_\+entropy = False) covariance instead of interpolating. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -410,19 +421,6 @@ Sample from the current \hyperlink{classGMM}{G\+MM}, but use the specified the g
 samples -\/ N Samples drwan from the mixture with the given weights 
 
 indices -\/ for each sample, the index of the component that was used for drawing it 
-\end{DoxyReturn}
-\index{G\+MM@{G\+MM}!soft\+Max\+\_\+2D@{soft\+Max\+\_\+2D}}
-\index{soft\+Max\+\_\+2D@{soft\+Max\+\_\+2D}!G\+MM@{G\+MM}}
-\subsubsection[{\texorpdfstring{soft\+Max\+\_\+2\+D(mat data)}{softMax_2D(mat data)}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ vec, vec, vec $>$ G\+M\+M\+::soft\+Max\+\_\+2D (
-\begin{DoxyParamCaption}
-\item[{mat}]{data}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{classGMM_adfbd4c7449817315f02f54736751e1ce}{}\label{classGMM_adfbd4c7449817315f02f54736751e1ce}
-computes log(sum(exp(data))) columnwise \begin{DoxyReturn}{Returns}
-a tuple containing~\newline
- tuple\mbox{[}0\mbox{]}\+: a vector containing the column-\/wise softmaxs, max(data) + log(sum(exp(data-\/max(data)))~\newline
- tuple\mbox{[}1\mbox{]}\+: a vector containing column-\/wise offsets, i.\+e. -\/max(data)~\newline
- tuple\mbox{[}2\mbox{]}\+: a vector containing the column-\/wise summations, sum(exp(data-\/max(data))) 
 \end{DoxyReturn}
 
 

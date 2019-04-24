@@ -115,42 +115,48 @@ Collaboration diagram for VIPS_PythonWrapper.VIPS_PythonWrapper:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9341696236fd64ec54fae41e0fb14c5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9341696236fd64ec54fae41e0fb14c5e"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self, num_dimensions, num_threads)</td></tr>
-<tr class="separator:a9341696236fd64ec54fae41e0fb14c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6f9fbbadfba841cd317a0df11c2519f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab6f9fbbadfba841cd317a0df11c2519f"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>__init__</b> (self, num_dimensions, num_threads, min_kl_bound, max_kl_bound)</td></tr>
+<tr class="separator:ab6f9fbbadfba841cd317a0df11c2519f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e83abd123df46605bf9f509482ba6aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e83abd123df46605bf9f509482ba6aa"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>add_components</b> (self, new_weights_in, new_means_in, new_covs_in)</td></tr>
 <tr class="separator:a2e83abd123df46605bf9f509482ba6aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf3bfe2bd7c08eb16161b980185c48b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf3bfe2bd7c08eb16161b980185c48b4"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>promote_samples_to_components</b> (self, N, max_exploration_bonus, tau, only_check_active_samples, max_samples)</td></tr>
 <tr class="separator:adf3bfe2bd7c08eb16161b980185c48b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3608b22c3a3c6ee0e79054d034ef3ba5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3608b22c3a3c6ee0e79054d034ef3ba5"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>delete_low_weight_components</b> (self, min_weight)</td></tr>
-<tr class="separator:a3608b22c3a3c6ee0e79054d034ef3ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f27ed4c1eb33b135c885a9134068a0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f27ed4c1eb33b135c885a9134068a0a"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>delete_low_weight_components</b> (self, min_weight, n_del=300)</td></tr>
+<tr class="separator:a1f27ed4c1eb33b135c885a9134068a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accf6844547cc58211f290b9179137751"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="accf6844547cc58211f290b9179137751"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>draw_samples</b> (self, N, temperature)</td></tr>
 <tr class="separator:accf6844547cc58211f290b9179137751"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab50ef56f6c26d4c9affffdcc098d7bb2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab50ef56f6c26d4c9affffdcc098d7bb2"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>draw_samples_weights</b> (self, N, new_weights_in)</td></tr>
 <tr class="separator:ab50ef56f6c26d4c9affffdcc098d7bb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd41147bb2f65758e925e1a5bf603c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bd41147bb2f65758e925e1a5bf603c1"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>add_samples_mean_cov</b> (self, samples_ptr, target_densities_ptr, mean_in, cov_in)</td></tr>
+<tr class="separator:a7bd41147bb2f65758e925e1a5bf603c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23823478d0783aa449e3cd1d0df226ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a23823478d0783aa449e3cd1d0df226ae"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>add_samples</b> (self, samples_ptr, indices_ptr, target_densities_ptr)</td></tr>
 <tr class="separator:a23823478d0783aa449e3cd1d0df226ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a80436aba4ac10a9ae4a858dd776daa46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a80436aba4ac10a9ae4a858dd776daa46"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>activate_newest_samples</b> (self, N)</td></tr>
-<tr class="separator:a80436aba4ac10a9ae4a858dd776daa46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f34753c13c3c84c64f59d10692ef6e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f34753c13c3c84c64f59d10692ef6e1"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>activate_newest_samples</b> (self, N, keep_old)</td></tr>
+<tr class="separator:a3f34753c13c3c84c64f59d10692ef6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab12230147a31f6aad9030e2665a326ff"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab12230147a31f6aad9030e2665a326ff"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>select_active_samples</b> (self, num_comps, num_samples, temperature)</td></tr>
+<tr class="separator:ab12230147a31f6aad9030e2665a326ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a655ac6d10787d77209af115b7f9974aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a655ac6d10787d77209af115b7f9974aa"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>update_targets_for_KL_bounds</b> (self, update_weight_targets, update_comp_targets)</td></tr>
 <tr class="separator:a655ac6d10787d77209af115b7f9974aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22d9320a61ce3b417fd844f23496df95"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22d9320a61ce3b417fd844f23496df95"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>update_weights</b> (self, epsilon, tau, max_entropy_decrease)</td></tr>
-<tr class="separator:a22d9320a61ce3b417fd844f23496df95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae72f3ce8e5ffc43599b925657644f3be"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae72f3ce8e5ffc43599b925657644f3be"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>update_weights</b> (self, epsilon, tau, max_entropy_decrease, be_greedy)</td></tr>
+<tr class="separator:ae72f3ce8e5ffc43599b925657644f3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c414ea0d6e4e499e1dec190a75e37c5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c414ea0d6e4e499e1dec190a75e37c5"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>apply_lower_bound_on_weights</b> (self, lb_weights_in)</td></tr>
 <tr class="separator:a1c414ea0d6e4e499e1dec190a75e37c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67549b1db5ae4a85e93a75cf61f41ac6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a67549b1db5ae4a85e93a75cf61f41ac6"></a>
-def&#160;</td><td class="memItemRight" valign="bottom"><b>update_components</b> (self, max_kl_bound, factor, tau, ridge_coefficient, max_entropy_decrease, max_active_samples, dont_learn_correlations)</td></tr>
-<tr class="separator:a67549b1db5ae4a85e93a75cf61f41ac6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad57ed1641ce5d862fc75787f27d98c6a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad57ed1641ce5d862fc75787f27d98c6a"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>update_components</b> (self, tau, ridge_coefficient, max_entropy_decrease, max_active_samples, dont_learn_correlations, dont_recompute_densities)</td></tr>
+<tr class="separator:ad57ed1641ce5d862fc75787f27d98c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2603b54ce5770f30caaaedd0de39903"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2603b54ce5770f30caaaedd0de39903"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>recompute_densities</b> (self, only_weights_changed)</td></tr>
 <tr class="separator:af2603b54ce5770f30caaaedd0de39903"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,6 +181,9 @@ def&#160;</td><td class="memItemRight" valign="bottom"><b>get_num_samples</b> (s
 <tr class="memitem:adbaec109e7405288175ca97a62062b54"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adbaec109e7405288175ca97a62062b54"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>get_expected_rewards</b> (self)</td></tr>
 <tr class="separator:adbaec109e7405288175ca97a62062b54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acba6adf82d0a8c9d93d97dee8b004ba1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acba6adf82d0a8c9d93d97dee8b004ba1"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>get_best_interpolation</b> (self, index, samples_ptr, target_densities_ptr, target_densities2_ptr, scaling_factor)</td></tr>
+<tr class="separator:acba6adf82d0a8c9d93d97dee8b004ba1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ccb306fac4c0dcaf679c53528607eb4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6ccb306fac4c0dcaf679c53528607eb4"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>get_log_densities_on_mixture</b> (self, samples_ptr)</td></tr>
 <tr class="separator:a6ccb306fac4c0dcaf679c53528607eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,6 +205,9 @@ def&#160;</td><td class="memItemRight" valign="bottom"><b>backup_learner</b> (se
 <tr class="memitem:ab443f0f71c3cda42e5fd2c35b618b47a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab443f0f71c3cda42e5fd2c35b618b47a"></a>
 def&#160;</td><td class="memItemRight" valign="bottom"><b>restore_learner</b> (self)</td></tr>
 <tr class="separator:ab443f0f71c3cda42e5fd2c35b618b47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acff8ed89b9041378a5082beb2bfd846b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acff8ed89b9041378a5082beb2bfd846b"></a>
+def&#160;</td><td class="memItemRight" valign="bottom"><b>compute_KLs_between_GMM_and_DB_components</b> (self, reverse_KL)</td></tr>
+<tr class="separator:acff8ed89b9041378a5082beb2bfd846b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>

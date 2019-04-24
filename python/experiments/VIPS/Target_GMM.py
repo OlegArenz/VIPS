@@ -34,13 +34,15 @@ class Target_GMM(AbstractVIPSExperiment):
         return [samples, lnpdfs]
 
 
-def run_on_cluster(config_name, path_for_dumps, rate_of_dumps=100, num_threads=1, num_dimensions=20):
-    if config_name is 'explorative40':
-        import experiments.VIPS.configs.explorative40 as config
-    elif config_name is 'explorative5':
-        import experiments.VIPS.configs.explorative5 as config
-    elif config_name is 'single':
-        import experiments.VIPS.configs.single_comp as config
+def run_on_cluster(config_name, path_for_dumps, rate_of_dumps=100, num_threads=1, num_dimensions=20, num_initial=1, num_outer=1000, overwrite_delta=None, old_cov_init=None, isotropic=None):
+    if config_name is 'default':
+        import experiments.VIPS.configs.default as config
+    elif config_name is 'fast_adding':
+        import experiments.VIPS.configs.fast_adding as config
+    elif config_name is 'oldSampleReusage':
+        import experiments.VIPS.configs.oldSampleReusage as config
+    elif config_name is 'noAddingOrDeletion':
+        import experiments.VIPS.configs.noAddingOrDeletion as config
     else:
         print("config_name " + config_name + ' not known')
         return
@@ -49,10 +51,17 @@ def run_on_cluster(config_name, path_for_dumps, rate_of_dumps=100, num_threads=1
     config.COMMON['gmm_dumps_path'] = path_for_dumps
     config.COMMON['gmm_dumps_rate'] = rate_of_dumps
     config.PLOTTING['rate'] = -1
+    config.LTS['outer_iterations'] = num_outer
+    if overwrite_delta is not None:
+        config.LTS['max_exploration_gains'] = overwrite_delta
+    if old_cov_init is not None:
+        config.LTS['use_linesearch_for_new_covs'] = not old_cov_init
+    if isotropic is not None:
+        config.LTS['initialize_new_covs_isotropic'] = isotropic
 
     experiment = Target_GMM(num_dimensions=num_dimensions,
                             num_true_components=10,
-                            num_initial_components=1,
+                            num_initial_components=num_initial,
                             initial_mixture_prior_variance=1e3,
                             target_gmm_prior_variance=1e3,
                             config=config)
@@ -65,8 +74,8 @@ def run_on_cluster(config_name, path_for_dumps, rate_of_dumps=100, num_threads=1
     experiment.run_experiment()
 
 if __name__ == '__main__':
-    import experiments.VIPS.configs.explorative40 as config
-    experiment = Target_GMM(num_dimensions=2,
+    import experiments.VIPS.configs.default as config
+    experiment = Target_GMM(num_dimensions=20,
                             num_true_components=10,
                             num_initial_components=1,
                             initial_mixture_prior_variance=1e3,

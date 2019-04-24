@@ -37,7 +37,7 @@ def sample(n, path, known_prior):
     timestamps = progress['timestamps']
     timestamps = timestamps - start
     n_fevals = progress['n_fevals']
-    samples = samples.reshape(len(n_fevals), -1, 3)
+    samples = samples.reshape(len(n_fevals), -1, num_dimensions)
     #  n_fevals = np.hstack((n_fevals, lnlikefn.counter))
     np.savez(path + '/processed_data', samples=samples, timestamps=timestamps, fevals=n_fevals)
     print("Done")

@@ -7,24 +7,25 @@ import numpy as np
 # Define the (unnormalized) target log-density function
 from scipy.optimize import rosen
 def target_lnpdf(theta):
+    target_lnpdf.counter+=1
     theta = np.atleast_2d(theta)
     return -np.array([rosen(x) for x in theta])
+target_lnpdf.counter=0
 
 # Construct initial mixture (we will use a single Gaussian)
 num_dimensions=2
 initial_mixture = GMM(num_dimensions)
 mean = 5 * np.random.random(2)
 cov = 5 * np.eye(2)
-initial_mixture.set_weights(np.array([1.]))
 initial_mixture.add_component(mean, cov)
+initial_mixture.set_weights(np.array([1.]))
 
 # If we do not want to write a new config, we can also modify an existing one
-import experiments.VIPS.configs.explorative40 as config
+import experiments.VIPS.configs.fast_adding as config
 config.PLOTTING['rate'] = -1 # disable plotting
-config.LTS['outer_iterations'] = 200
+config.LTS['max_components'] = 30
+config.LTS['outer_iterations'] = 50
 config.LTS['num_initial_samples'] = 0
-config.LTS['num_samples_per_iteration'] = 2
-config.LTS['sample_reuse_factor'] = 5
 
 # Learn the GMM approximation
 sampler = VIPS(num_dimensions, target_lnpdf, initial_mixture, config)

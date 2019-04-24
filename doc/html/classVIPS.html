@@ -106,28 +106,32 @@ Collaboration diagram for VIPS:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a468c5d01f08c35ca0243f02fe6cafeaf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a468c5d01f08c35ca0243f02fe6cafeaf">VIPS</a> (int num_dimensions, int num_threads)</td></tr>
-<tr class="separator:a468c5d01f08c35ca0243f02fe6cafeaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba18c184ad6826ac8458fb573af7bcbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#aba18c184ad6826ac8458fb573af7bcbc">delete_low_weight_components</a> (double min_weight)</td></tr>
-<tr class="separator:aba18c184ad6826ac8458fb573af7bcbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ee36787e1dd8d0ae04365ed652ab338"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a7ee36787e1dd8d0ae04365ed652ab338">VIPS</a> (int num_dimensions, int num_threads, double min_kl_bound, double max_kl_bound)</td></tr>
+<tr class="separator:a7ee36787e1dd8d0ae04365ed652ab338"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adff46a3464207e55c4e699e6d869d40f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#adff46a3464207e55c4e699e6d869d40f">add_samples_to_database</a> (arma::mat new_samples, arma::vec new_target_densities, arma::uvec used_components)</td></tr>
 <tr class="separator:adff46a3464207e55c4e699e6d869d40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94e0f8c6ea5cc72da5939874dcaddb1e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a94e0f8c6ea5cc72da5939874dcaddb1e">update_importance_weights</a> ()</td></tr>
+<tr class="separator:a94e0f8c6ea5cc72da5939874dcaddb1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e90dcdcf50ffca10fbb9dbfd8176e22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a8e90dcdcf50ffca10fbb9dbfd8176e22">recompute_densities</a> (bool update_log_densities_on_model_comps=true, bool update_log_densities_on_background_dist=true)</td></tr>
 <tr class="separator:a8e90dcdcf50ffca10fbb9dbfd8176e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f862569f67b4061bbcd267108adede9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a2f862569f67b4061bbcd267108adede9">activate_newest_samples</a> (int N)</td></tr>
-<tr class="separator:a2f862569f67b4061bbcd267108adede9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea329d5f4eaf1c406b0c747b6390321a"><td class="memItemLeft" align="right" valign="top">arma::vec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#aea329d5f4eaf1c406b0c747b6390321a">select_active_samples</a> (int num_comps, int num_samples, double temperature)</td></tr>
+<tr class="separator:aea329d5f4eaf1c406b0c747b6390321a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d39ea354e713a822f3a095a4f989413"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a9d39ea354e713a822f3a095a4f989413">activate_newest_samples</a> (int N, bool keep_old)</td></tr>
+<tr class="separator:a9d39ea354e713a822f3a095a4f989413"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e88b8a4ffd410ee100455458b5d9e3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a6e88b8a4ffd410ee100455458b5d9e3b">update_targets_for_KL_bounds</a> (bool update_weight_targets, bool update_comp_targets)</td></tr>
 <tr class="separator:a6e88b8a4ffd410ee100455458b5d9e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afda46fdd2494774ae418a9fcccda905f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#afda46fdd2494774ae418a9fcccda905f">promote_samples_to_components</a> (int N, double max_exploration_bonus, double tau, bool only_check_active_samples, int max_samples)</td></tr>
-<tr class="separator:afda46fdd2494774ae418a9fcccda905f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebb5f603c3ec270f625eb2bd4d3efe3a"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, vec, vec &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#aebb5f603c3ec270f625eb2bd4d3efe3a">update_weights</a> (double epsilon, double tau, double entropy_bound)</td></tr>
-<tr class="separator:aebb5f603c3ec270f625eb2bd4d3efe3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af23752b3d9fce422b6b26456240113c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#af23752b3d9fce422b6b26456240113c2">getBestInterpolation</a> (int index, mat my_samples, vec my_lnpdfs, vec bg_lnpdfs, double scaling_factor)</td></tr>
+<tr class="separator:af23752b3d9fce422b6b26456240113c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a905ac8d65a5e88bb40220221d0942778"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a905ac8d65a5e88bb40220221d0942778">promote_samples_to_components</a> (int N, double max_exploration_bonus, double tau, bool only_check_active_samples, int max_samples, bool scale_entropy, bool isotropic)</td></tr>
+<tr class="separator:a905ac8d65a5e88bb40220221d0942778"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6619407df7cc5032156caf8fb1855e95"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, vec, vec &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a6619407df7cc5032156caf8fb1855e95">update_weights</a> (double epsilon, double tau, double entropy_bound, bool be_greedy)</td></tr>
+<tr class="separator:a6619407df7cc5032156caf8fb1855e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac85e9be0da81e9fa603528aa7958a0a"><td class="memItemLeft" align="right" valign="top">arma::vec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#aac85e9be0da81e9fa603528aa7958a0a">adapt_KL_bound_for_comp_update</a> (double max_kl_bound, double factor)</td></tr>
 <tr class="separator:aac85e9be0da81e9fa603528aa7958a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84a2917e689f48562e0f951a8f577723"><td class="memItemLeft" align="right" valign="top">arma::vec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a84a2917e689f48562e0f951a8f577723">update_components</a> (double max_kl_bound, double factor, double tau, double ridge_coefficient, vec entropy_bounds, double max_active_samples, bool dont_learn_correlations)</td></tr>
-<tr class="separator:a84a2917e689f48562e0f951a8f577723"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb4149a37ec733f22ef9e302439c42da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#aeb4149a37ec733f22ef9e302439c42da">add_components</a> (arma::vec new_weights_total, arma::mat new_means, arma::cube new_covs)</td></tr>
-<tr class="separator:aeb4149a37ec733f22ef9e302439c42da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae875912a0c60ac979909713aaffbc5e9"><td class="memItemLeft" align="right" valign="top">arma::vec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#ae875912a0c60ac979909713aaffbc5e9">update_components</a> (double tau, double ridge_coefficient, vec entropy_bounds, double max_active_samples, bool dont_learn_correlations, bool dont_recompute_densities, bool adapt_ridge_multipliers)</td></tr>
+<tr class="separator:ae875912a0c60ac979909713aaffbc5e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b5eb59ab8fa1f16bc3db2a40b25f9a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#a1b5eb59ab8fa1f16bc3db2a40b25f9a4">add_components</a> (arma::vec new_weights_total, arma::mat new_means, arma::cube new_covs, bool dont_recompute_densities)</td></tr>
+<tr class="separator:a1b5eb59ab8fa1f16bc3db2a40b25f9a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfc4f6911881e21b1b06276f7514bcfa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#acfc4f6911881e21b1b06276f7514bcfa">get_entropy_estimate_on_active_samples</a> ()</td></tr>
 <tr class="separator:acfc4f6911881e21b1b06276f7514bcfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeec7ba6219e433ad9ab6214e4ed0dd4a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS.html#aeec7ba6219e433ad9ab6214e4ed0dd4a">get_entropy_estimate_on_gmm_samples</a> (int num_samples=10000)</td></tr>
@@ -137,6 +141,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9c3c1617a3e8be6b02a7b5166711bb46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9c3c1617a3e8be6b02a7b5166711bb46"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumSamples</b> ()</td></tr>
 <tr class="separator:a9c3c1617a3e8be6b02a7b5166711bb46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbaf88e98c600f465ae2799946305dab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbaf88e98c600f465ae2799946305dab"></a>
+uvec&#160;</td><td class="memItemRight" valign="bottom"><b>getActiveSamples</b> ()</td></tr>
+<tr class="separator:abbaf88e98c600f465ae2799946305dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -158,9 +165,18 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>num_threads</b></td></
 <tr class="memitem:ae2fc04069049b703933aa1a1834067a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae2fc04069049b703933aa1a1834067a2"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>num_dimensions</b></td></tr>
 <tr class="separator:ae2fc04069049b703933aa1a1834067a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdc5983d1434c2d24a0f96168529921e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abdc5983d1434c2d24a0f96168529921e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>min_kl_bound</b></td></tr>
+<tr class="separator:abdc5983d1434c2d24a0f96168529921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34b0769fc34b3a517c212dc35c5f5fb4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a34b0769fc34b3a517c212dc35c5f5fb4"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>max_kl_bound</b></td></tr>
+<tr class="separator:a34b0769fc34b3a517c212dc35c5f5fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac99a855e6f284c3028435dd23fea3c06"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac99a855e6f284c3028435dd23fea3c06"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>num_samples</b></td></tr>
 <tr class="separator:ac99a855e6f284c3028435dd23fea3c06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaddf0e6094bc9cf8e942c464b0e8a552"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaddf0e6094bc9cf8e942c464b0e8a552"></a>
+arma::uvec&#160;</td><td class="memItemRight" valign="bottom"><b>active_samples</b></td></tr>
+<tr class="separator:aaddf0e6094bc9cf8e942c464b0e8a552"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16a3f01a04f8a2aabb4972912e4f105d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16a3f01a04f8a2aabb4972912e4f105d"></a>
 arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>samples</b></td></tr>
 <tr class="separator:a16a3f01a04f8a2aabb4972912e4f105d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,7 +212,7 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
 <tr class="separator:aedb1fb27412374a577219711f083dd7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a468c5d01f08c35ca0243f02fe6cafeaf"></a>
+<a class="anchor" id="a7ee36787e1dd8d0ae04365ed652ab338"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -210,7 +226,19 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>num_threads</em>&#160;</td>
+          <td class="paramname"><em>num_threads</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>min_kl_bound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>max_kl_bound</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -222,7 +250,7 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
 <p>Main class implementing the Learn-To-Sample algorithm </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">num_dimensions</td><td>- dimensionality of the sampling problem </td></tr>
-    <tr><td class="paramname">num_threads</td><td>- number of threads to use </td></tr>
+    <tr><td class="paramname">num_threads</td><td>- number of threads to use  - the adaptive KL bound will not be set smaller than this threshold  - the adaptive KL bound will not be set higher than this threshold </td></tr>
   </table>
   </dd>
 </dl>
@@ -230,7 +258,7 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a2f862569f67b4061bbcd267108adede9"></a>
+<a class="anchor" id="a9d39ea354e713a822f3a095a4f989413"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -238,8 +266,18 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
           <td class="memname">void VIPS::activate_newest_samples </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>N</em></td><td>)</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>keep_old</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -247,6 +285,7 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
  Makes sure, that all relevant data (e.g. densities, importance weights, etc.) gets updated </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">N</td><td>- the maximum number of recent samples to be activated, actually number of activated samples might be less, iff the sample database does not contain sufficient samples. </td></tr>
+    <tr><td class="paramname">keep_old</td><td>- if set to true, the samples that are currently active will remain active </td></tr>
   </table>
   </dd>
 </dl>
@@ -287,7 +326,7 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
 
 </div>
 </div>
-<a class="anchor" id="aeb4149a37ec733f22ef9e302439c42da"></a>
+<a class="anchor" id="a1b5eb59ab8fa1f16bc3db2a40b25f9a4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -307,7 +346,13 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">arma::cube&#160;</td>
-          <td class="paramname"><em>new_covs</em>&#160;</td>
+          <td class="paramname"><em>new_covs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>dont_recompute_densities</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -320,7 +365,8 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
   <table class="params">
     <tr><td class="paramname">new_weights_total</td><td>- new weights of the <a class="el" href="classGMM.html">GMM</a> (including existing components) </td></tr>
     <tr><td class="paramname">new_means</td><td>- matrix of size N_dimensions x N_newComponents specifying the means of the new components </td></tr>
-    <tr><td class="paramname">new_covs</td><td>- cube of size N_dimensions x N_dimensions x N_newComponents specifying the covariance matrices of the new components </td></tr>
+    <tr><td class="paramname">new_covs</td><td>- cube of size N_dimensions x N_dimensions x N_newComponents specifying the covariance matrices </td></tr>
+    <tr><td class="paramname">dont_recompute_densities</td><td>- if true, do not update the marginals, responsibilities, etc after adding a new component of the new components </td></tr>
   </table>
   </dd>
 </dl>
@@ -356,35 +402,14 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Adds new samples to the database. Note that the samples will not be used for learning, until they have been activated (see activate_newest_samples).<br />
- The samples are assumed to have been drawn from the current model and the indices of the relevant components are to be provided for computing background distributions when necessary. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Adds new samples to the database.<br />
+ Note that the samples will not be used for learning, until they have been activated The samples are assumed to have been drawn from the current model and the indices of the relevant components are to be provided for computing background distributions when necessary.<br />
+ </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classVIPS.html#a9d39ea354e713a822f3a095a4f989413">activate_newest_samples</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">new_samples</td><td>- a matrix of size N_dimensions X N_samples </td></tr>
     <tr><td class="paramname">new_target_densities</td><td>- a vector of size N_samples containing the unnormalized densities on the target distribution </td></tr>
     <tr><td class="paramname">used_components</td><td>- a vector of size N_samples containing the indices of the components the corresponding samples have been drawn from </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classVIPS.html#a2f862569f67b4061bbcd267108adede9">activate_newest_samples</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aba18c184ad6826ac8458fb573af7bcbc"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void VIPS::delete_low_weight_components </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>min_weight</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Removes all components with weight below the given threshold, and renormalized the weights afterwards </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">min_weight</td><td>- threshold for keeping components </td></tr>
   </table>
   </dd>
 </dl>
@@ -457,7 +482,70 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
 
 </div>
 </div>
-<a class="anchor" id="afda46fdd2494774ae418a9fcccda905f"></a>
+<a class="anchor" id="af23752b3d9fce422b6b26456240113c2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VIPS::getBestInterpolation </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mat&#160;</td>
+          <td class="paramname"><em>my_samples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&#160;</td>
+          <td class="paramname"><em>my_lnpdfs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vec&#160;</td>
+          <td class="paramname"><em>bg_lnpdfs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>scaling_factor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>For a given component, find the best interpolation between the current covariance matrix and a spherical one using a linear linesearch. <br />
+ The quality of the covariance matrix is estimated based on an importance weighted Monte Carlo estimate of the expected loglikelihood on the target distribution. <br />
+ The Monte Carlo estimate is computed based on a given set of samples, the corresponding target loglikelihoods and the loglikelihood of the sampling distribution. <br />
+ IMPORTANT: This method will change the component to the best interpolation. <br />
+ </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>- index specifying which component of the current model should be adapted <br />
+ </td></tr>
+    <tr><td class="paramname">my_samples</td><td>- samples for the Monte Carlo estimate <br />
+ </td></tr>
+    <tr><td class="paramname">my_lnpdfs</td><td>- vector containing the loglikelihood under the target distribution for each sample <br />
+ </td></tr>
+    <tr><td class="paramname">bg_lnpdfs</td><td>- vector containing the loglikelihood of the distribution that was used for drawing the samples <br />
+ </td></tr>
+    <tr><td class="paramname">scaling_factor</td><td>- the spherical covariance matrix is given by scaling_factor * eye() <br />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a905ac8d65a5e88bb40220221d0942778"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -489,7 +577,19 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>max_samples</em>&#160;</td>
+          <td class="paramname"><em>max_samples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>scale_entropy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isotropic</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -498,13 +598,16 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Selects promising locations among the current samples and create new components at these positions. The covariance matrices are given by the weighted sums of the covariance matrices current model, where the weights are given by the responsibilities of the model components for the new location. Locations are promising if the residual given by residual = log(p_intractable(x)) - log(p_model(x) + exp(max_exploration_bonus)) is high.</p>
+<p>Selects promising locations among the current samples and create new components at these positions. The covariance matrices are given by the weighted sums of the covariance matrices current model (and afterwards rescaled by cov_scaling_factor), where the weights are given by the responsibilities of the model components for the new location. Locations are promising if the residual given by residual = log(p_intractable(x)) - log(p_model(x) + exp(max_exploration_bonus)) is high.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">N</td><td>- the number of samples to be promoted </td></tr>
     <tr><td class="paramname">max_exploration_bonus</td><td>- maximum bonus for samples that have low density on the current model </td></tr>
+    <tr><td class="paramname">tau</td><td>- can be used to assign higher weight to the bonus for samples that have low density on the current model </td></tr>
     <tr><td class="paramname">only_check_active_samples</td><td>- if set to true, the residual is computed on the active samples only, otherwise, the resiudal is computed for all samples in the sample database. </td></tr>
     <tr><td class="paramname">max_samples</td><td>- maximum number of samples to be considered </td></tr>
+    <tr><td class="paramname">scale_entropy</td><td>- if true, scale the entropy of the newly created component such that it corresponds to the average entropy  p(o) H(p(x|o)) </td></tr>
+    <tr><td class="paramname">isotropic</td><td>- if true, initialize new components as isotropic (identity-matrix if scale_entropy = False) instead of interpolating. </td></tr>
   </table>
   </dd>
 </dl>
@@ -545,25 +648,57 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
 
 </div>
 </div>
-<a class="anchor" id="a84a2917e689f48562e0f951a8f577723"></a>
+<a class="anchor" id="aea329d5f4eaf1c406b0c747b6390321a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">arma::vec VIPS::select_active_samples </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_comps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_samples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>temperature</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function is used for building a mixture model for importance sampling.<br />
+ For each component p(x|o) in the current approximation, iteratively sample num_comps components p(x|i) from the sample database (these have been used for drawing samples before) according to p  p(mu_i|o) - n_usages Adds all samples from each chosen component and stops if num_samples are selected <br />
+ The member active_samples is updated to contain the chosen samples <br />
+ </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num_comps</td><td>- maximum number of components that should be selected for each component in the approximation </td></tr>
+    <tr><td class="paramname">num_samples</td><td>- stop after num_samples ahve been activated </td></tr>
+    <tr><td class="paramname">temperature</td><td>- temperature for scaling the probability for sampling components </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing the number of effective samples for each component </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae875912a0c60ac979909713aaffbc5e9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">vec VIPS::update_components </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>max_kl_bound</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>factor</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>tau</em>, </td>
         </tr>
@@ -589,7 +724,19 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>dont_learn_correlations</em>&#160;</td>
+          <td class="paramname"><em>dont_learn_correlations</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>dont_recompute_densities</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>adapt_ridge_multipliers</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -607,9 +754,27 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
     <tr><td class="paramname">entropy_bounds</td><td>- lower bound on entropy </td></tr>
     <tr><td class="paramname">max_active_samples</td><td>- size of the subset of samples that should be used for each component update </td></tr>
     <tr><td class="paramname">dont_learn_correlations</td><td>- iff true, fit a quadratic surrogate where R is diagonal (experimental) </td></tr>
+    <tr><td class="paramname">dont_recompute_densities</td><td>- do not recompute the densities after the component update </td></tr>
+    <tr><td class="paramname">adapt_ridge_multipliers</td><td>- if true, the ridge_coefficient will be adapted for each component </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a94e0f8c6ea5cc72da5939874dcaddb1e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VIPS::update_importance_weights </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Computes the importance weights q(x|o) / q_bg(x) for each component q(x|o) and the background-mixture q_bg(x) for the active set of samples. This method updates the class members importance_weights, log_importance_weights and importance_weights_normalized. </p>
 
 </div>
 </div>
@@ -646,7 +811,7 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
 
 </div>
 </div>
-<a class="anchor" id="aebb5f603c3ec270f625eb2bd4d3efe3a"></a>
+<a class="anchor" id="a6619407df7cc5032156caf8fb1855e95"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -666,7 +831,13 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>entropy_bound</em>&#160;</td>
+          <td class="paramname"><em>entropy_bound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>be_greedy</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -679,6 +850,8 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>importance_weigh
   <table class="params">
     <tr><td class="paramname">epsilon</td><td>is the KL bound </td></tr>
     <tr><td class="paramname">tau</td><td>is the entropy coefficient </td></tr>
+    <tr><td class="paramname">entropy</td><td>bound - has no effect if be_greedy is true. </td></tr>
+    <tr><td class="paramname">be_greedy</td><td>- if true, don't perform KL-bound optimization but use the greedy optimal weights </td></tr>
   </table>
   </dd>
 </dl>

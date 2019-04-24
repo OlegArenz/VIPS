@@ -113,18 +113,21 @@ Collaboration diagram for VIPS_Model:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a178ab41d01041c53a3f6a7f33ec6f150"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#a178ab41d01041c53a3f6a7f33ec6f150">VIPS_Model</a> (int dim)</td></tr>
-<tr class="separator:a178ab41d01041c53a3f6a7f33ec6f150"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a17f89802a4e8be6ffefb92e691b602"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#a7a17f89802a4e8be6ffefb92e691b602">VIPS_Model</a> (int dim, double initial_kl_bound=0.5)</td></tr>
+<tr class="separator:a7a17f89802a4e8be6ffefb92e691b602"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcc9485205fd0c61801546703bffa5eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#afcc9485205fd0c61801546703bffa5eb">add_components</a> (arma::mat new_means, arma::cube new_covs) override</td></tr>
 <tr class="separator:afcc9485205fd0c61801546703bffa5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab83e56934a07a6381e0cb4f9beab26fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#ab83e56934a07a6381e0cb4f9beab26fd">add_components_invChols</a> (arma::mat new_means, arma::cube new_invChols) override</td></tr>
 <tr class="separator:ab83e56934a07a6381e0cb4f9beab26fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b0edde4a9a744639e1588cff6a5fa23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#a6b0edde4a9a744639e1588cff6a5fa23">delete_component</a> (int index) override</td></tr>
 <tr class="separator:a6b0edde4a9a744639e1588cff6a5fa23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbaa2af1802ba723708f11739525519b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#abbaa2af1802ba723708f11739525519b">delete_low_weight_components</a> (double min_weight, int n_del=300)</td></tr>
-<tr class="separator:abbaa2af1802ba723708f11739525519b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c65151f76ac7e9f5bbc79288b30986b"><td class="memItemLeft" align="right" valign="top">uvec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#a6c65151f76ac7e9f5bbc79288b30986b">delete_low_weight_components</a> (double min_weight, int n_del=300)</td></tr>
+<tr class="separator:a6c65151f76ac7e9f5bbc79288b30986b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf045c351edff854a5f520beb2723832"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#acf045c351edff854a5f520beb2723832">update_histories</a> (vec expected_target_densities, vec component_rewards, vec component_weights)</td></tr>
 <tr class="separator:acf045c351edff854a5f520beb2723832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72e9125d30c8ce56e9e6bb71fd01a00e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a72e9125d30c8ce56e9e6bb71fd01a00e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>update_num_sample_history</b> (uvec new_samples)</td></tr>
+<tr class="separator:a72e9125d30c8ce56e9e6bb71fd01a00e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19bd5e5c123088de22c80df818f67994"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; arma::cube, arma::cube, arma::mat, arma::vec, arma::vec &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#a19bd5e5c123088de22c80df818f67994">getTargetsForKLBounds</a> ()</td></tr>
 <tr class="separator:a19bd5e5c123088de22c80df818f67994"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a99261a47556afce9b21c456000e44c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#a6a99261a47556afce9b21c456000e44c">update_targets_for_KL_bounds</a> (uvec component_indices, bool update_weight_targets, bool update_comp_targets)</td></tr>
@@ -136,13 +139,28 @@ arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>getLastEtasForCo
 <tr class="separator:a8906614c09de390b4a9437cadd54218f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0f23dd73e953a9da2047075e6e3ff1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#ac0f23dd73e953a9da2047075e6e3ff1c">setLastEtasForCompOptimization</a> (vec new_lastEtas)</td></tr>
 <tr class="separator:ac0f23dd73e953a9da2047075e6e3ff1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a49a86c96c0f5239ed7b868e0de84b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4a49a86c96c0f5239ed7b868e0de84b1"></a>
+arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>getRidgeMultipliers</b> ()</td></tr>
+<tr class="separator:a4a49a86c96c0f5239ed7b868e0de84b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d9d04bcc9b0dc392584804ac78f5813"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#a1d9d04bcc9b0dc392584804ac78f5813">setRidgeMultipliers</a> (vec new_ridgeMultipliers)</td></tr>
+<tr class="separator:a1d9d04bcc9b0dc392584804ac78f5813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a301ce5dc882e0ae70302a4712cc27fc1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a301ce5dc882e0ae70302a4712cc27fc1"></a>
+arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>getApproxRewardBeforeCompUpdate</b> ()</td></tr>
+<tr class="separator:a301ce5dc882e0ae70302a4712cc27fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70c45c77ef2f4f7ebd5ddfe34c653da8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#a70c45c77ef2f4f7ebd5ddfe34c653da8">setApproxRewardBeforeCompUpdate</a> (vec new_expected_rewards)</td></tr>
+<tr class="separator:a70c45c77ef2f4f7ebd5ddfe34c653da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24e9a1430fd5dd6d35db69c0490e65d7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a24e9a1430fd5dd6d35db69c0490e65d7"></a>
+arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>getKLBounds</b> ()</td></tr>
+<tr class="separator:a24e9a1430fd5dd6d35db69c0490e65d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5351e79e8fc43024659580eceaa89f56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#a5351e79e8fc43024659580eceaa89f56">setKLBounds</a> (vec new_KLBounds)</td></tr>
+<tr class="separator:a5351e79e8fc43024659580eceaa89f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classGMM"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classGMM')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classGMM.html">GMM</a></td></tr>
 <tr class="memitem:a84d95fb2c6582568a9d9a1b0efe200a4 inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a84d95fb2c6582568a9d9a1b0efe200a4">GMM</a> (int dim, int max_components=100000)</td></tr>
 <tr class="separator:a84d95fb2c6582568a9d9a1b0efe200a4 inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd0dd8e7f38a792f515d296dd467924a inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">arma::cube&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#acd0dd8e7f38a792f515d296dd467924a">interpolate_covs_for_query_points</a> (mat query_points)</td></tr>
-<tr class="separator:acd0dd8e7f38a792f515d296dd467924a inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00680c4a0c5f3befd742015bb8ad0a08 inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a00680c4a0c5f3befd742015bb8ad0a08">add_components_at_locations</a> (mat means)</td></tr>
-<tr class="separator:a00680c4a0c5f3befd742015bb8ad0a08 inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b867d2bbe2d3eebbd871bd1e99eabd2 inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">arma::cube&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a5b867d2bbe2d3eebbd871bd1e99eabd2">interpolate_covs_for_query_points</a> (mat query_points, bool scale_entropy, bool isotropic)</td></tr>
+<tr class="separator:a5b867d2bbe2d3eebbd871bd1e99eabd2 inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16b4be29710b9754b3276c649ede42b5 inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a16b4be29710b9754b3276c649ede42b5">add_components_at_locations</a> (mat means, bool scale_entropy, bool isotropic)</td></tr>
+<tr class="separator:a16b4be29710b9754b3276c649ede42b5 inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae33b6f52e8585c0cd590fd1d509956b0 inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#ae33b6f52e8585c0cd590fd1d509956b0">add_components</a> (mat means, cube covs)</td></tr>
 <tr class="separator:ae33b6f52e8585c0cd590fd1d509956b0 inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07d7ade16c34458f6cf8fad958728c98 inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a07d7ade16c34458f6cf8fad958728c98">add_components_invChols</a> (mat new_means, cube new_invChols)</td></tr>
@@ -159,8 +177,8 @@ arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>getLastEtasForCo
 <tr class="separator:a8a9e502395f9d7f6a63eb7f56df5a73f inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c2d04636a640ce56bf245df750e97ea inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">vec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a1c2d04636a640ce56bf245df750e97ea">evaluate_GMM_densities</a> (mat samples, bool return_log)</td></tr>
 <tr class="separator:a1c2d04636a640ce56bf245df750e97ea inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a0e20b34d77c21fb31449dac5d1bd32 inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">vec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a9a0e20b34d77c21fb31449dac5d1bd32">evaluate_GMM_densities_low_mem</a> (mat samples)</td></tr>
-<tr class="separator:a9a0e20b34d77c21fb31449dac5d1bd32 inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7e827d443107567eb5c4e5791158005 inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">vec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#ab7e827d443107567eb5c4e5791158005">evaluate_GMM_densities_low_mem</a> (mat samples, bool uniform_weights=false)</td></tr>
+<tr class="separator:ab7e827d443107567eb5c4e5791158005 inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11d50f8336e3f0b4371fa4c7c023e11f inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; mat, mat, rowvec, rowvec, vec, mat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a11d50f8336e3f0b4371fa4c7c023e11f">compute_log_marginals</a> (mat samples)</td></tr>
 <tr class="separator:a11d50f8336e3f0b4371fa4c7c023e11f inherit pub_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03b69ac93de1b177102fc9378665f20b inherit pub_methods_classGMM"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; mat, rowvec, rowvec, vec, mat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a03b69ac93de1b177102fc9378665f20b">compute_log_marginals_from_comp_densities</a> (mat log_component_marginals)</td></tr>
@@ -213,6 +231,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>getNumDimensions</b> (
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a3ab3746d8dd5832ea0bb0966224a4686"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3ab3746d8dd5832ea0bb0966224a4686"></a>
+arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>expected_rewards</b></td></tr>
+<tr class="separator:a3ab3746d8dd5832ea0bb0966224a4686"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae18271a9c94997444c4015ce24d666e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae18271a9c94997444c4015ce24d666e"></a>
 arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>comp_etd_history</b></td></tr>
 <tr class="separator:aae18271a9c94997444c4015ce24d666e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,6 +243,9 @@ arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>comp_reward_hist
 <tr class="memitem:abbb57d44172beac50134b776f5308b0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbb57d44172beac50134b776f5308b0f"></a>
 arma::mat&#160;</td><td class="memItemRight" valign="bottom"><b>comp_weight_history</b></td></tr>
 <tr class="separator:abbb57d44172beac50134b776f5308b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ab784c4c6c4014a8255cb69813d7608"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8ab784c4c6c4014a8255cb69813d7608"></a>
+arma::umat&#160;</td><td class="memItemRight" valign="bottom"><b>comp_num_samples_history</b></td></tr>
+<tr class="separator:a8ab784c4c6c4014a8255cb69813d7608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classGMM"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classGMM')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classGMM.html">GMM</a></td></tr>
 <tr class="memitem:af0c5335a6c9ac80c07d3212314e0d8b6 inherit pub_attribs_classGMM"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0c5335a6c9ac80c07d3212314e0d8b6"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>max_components</b></td></tr>
@@ -231,15 +255,21 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>max_components</b></td
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ad175bd3a39cec843b674a9d937c01654"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVIPS__Model.html#ad175bd3a39cec843b674a9d937c01654">add_meta_info_for_components</a> (int N)</td></tr>
 <tr class="separator:ad175bd3a39cec843b674a9d937c01654"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_classGMM"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classGMM')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classGMM.html">GMM</a></td></tr>
-<tr class="memitem:adfbd4c7449817315f02f54736751e1ce inherit pro_methods_classGMM"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; vec, vec, vec &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#adfbd4c7449817315f02f54736751e1ce">softMax_2D</a> (mat data)</td></tr>
-<tr class="separator:adfbd4c7449817315f02f54736751e1ce inherit pro_methods_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:a9814472714c00939b479ddab4ed00fb2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9814472714c00939b479ddab4ed00fb2"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>initial_kl_bound</b></td></tr>
+<tr class="separator:a9814472714c00939b479ddab4ed00fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b2633c15ce1dee47eb88e1fba20de0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b2633c15ce1dee47eb88e1fba20de0c"></a>
 arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>last_etas_for_comp_optimization</b></td></tr>
 <tr class="separator:a0b2633c15ce1dee47eb88e1fba20de0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15e0485d0b2d20cebe4aca4d106ac788"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15e0485d0b2d20cebe4aca4d106ac788"></a>
+arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>ridge_multiplier</b></td></tr>
+<tr class="separator:a15e0485d0b2d20cebe4aca4d106ac788"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f298d2e9f9c0ea430c9785812dee158"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f298d2e9f9c0ea430c9785812dee158"></a>
+arma::vec&#160;</td><td class="memItemRight" valign="bottom"><b>kl_bounds</b></td></tr>
+<tr class="separator:a0f298d2e9f9c0ea430c9785812dee158"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac181de1cbdb425e501b43d61162577e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac181de1cbdb425e501b43d61162577e0"></a>
 arma::cube&#160;</td><td class="memItemRight" valign="bottom"><b>target_inv_chols</b></td></tr>
 <tr class="separator:ac181de1cbdb425e501b43d61162577e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -294,7 +324,7 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
 <tr class="separator:a6a5f6bf173dea2faf179b75065d1b806 inherit pro_attribs_classGMM"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a178ab41d01041c53a3f6a7f33ec6f150"></a>
+<a class="anchor" id="a7a17f89802a4e8be6ffefb92e691b602"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -302,14 +332,25 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
           <td class="memname">VIPS_Model::VIPS_Model </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>dim</em></td><td>)</td>
+          <td class="paramname"><em>dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>initial_kl_bound</em> = <code>0.5</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>The GMM-model learned by <a class="el" href="classVIPS.html">VIPS</a>. This class extends <a class="el" href="classGMM.html">GMM</a> to include learning related meta information. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dim</td><td>number of dimensions </td></tr>
+    <tr><td class="paramname">initial_kl_bound</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -462,12 +503,12 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
 
 </div>
 </div>
-<a class="anchor" id="abbaa2af1802ba723708f11739525519b"></a>
+<a class="anchor" id="a6c65151f76ac7e9f5bbc79288b30986b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void VIPS_Model::delete_low_weight_components </td>
+          <td class="memname">uvec VIPS_Model::delete_low_weight_components </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>min_weight</em>, </td>
@@ -492,6 +533,7 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>deleted_indices - a vector containing the (old) indices of the deleted components </dd></dl>
 
 </div>
 </div>
@@ -517,6 +559,50 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
 
 </div>
 </div>
+<a class="anchor" id="a70c45c77ef2f4f7ebd5ddfe34c653da8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VIPS_Model::setApproxRewardBeforeCompUpdate </td>
+          <td>(</td>
+          <td class="paramtype">vec&#160;</td>
+          <td class="paramname"><em>new_expected_rewards</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Store the approximated reward for each component, computed on the same set of samples that was used for the component update. If this value is significantly larger than an estimate on fresh samples, we are probably overfitting. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_approxRewards</td><td>- an importance weighted MC estimate of the expected reward  p(x|o) (log p(x) + log q(o|x))) + H(q(x|o) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5351e79e8fc43024659580eceaa89f56"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VIPS_Model::setKLBounds </td>
+          <td>(</td>
+          <td class="paramtype">vec&#160;</td>
+          <td class="paramname"><em>new_KLBounds</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the KL bounds for each component </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_KLBounds</td><td>- KL bounds used by the next component update </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ac0f23dd73e953a9da2047075e6e3ff1c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -533,6 +619,28 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
 <p>Store the Lagrangian parameters that have been learned during the last model update for warm-starting. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">new_lastEtas</td><td>- Lagrangian parameters for the KL constraints for the component update </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1d9d04bcc9b0dc392584804ac78f5813"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VIPS_Model::setRidgeMultipliers </td>
+          <td>(</td>
+          <td class="paramtype">vec&#160;</td>
+          <td class="paramname"><em>new_ridgeMultiplier</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>For each component, update the factor &gt;= 1 to scale the ridge coefficient for fitting the surrogates. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new_ridgeMultipliers</td><td>- vector containing the new ridge scaling multipliers </td></tr>
   </table>
   </dd>
 </dl>

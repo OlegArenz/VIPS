@@ -1,24 +1,11 @@
 var searchData=
 [
-  ['sample_5fbased_5freps_5fdual',['sample_based_reps_dual',['../classReps.html#aa35a559a166ebb7f6a0e416838ae2cbd',1,'Reps']]],
-  ['sample_5fbased_5freps_5fdual_5fwith_5fentropy_5fbound',['sample_based_reps_dual_with_entropy_bound',['../classReps.html#af469d50c6929b8ab1aa4f16bd053a91d',1,'Reps']]],
-  ['sample_5ffrom_5fcomponent',['sample_from_component',['../classGMM.html#a5e5c1278fc67c3cb4b5cdeeb9390ab98',1,'GMM']]],
-  ['sample_5ffrom_5fmixture',['sample_from_mixture',['../classGMM.html#afb3f91ba6e939739198a49c85c92ace4',1,'GMM']]],
-  ['sample_5ffrom_5fmixture_5fweights',['sample_from_mixture_weights',['../classGMM.html#ad7687ba93ab195673c26d02690d14d27',1,'GMM']]],
-  ['sampledatabase',['SampleDatabase',['../classSampleDatabase.html',1,'SampleDatabase'],['../classSampleDatabase.html#a92a9faa8a5c447708c1c4dda6ea2323a',1,'SampleDatabase::SampleDatabase()']]],
-  ['select_5fnewest_5fsamples',['select_newest_samples',['../classSampleDatabase.html#aa1784badb57e66125725f2701d513382',1,'SampleDatabase']]],
-  ['set_5ftarget_5fdist',['set_target_dist',['../classMore.html#a7163e4cb11467ccbdb76b830a193c597',1,'More::set_target_dist(mat Sigma_q, vec mu_q)'],['../classMore.html#a52a17e3a77606659aeb668ad597aac62',1,'More::set_target_dist(mat chol_Sigma_q, mat chol_Q, vec mu_q)']]],
-  ['setlastetasforcompoptimization',['setLastEtasForCompOptimization',['../classVIPS__Model.html#ac0f23dd73e953a9da2047075e6e3ff1c',1,'VIPS_Model']]],
-  ['softmax_5f2d',['softMax_2D',['../classGMM.html#adfbd4c7449817315f02f54736751e1ce',1,'GMM']]],
-  ['swig_5fcast_5finfo',['swig_cast_info',['../structswig__cast__info.html',1,'']]],
-  ['swig_5fconst_5finfo',['swig_const_info',['../structswig__const__info.html',1,'']]],
-  ['swig_5fglobalvar',['swig_globalvar',['../structswig__globalvar.html',1,'']]],
-  ['swig_5fmodule_5finfo',['swig_module_info',['../structswig__module__info.html',1,'']]],
-  ['swig_5ftype_5finfo',['swig_type_info',['../structswig__type__info.html',1,'']]],
-  ['swig_5fvarlinkobject',['swig_varlinkobject',['../structswig__varlinkobject.html',1,'']]],
-  ['swigptr_5fpyobject',['SwigPtr_PyObject',['../classswig_1_1SwigPtr__PyObject.html',1,'swig']]],
-  ['swigpyclientdata',['SwigPyClientData',['../structSwigPyClientData.html',1,'']]],
-  ['swigpyobject',['SwigPyObject',['../structSwigPyObject.html',1,'']]],
-  ['swigpypacked',['SwigPyPacked',['../structSwigPyPacked.html',1,'']]],
-  ['swigvar_5fpyobject',['SwigVar_PyObject',['../structswig_1_1SwigVar__PyObject.html',1,'swig']]]
+  ['update_5fcomponent_5fusages',['update_component_usages',['../classSampleDatabase.html#a1fed863851888d772c34c7b004339ebb',1,'SampleDatabase']]],
+  ['update_5fcomponents',['update_components',['../classVIPS.html#ae875912a0c60ac979909713aaffbc5e9',1,'VIPS::update_components()'],['../classVIPS__PythonWrapper.html#a948b081338679c050ed174c6598383d3',1,'VIPS_PythonWrapper::update_components()']]],
+  ['update_5fhistories',['update_histories',['../classVIPS__Model.html#acf045c351edff854a5f520beb2723832',1,'VIPS_Model']]],
+  ['update_5fimportance_5fweights',['update_importance_weights',['../classVIPS.html#a94e0f8c6ea5cc72da5939874dcaddb1e',1,'VIPS']]],
+  ['update_5fsurrogate',['update_surrogate',['../classMore.html#ab33950a4fa62de6b3f247c544e13fe59',1,'More']]],
+  ['update_5fsurrogate_5fcenterontruemean',['update_surrogate_CenterOnTrueMean',['../classMore.html#a79f14b01eafe1c3b2966ee6a6cb157eb',1,'More']]],
+  ['update_5ftargets_5ffor_5fkl_5fbounds',['update_targets_for_KL_bounds',['../classVIPS.html#a6e88b8a4ffd410ee100455458b5d9e3b',1,'VIPS::update_targets_for_KL_bounds()'],['../classVIPS__Model.html#a6a99261a47556afce9b21c456000e44c',1,'VIPS_Model::update_targets_for_KL_bounds(uvec component_indices, bool update_weight_targets, bool update_comp_targets)'],['../classVIPS__Model.html#ab4c62ebc6e2bc4c2bbefe65d95a66b00',1,'VIPS_Model::update_targets_for_KL_bounds(bool update_weight_targets, bool update_comp_targets)'],['../classVIPS__PythonWrapper.html#a0e0bab32cbad5c82966440fd5d7e91db',1,'VIPS_PythonWrapper::update_targets_for_KL_bounds()']]],
+  ['update_5fweights',['update_weights',['../classVIPS.html#a6619407df7cc5032156caf8fb1855e95',1,'VIPS::update_weights()'],['../classVIPS__PythonWrapper.html#a79046b01fe1129abfd723c4d48ca1d45',1,'VIPS_PythonWrapper::update_weights()']]]
 ];

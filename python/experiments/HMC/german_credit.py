@@ -1,4 +1,4 @@
-
+import os
 import numpy as np
 from time import time
 from experiments.lnpdfs.create_target_lnpfs import build_german_credit_lnpdf
@@ -20,7 +20,11 @@ def lnpdf(theta):
 lnpdf.counter = 0
 
 def sample_with_progress(repeats, n_samps, n_steps, epsilon, path=None):
-    last = np.random.randn(25)
+    if path is not None:
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+    last = 100 * np.random.randn(25)
     timestamps = []
     all_samples = []
     nfevals = []
@@ -31,7 +35,7 @@ def sample_with_progress(repeats, n_samps, n_steps, epsilon, path=None):
         nfevals.append(lnpdf.counter)
         all_samples.append(samples)
         if path is not None:
-            np.savez(path+'_iter'+str(i), samples=last, timestamps=timestamps, nfevals=nfevals)
+            np.savez(path+'_iter'+str(i), samples=samples, timestamps=timestamps, nfevals=nfevals)
         print('finished iter'+str(i))
 
     timestamps.append(time())
@@ -39,5 +43,5 @@ def sample_with_progress(repeats, n_samps, n_steps, epsilon, path=None):
         np.savez(path, samples=all_samples, timestamps=timestamps, nfevals=nfevals)
 
 if __name__ == '__main__':
-    sample_with_progress(10, 100, 1, 1e-3)
+    sample_with_progress(100, 2000,5,0.001)
 

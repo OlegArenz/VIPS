@@ -22,8 +22,10 @@ def dlnpdf(theta):
 dlnpdf.counter = 0
 
 def sample(n_samps, n_iter, epsilon, path):
-    if not os.path.exists(path):
-        os.makedirs(path)
+    if path is not None:
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
     path=path+"/svgd"
     prior = multivariate_normal(np.zeros((num_dimensions)), conf_likelihood_var * np.eye(num_dimensions))
     x0 = prior.rvs(n_samps)

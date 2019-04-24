@@ -2,6 +2,7 @@ from time import time
 from autograd import elementwise_grad
 import numpy as np
 from scipy.stats import multivariate_normal
+import os
 
 from experiments.lnpdfs.create_target_lnpfs import build_breast_cancer_lnpdf
 from sampler.SVGD.python.svgd import SVGD as SVGD
@@ -16,6 +17,10 @@ def dlnpdf(theta):
 dlnpdf.counter = 0
 
 def sample(n_samps, n_iter, epsilon, path):
+    if path is not None:
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
     prior = multivariate_normal(np.zeros((num_dimensions)), np.eye(num_dimensions))
     x0 = prior.rvs(n_samps)
     start = time()

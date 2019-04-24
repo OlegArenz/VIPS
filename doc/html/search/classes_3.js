@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pyheaptypeobject',['PyHeapTypeObject',['../structPyHeapTypeObject.html',1,'']]]
+  ['sampledatabase',['SampleDatabase',['../classSampleDatabase.html',1,'']]]
 ];

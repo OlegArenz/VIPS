@@ -1,5 +1,6 @@
 import numpy as np
 from time import time
+import os
 from experiments.lnpdfs.create_target_lnpfs import build_breast_cancer_lnpdf
 from autograd import grad
 from pyhmc import hmc
@@ -17,6 +18,10 @@ def lnpdf(theta):
 lnpdf.counter = 0
 
 def sample_with_progress(repeats, n_samps, n_steps, epsilon, path=None):
+    if path is not None:
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
     last = np.random.randn(31)
     timestamps = []
     all_samples = []

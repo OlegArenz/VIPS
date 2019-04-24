@@ -9,41 +9,38 @@ Collaboration diagram for V\+I\+P\+S\+\_\+\+Python\+Wrapper\+:\nopagebreak
 \includegraphics[width=350pt]{classVIPS__PythonWrapper__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{Classes}
-\begin{DoxyCompactItemize}
-\item 
-class \hyperlink{classVIPS__PythonWrapper_1_1__object}{\+\_\+object}
-\item 
-class \hyperlink{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper}{V\+I\+P\+S\+\_\+\+Python\+Wrapper}
-\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-{\bfseries V\+I\+P\+S\+\_\+\+Python\+Wrapper} (int num\+\_\+dimensions, int num\+\_\+threads)\hypertarget{classVIPS__PythonWrapper_a4e4c340a7b224932307954327bd2cb1f}{}\label{classVIPS__PythonWrapper_a4e4c340a7b224932307954327bd2cb1f}
+{\bfseries V\+I\+P\+S\+\_\+\+Python\+Wrapper} (int num\+\_\+dimensions, int num\+\_\+threads, double min\+\_\+kl\+\_\+bound, double max\+\_\+kl\+\_\+bound)\hypertarget{classVIPS__PythonWrapper_ad5cc2281cd1d3abcd50618535c25b635}{}\label{classVIPS__PythonWrapper_ad5cc2281cd1d3abcd50618535c25b635}
 
 \item 
 void \hyperlink{classVIPS__PythonWrapper_a0a51f6e59a9b843e4a21262e4c119bbd}{add\+\_\+components} (double $\ast$new\+\_\+weights\+\_\+in, int new\+\_\+weights\+\_\+in\+\_\+dim1, double $\ast$new\+\_\+means\+\_\+in, int new\+\_\+means\+\_\+in\+\_\+dim1, int new\+\_\+means\+\_\+in\+\_\+dim2, double $\ast$new\+\_\+covs\+\_\+in, int new\+\_\+covs\+\_\+in\+\_\+dim1, int new\+\_\+covs\+\_\+in\+\_\+dim2, int new\+\_\+covs\+\_\+in\+\_\+dim3)
 \item 
-void \hyperlink{classVIPS__PythonWrapper_a66e3c05b6e653180186dfe64cbb0cbc8}{promote\+\_\+samples\+\_\+to\+\_\+components} (int N, double max\+\_\+exploration\+\_\+bonus, double tau, bool only\+\_\+check\+\_\+active\+\_\+samples, int max\+\_\+samples)
+void \hyperlink{classVIPS__PythonWrapper_a8b17b5e96e7535358411ab8adcbcd934}{promote\+\_\+samples\+\_\+to\+\_\+components} (int N, double max\+\_\+exploration\+\_\+bonus, double tau, bool only\+\_\+check\+\_\+active\+\_\+samples, int max\+\_\+samples, bool scale\+\_\+entropy=true, bool isotropic=false)
 \item 
-void {\bfseries delete\+\_\+low\+\_\+weight\+\_\+components} (double min\+\_\+weight)\hypertarget{classVIPS__PythonWrapper_afbf65f23a6bea8ba1571813c8916f8f3}{}\label{classVIPS__PythonWrapper_afbf65f23a6bea8ba1571813c8916f8f3}
+void {\bfseries delete\+\_\+low\+\_\+weight\+\_\+components} (double min\+\_\+weight, int n\+\_\+del=300)\hypertarget{classVIPS__PythonWrapper_aeff812cf743741fcfce1871331ea14fb}{}\label{classVIPS__PythonWrapper_aeff812cf743741fcfce1871331ea14fb}
 
 \item 
 void \hyperlink{classVIPS__PythonWrapper_ac0ae21747614c8e406953e9151578053}{draw\+\_\+samples} (double N, double temperature, double $\ast$$\ast$samples\+\_\+out\+\_\+ptr, int $\ast$samples\+\_\+out\+\_\+dim1, int $\ast$samples\+\_\+out\+\_\+dim2, int $\ast$$\ast$indices\+\_\+out, int $\ast$indices\+\_\+out\+\_\+dim1)
 \item 
 void \hyperlink{classVIPS__PythonWrapper_adc5d4067954f4164c25426e032b5335d}{draw\+\_\+samples\+\_\+weights} (double N, double $\ast$new\+\_\+weights\+\_\+in, int new\+\_\+weights\+\_\+in\+\_\+dim1, double $\ast$$\ast$samples\+\_\+out\+\_\+ptr, int $\ast$samples\+\_\+out\+\_\+dim1, int $\ast$samples\+\_\+out\+\_\+dim2, int $\ast$$\ast$indices\+\_\+out, int $\ast$indices\+\_\+out\+\_\+dim1)
 \item 
-void \hyperlink{classVIPS__PythonWrapper_a0437be0c6fedcf4ba567ad83a9f2ced0}{add\+\_\+samples} (double $\ast$samples\+\_\+ptr, int samples\+\_\+dim1, int samples\+\_\+dim2, int $\ast$indices\+\_\+ptr, int indices\+\_\+dim1, double $\ast$target\+\_\+densiies\+\_\+ptr, int td\+\_\+dim1)
+void \hyperlink{classVIPS__PythonWrapper_a9c0a069ddf27394166c523834677165a}{add\+\_\+samples\+\_\+mean\+\_\+cov} (double $\ast$samples\+\_\+ptr, int samples\+\_\+dim1, int samples\+\_\+dim2, double $\ast$target\+\_\+densities\+\_\+ptr, int td\+\_\+dim1, double $\ast$mean\+\_\+in, int mean\+\_\+in\+\_\+dim1, double $\ast$cov\+\_\+in, int cov\+\_\+in\+\_\+dim1, int cov\+\_\+in\+\_\+dim2)
 \item 
-void \hyperlink{classVIPS__PythonWrapper_adf716ef12426cda0f1b5f1d3aea52076}{activate\+\_\+newest\+\_\+samples} (int N)
+void \hyperlink{classVIPS__PythonWrapper_a5a54eb8d14b32740b286f5f91660b6c2}{add\+\_\+samples} (double $\ast$samples\+\_\+ptr, int samples\+\_\+dim1, int samples\+\_\+dim2, int $\ast$indices\+\_\+ptr, int indices\+\_\+dim1, double $\ast$target\+\_\+densities\+\_\+ptr, int td\+\_\+dim1)
+\item 
+void \hyperlink{classVIPS__PythonWrapper_a1a2c8975cee0e96085040518a871184c}{activate\+\_\+newest\+\_\+samples} (int N, bool keep\+\_\+old)
+\item 
+void \hyperlink{classVIPS__PythonWrapper_ad93d42f4b18f28193aaba35129e7c068}{select\+\_\+active\+\_\+samples} (int num\+\_\+comps, int num\+\_\+samples, double temperature, double $\ast$$\ast$num\+\_\+eff\+\_\+out\+\_\+ptr, int $\ast$num\+\_\+eff\+\_\+out\+\_\+dim1)
 \item 
 void \hyperlink{classVIPS__PythonWrapper_a0e0bab32cbad5c82966440fd5d7e91db}{update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds} (bool update\+\_\+weight\+\_\+targets, bool update\+\_\+comp\+\_\+targets)
 \item 
-void \hyperlink{classVIPS__PythonWrapper_a0740ed7e521f3ace439565f1d97f83a7}{update\+\_\+weights} (double epsilon, double tau, double max\+\_\+entropy\+\_\+decrease)
+void \hyperlink{classVIPS__PythonWrapper_a79046b01fe1129abfd723c4d48ca1d45}{update\+\_\+weights} (double epsilon, double tau, double max\+\_\+entropy\+\_\+decrease, bool be\+\_\+greedy)
 \item 
 void \hyperlink{classVIPS__PythonWrapper_ae5a7f4052cffe00c4fee8950387af61d}{apply\+\_\+lower\+\_\+bound\+\_\+on\+\_\+weights} (double $\ast$lb\+\_\+weights\+\_\+in, int lb\+\_\+weights\+\_\+in\+\_\+dim1)
 \item 
-void \hyperlink{classVIPS__PythonWrapper_a2a101ecaa2b2d445350e730a8e3b8064}{update\+\_\+components} (double max\+\_\+kl\+\_\+bound, double factor, double tau, double ridge\+\_\+coefficient, double max\+\_\+entropy\+\_\+decrease, double max\+\_\+active\+\_\+samples, bool dont\+\_\+learn\+\_\+correlations)
+void \hyperlink{classVIPS__PythonWrapper_a948b081338679c050ed174c6598383d3}{update\+\_\+components} (double tau, double ridge\+\_\+coefficient, double max\+\_\+entropy\+\_\+decrease, double max\+\_\+active\+\_\+samples, bool dont\+\_\+learn\+\_\+correlations, bool dont\+\_\+recompute\+\_\+densities, bool adapt\+\_\+ridge\+\_\+multipliers)
 \item 
 void \hyperlink{classVIPS__PythonWrapper_abf63652a9d7589cc189837ba41bcf322}{recompute\+\_\+densities} (bool only\+\_\+weights\+\_\+changed)
 \item 
@@ -61,6 +58,8 @@ void \hyperlink{classVIPS__PythonWrapper_aa650a92bb89042882d548a16fdf46205}{get\
 \item 
 void \hyperlink{classVIPS__PythonWrapper_acafd12e5bc30f51b703a73606d76de40}{get\+\_\+expected\+\_\+rewards} (double $\ast$$\ast$expected\+\_\+rewards\+\_\+out, int $\ast$expected\+\_\+rewards\+\_\+out\+\_\+dim1, double $\ast$$\ast$expected\+\_\+target\+\_\+densities\+\_\+out, int $\ast$expected\+\_\+target\+\_\+densities\+\_\+out\+\_\+dim1, double $\ast$$\ast$comp\+\_\+etd\+\_\+history\+\_\+out\+\_\+ptr, int $\ast$comp\+\_\+etd\+\_\+history\+\_\+out\+\_\+dim1, int $\ast$comp\+\_\+etd\+\_\+history\+\_\+out\+\_\+dim2, double $\ast$$\ast$comp\+\_\+reward\+\_\+history\+\_\+out\+\_\+ptr, int $\ast$comp\+\_\+reward\+\_\+history\+\_\+out\+\_\+dim1, int $\ast$comp\+\_\+reward\+\_\+history\+\_\+out\+\_\+dim2)
 \item 
+void \hyperlink{classVIPS__PythonWrapper_a84f192f13f7e83da0fff4801121a49c3}{get\+\_\+best\+\_\+interpolation} (int index, double $\ast$samples\+\_\+ptr, int samples\+\_\+dim1, int samples\+\_\+dim2, double $\ast$target\+\_\+densities\+\_\+ptr, int td\+\_\+dim1, double $\ast$target\+\_\+densities2\+\_\+ptr, int td2\+\_\+dim1, double scaling\+\_\+factor)
+\item 
 void \hyperlink{classVIPS__PythonWrapper_a4cd577f2c0ae57ba85fff0746f7c7d7a}{get\+\_\+log\+\_\+densities\+\_\+on\+\_\+mixture} (double $\ast$samples\+\_\+ptr, int samples\+\_\+dim1, int samples\+\_\+dim2, double $\ast$$\ast$sample\+\_\+densities\+\_\+out, int $\ast$sample\+\_\+densities\+\_\+out\+\_\+dim1)
 \item 
 void \hyperlink{classVIPS__PythonWrapper_a2be7ce5aaa742d979b35ade922139894}{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples} (double $\ast$entropy)
@@ -69,17 +68,13 @@ void \hyperlink{classVIPS__PythonWrapper_a8065f48c6060b03eaa2b5c7f1f89c636}{get\
 \item 
 void \hyperlink{classVIPS__PythonWrapper_aeef466a77710252e595fcd6e9909f975}{get\+\_\+num\+\_\+components} (int $\ast$num\+\_\+components\+\_\+out)
 \item 
-void \hyperlink{classVIPS__PythonWrapper_af3f8d3af3549a8296eecc25a115c31f8}{get\+\_\+debug\+\_\+info} (double $\ast$$\ast$samples\+\_\+out\+\_\+ptr, int $\ast$samples\+\_\+out\+\_\+dim1, int $\ast$samples\+\_\+out\+\_\+dim2, double $\ast$$\ast$target\+\_\+densities\+\_\+out\+\_\+ptr, int $\ast$target\+\_\+densities\+\_\+out\+\_\+dim1, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+out\+\_\+dim1, double $\ast$$\ast$log\+\_\+responsibilities\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+responsibilities\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+responsibilities\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+background\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+background\+\_\+out\+\_\+dim1, double $\ast$$\ast$importance\+\_\+weights\+\_\+out\+\_\+ptr, int $\ast$importance\+\_\+weights\+\_\+out\+\_\+dim1, int $\ast$importance\+\_\+weights\+\_\+out\+\_\+dim2, double $\ast$$\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+ptr, int $\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim1, int $\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim2)
+void \hyperlink{classVIPS__PythonWrapper_a64a647b24326d512082dbb60932eaa29}{get\+\_\+debug\+\_\+info} (double $\ast$$\ast$samples\+\_\+out\+\_\+ptr, int $\ast$samples\+\_\+out\+\_\+dim1, int $\ast$samples\+\_\+out\+\_\+dim2, double $\ast$$\ast$target\+\_\+densities\+\_\+out\+\_\+ptr, int $\ast$target\+\_\+densities\+\_\+out\+\_\+dim1, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+out\+\_\+dim1, double $\ast$$\ast$log\+\_\+responsibilities\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+responsibilities\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+responsibilities\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+background\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+background\+\_\+out\+\_\+dim1, double $\ast$$\ast$importance\+\_\+weights\+\_\+out\+\_\+ptr, int $\ast$importance\+\_\+weights\+\_\+out\+\_\+dim1, int $\ast$importance\+\_\+weights\+\_\+out\+\_\+dim2, double $\ast$$\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+ptr, int $\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim1, int $\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim2, int $\ast$$\ast$indices\+\_\+out, int $\ast$indices\+\_\+out\+\_\+dim1, int $\ast$$\ast$num\+\_\+samples\+\_\+history\+\_\+out\+\_\+ptr, int $\ast$num\+\_\+samples\+\_\+history\+\_\+out\+\_\+dim1, int $\ast$num\+\_\+samples\+\_\+history\+\_\+out\+\_\+dim2)
+\item 
+void \hyperlink{classVIPS__PythonWrapper_a8d258a474d63f442b89358c1793ccf7e}{compute\+\_\+\+K\+Ls\+\_\+between\+\_\+\+G\+M\+M\+\_\+and\+\_\+\+D\+B\+\_\+components} (bool reverse\+\_\+\+KL, float $\ast$$\ast$K\+L\+\_\+mat\+\_\+out\+\_\+ptr, int $\ast$K\+L\+\_\+mat\+\_\+out\+\_\+dim1, int $\ast$K\+L\+\_\+mat\+\_\+out\+\_\+dim2)
 \item 
 void \hyperlink{classVIPS__PythonWrapper_a007140eac0ea0ea69de16a7eb8c13293}{backup\+\_\+learner} ()
 \item 
 void \hyperlink{classVIPS__PythonWrapper_a3819321597ef3f522bd577f479ff81b0}{restore\+\_\+learner} ()
-\end{DoxyCompactItemize}
-\subsection*{Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-{\bfseries V\+I\+P\+S\+\_\+\+Python\+Wrapper\+\_\+swigregister} = \+\_\+\+V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+V\+I\+P\+S\+\_\+\+Python\+Wrapper\+\_\+swigregister\hypertarget{classVIPS__PythonWrapper_aa04e2827ddc5b63a00d4a4890424613f}{}\label{classVIPS__PythonWrapper_aa04e2827ddc5b63a00d4a4890424613f}
-
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -110,15 +105,19 @@ arma\+::vec {\bfseries last\+\_\+expected\+\_\+target\+\_\+densities}\hypertarge
 \subsection{Member Function Documentation}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!activate\+\_\+newest\+\_\+samples@{activate\+\_\+newest\+\_\+samples}}
 \index{activate\+\_\+newest\+\_\+samples@{activate\+\_\+newest\+\_\+samples}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
-\subsubsection[{\texorpdfstring{activate\+\_\+newest\+\_\+samples(int N)}{activate_newest_samples(int N)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::activate\+\_\+newest\+\_\+samples (
+\subsubsection[{\texorpdfstring{activate\+\_\+newest\+\_\+samples(int N, bool keep\+\_\+old)}{activate_newest_samples(int N, bool keep_old)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::activate\+\_\+newest\+\_\+samples (
 \begin{DoxyParamCaption}
-\item[{int}]{N}
+\item[{int}]{N, }
+\item[{bool}]{keep\+\_\+old}
 \end{DoxyParamCaption}
-)}\hypertarget{classVIPS__PythonWrapper_adf716ef12426cda0f1b5f1d3aea52076}{}\label{classVIPS__PythonWrapper_adf716ef12426cda0f1b5f1d3aea52076}
+)}\hypertarget{classVIPS__PythonWrapper_a1a2c8975cee0e96085040518a871184c}{}\label{classVIPS__PythonWrapper_a1a2c8975cee0e96085040518a871184c}
 Selects the N most recent samples and activates them (i.\+e. uses them for the upcoming learning iteration).~\newline
  Makes sure, that all relevant data (e.\+g. densities, importance weights, etc.) gets updated 
 \begin{DoxyParams}{Parameters}
-{\em N} & -\/ the maximum number of recent samples to be activated, actually number of activated samples might be less, iff the sample database does not contain sufficient samples. \\
+{\em N} & -\/ the maximum number of recent samples to be activated, actually number of activated samples might be less, iff the sample database does not contain sufficient samples.~\newline
+ \\
+\hline
+{\em keep\+\_\+old} & -\/ iff set to true, the currently active sample will remain active \\
 \hline
 \end{DoxyParams}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!add\+\_\+components@{add\+\_\+components}}
@@ -148,7 +147,7 @@ Adds new components~\newline
 \end{DoxyParams}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!add\+\_\+samples@{add\+\_\+samples}}
 \index{add\+\_\+samples@{add\+\_\+samples}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
-\subsubsection[{\texorpdfstring{add\+\_\+samples(double $\ast$samples\+\_\+ptr, int samples\+\_\+dim1, int samples\+\_\+dim2, int $\ast$indices\+\_\+ptr, int indices\+\_\+dim1, double $\ast$target\+\_\+densiies\+\_\+ptr, int td\+\_\+dim1)}{add_samples(double *samples_ptr, int samples_dim1, int samples_dim2, int *indices_ptr, int indices_dim1, double *target_densiies_ptr, int td_dim1)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::add\+\_\+samples (
+\subsubsection[{\texorpdfstring{add\+\_\+samples(double $\ast$samples\+\_\+ptr, int samples\+\_\+dim1, int samples\+\_\+dim2, int $\ast$indices\+\_\+ptr, int indices\+\_\+dim1, double $\ast$target\+\_\+densities\+\_\+ptr, int td\+\_\+dim1)}{add_samples(double *samples_ptr, int samples_dim1, int samples_dim2, int *indices_ptr, int indices_dim1, double *target_densities_ptr, int td_dim1)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::add\+\_\+samples (
 \begin{DoxyParamCaption}
 \item[{double $\ast$}]{samples\+\_\+ptr, }
 \item[{int}]{samples\+\_\+dim1, }
@@ -158,19 +157,50 @@ Adds new components~\newline
 \item[{double $\ast$}]{target\+\_\+densities\+\_\+ptr, }
 \item[{int}]{td\+\_\+dim1}
 \end{DoxyParamCaption}
-)}\hypertarget{classVIPS__PythonWrapper_a0437be0c6fedcf4ba567ad83a9f2ced0}{}\label{classVIPS__PythonWrapper_a0437be0c6fedcf4ba567ad83a9f2ced0}
+)}\hypertarget{classVIPS__PythonWrapper_a5a54eb8d14b32740b286f5f91660b6c2}{}\label{classVIPS__PythonWrapper_a5a54eb8d14b32740b286f5f91660b6c2}
 Adds new samples to the database. Note that the samples will not be used for learning, until they have been activated (see activate\+\_\+newest\+\_\+samples).~\newline
  The samples are assumed to have been drawn from the current model and the indices of the relevant components are to be provided for computing background distributions when necessary. 
 \begin{DoxyParams}{Parameters}
 {\em new\+\_\+samples} & -\/ a matrix of size N\+\_\+dimensions X N\+\_\+samples \\
 \hline
-{\em new\+\_\+target\+\_\+densities} & -\/ a vector of size N\+\_\+samples containing the unnormalized densities on the target distribution \\
-\hline
 {\em used\+\_\+components} & -\/ a vector of size N\+\_\+samples containing the indices of the components the corresponding samples have been drawn from \\
+\hline
+{\em new\+\_\+target\+\_\+densities} & -\/ a vector of size N\+\_\+samples containing the unnormalized densities on the target distribution \\
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
-\hyperlink{classVIPS__PythonWrapper_adf716ef12426cda0f1b5f1d3aea52076}{activate\+\_\+newest\+\_\+samples} 
+\hyperlink{classVIPS__PythonWrapper_a1a2c8975cee0e96085040518a871184c}{activate\+\_\+newest\+\_\+samples} 
+\end{DoxySeeAlso}
+\index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!add\+\_\+samples\+\_\+mean\+\_\+cov@{add\+\_\+samples\+\_\+mean\+\_\+cov}}
+\index{add\+\_\+samples\+\_\+mean\+\_\+cov@{add\+\_\+samples\+\_\+mean\+\_\+cov}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
+\subsubsection[{\texorpdfstring{add\+\_\+samples\+\_\+mean\+\_\+cov(double $\ast$samples\+\_\+ptr, int samples\+\_\+dim1, int samples\+\_\+dim2, double $\ast$target\+\_\+densities\+\_\+ptr, int td\+\_\+dim1, double $\ast$mean\+\_\+in, int mean\+\_\+in\+\_\+dim1, double $\ast$cov\+\_\+in, int cov\+\_\+in\+\_\+dim1, int cov\+\_\+in\+\_\+dim2)}{add_samples_mean_cov(double *samples_ptr, int samples_dim1, int samples_dim2, double *target_densities_ptr, int td_dim1, double *mean_in, int mean_in_dim1, double *cov_in, int cov_in_dim1, int cov_in_dim2)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::add\+\_\+samples\+\_\+mean\+\_\+cov (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{samples\+\_\+ptr, }
+\item[{int}]{samples\+\_\+dim1, }
+\item[{int}]{samples\+\_\+dim2, }
+\item[{double $\ast$}]{target\+\_\+densities\+\_\+ptr, }
+\item[{int}]{td\+\_\+dim1, }
+\item[{double $\ast$}]{mean\+\_\+in, }
+\item[{int}]{mean\+\_\+in\+\_\+dim1, }
+\item[{double $\ast$}]{cov\+\_\+in, }
+\item[{int}]{cov\+\_\+in\+\_\+dim1, }
+\item[{int}]{cov\+\_\+in\+\_\+dim2}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS__PythonWrapper_a9c0a069ddf27394166c523834677165a}{}\label{classVIPS__PythonWrapper_a9c0a069ddf27394166c523834677165a}
+Adds new samples to the database. Note that the samples will not be used for learning, until they have been activated (see activate\+\_\+newest\+\_\+samples).~\newline
+ The samples are assumed to have been drawn from a Gaussian with specified mean and covariance matrix 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+samples} & -\/ a matrix of size N\+\_\+dimensions X N\+\_\+samples \\
+\hline
+{\em new\+\_\+target\+\_\+densities} & -\/ a vector of size N\+\_\+samples containing the unnormalized densities on the target distribution \\
+\hline
+{\em used\+\_\+mean} & -\/ a vector containing the mean of the Gaussian used for drawing the samples \\
+\hline
+{\em used\+\_\+cov} & -\/ a matrix containing the covariance matrix of the Gaussian used for drawing the samples \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classVIPS__PythonWrapper_a1a2c8975cee0e96085040518a871184c}{activate\+\_\+newest\+\_\+samples} 
 \end{DoxySeeAlso}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!apply\+\_\+lower\+\_\+bound\+\_\+on\+\_\+weights@{apply\+\_\+lower\+\_\+bound\+\_\+on\+\_\+weights}}
 \index{apply\+\_\+lower\+\_\+bound\+\_\+on\+\_\+weights@{apply\+\_\+lower\+\_\+bound\+\_\+on\+\_\+weights}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
@@ -195,6 +225,24 @@ Lower bounds all weights and renormalizes by scaling those weights that have not
 creates a backup of the the current state of the learner (overwriting previous backup). \begin{DoxySeeAlso}{See also}
 restore\+\_\+backup() 
 \end{DoxySeeAlso}
+\index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!compute\+\_\+\+K\+Ls\+\_\+between\+\_\+\+G\+M\+M\+\_\+and\+\_\+\+D\+B\+\_\+components@{compute\+\_\+\+K\+Ls\+\_\+between\+\_\+\+G\+M\+M\+\_\+and\+\_\+\+D\+B\+\_\+components}}
+\index{compute\+\_\+\+K\+Ls\+\_\+between\+\_\+\+G\+M\+M\+\_\+and\+\_\+\+D\+B\+\_\+components@{compute\+\_\+\+K\+Ls\+\_\+between\+\_\+\+G\+M\+M\+\_\+and\+\_\+\+D\+B\+\_\+components}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
+\subsubsection[{\texorpdfstring{compute\+\_\+\+K\+Ls\+\_\+between\+\_\+\+G\+M\+M\+\_\+and\+\_\+\+D\+B\+\_\+components(bool reverse\+\_\+\+K\+L, float $\ast$$\ast$\+K\+L\+\_\+mat\+\_\+out\+\_\+ptr, int $\ast$\+K\+L\+\_\+mat\+\_\+out\+\_\+dim1, int $\ast$\+K\+L\+\_\+mat\+\_\+out\+\_\+dim2)}{compute_KLs_between_GMM_and_DB_components(bool reverse_KL, float **KL_mat_out_ptr, int *KL_mat_out_dim1, int *KL_mat_out_dim2)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::compute\+\_\+\+K\+Ls\+\_\+between\+\_\+\+G\+M\+M\+\_\+and\+\_\+\+D\+B\+\_\+components (
+\begin{DoxyParamCaption}
+\item[{bool}]{reverse\+\_\+\+KL, }
+\item[{float $\ast$$\ast$}]{K\+L\+\_\+mat\+\_\+out\+\_\+ptr, }
+\item[{int $\ast$}]{K\+L\+\_\+mat\+\_\+out\+\_\+dim1, }
+\item[{int $\ast$}]{K\+L\+\_\+mat\+\_\+out\+\_\+dim2}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS__PythonWrapper_a8d258a474d63f442b89358c1793ccf7e}{}\label{classVIPS__PythonWrapper_a8d258a474d63f442b89358c1793ccf7e}
+For each component of the current approximation compute the KL w.\+r.\+t. each component that is stored in the database. If the parameter reverse\+\_\+\+KL is set to true, computes instead the KL for each database component w.\+r.\+t. each \hyperlink{classGMM}{G\+MM} component 
+\begin{DoxyParams}{Parameters}
+{\em reverse\+\_\+\+KL} & -\/ if set to bool compute the KL between database\+\_\+componets w.\+r.\+t. \hyperlink{classGMM}{G\+MM} components \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a matrix of size components\+\_\+in\+\_\+gmm x components\+\_\+in\+\_\+database (or transposed if computing the reverse KL) containing the relative entropies. 
+\end{DoxyReturn}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!draw\+\_\+samples@{draw\+\_\+samples}}
 \index{draw\+\_\+samples@{draw\+\_\+samples}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
 \subsubsection[{\texorpdfstring{draw\+\_\+samples(double N, double temperature, double $\ast$$\ast$samples\+\_\+out\+\_\+ptr, int $\ast$samples\+\_\+out\+\_\+dim1, int $\ast$samples\+\_\+out\+\_\+dim2, int $\ast$$\ast$indices\+\_\+out, int $\ast$indices\+\_\+out\+\_\+dim1)}{draw_samples(double N, double temperature, double **samples_out_ptr, int *samples_out_dim1, int *samples_out_dim2, int **indices_out, int *indices_out_dim1)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::draw\+\_\+samples (
@@ -234,7 +282,7 @@ indices -\/ for each sample, the index of the component that was used for drawin
 \item[{int $\ast$}]{indices\+\_\+out\+\_\+dim1}
 \end{DoxyParamCaption}
 )}\hypertarget{classVIPS__PythonWrapper_adc5d4067954f4164c25426e032b5335d}{}\label{classVIPS__PythonWrapper_adc5d4067954f4164c25426e032b5335d}
-Sample from the current \hyperlink{classGMM}{G\+MM} approximation, but use the specified the given component coefficient. 
+Sample from the current \hyperlink{classGMM}{G\+MM} approximation, but use the specified component coefficients. 
 \begin{DoxyParams}{Parameters}
 {\em N} & -\/ the numb er of samples to been drawn \\
 \hline
@@ -268,9 +316,46 @@ means -\/ means for each component
 
 covs -\/ covariance matrices for each component 
 \end{DoxyReturn}
+\index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!get\+\_\+best\+\_\+interpolation@{get\+\_\+best\+\_\+interpolation}}
+\index{get\+\_\+best\+\_\+interpolation@{get\+\_\+best\+\_\+interpolation}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
+\subsubsection[{\texorpdfstring{get\+\_\+best\+\_\+interpolation(int index, double $\ast$samples\+\_\+ptr, int samples\+\_\+dim1, int samples\+\_\+dim2, double $\ast$target\+\_\+densities\+\_\+ptr, int td\+\_\+dim1, double $\ast$target\+\_\+densities2\+\_\+ptr, int td2\+\_\+dim1, double scaling\+\_\+factor)}{get_best_interpolation(int index, double *samples_ptr, int samples_dim1, int samples_dim2, double *target_densities_ptr, int td_dim1, double *target_densities2_ptr, int td2_dim1, double scaling_factor)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::get\+\_\+best\+\_\+interpolation (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{double $\ast$}]{samples\+\_\+ptr, }
+\item[{int}]{samples\+\_\+dim1, }
+\item[{int}]{samples\+\_\+dim2, }
+\item[{double $\ast$}]{target\+\_\+densities\+\_\+ptr, }
+\item[{int}]{td\+\_\+dim1, }
+\item[{double $\ast$}]{target\+\_\+densities2\+\_\+ptr, }
+\item[{int}]{td2\+\_\+dim1, }
+\item[{double}]{scaling\+\_\+factor}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS__PythonWrapper_a84f192f13f7e83da0fff4801121a49c3}{}\label{classVIPS__PythonWrapper_a84f192f13f7e83da0fff4801121a49c3}
+For a given component, find the best interpolation between the current covariance matrix and a spherical one using a linear linesearch. ~\newline
+ The quality of the covariance matrix is estimated based on an importance weighted Monte Carlo estimate of the expected loglikelihood on the target distribution. ~\newline
+ The Monte Carlo estimate is computed based on a given set of samples, the corresponding target loglikelihoods and the loglikelihood of the sampling distribution. ~\newline
+ I\+M\+P\+O\+R\+T\+A\+NT\+: This method will change the component to the best interpolation. ~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em index} & -\/ index specifying which component of the current model should be adapted ~\newline
+ \\
+\hline
+{\em samples\+\_\+ptr} & -\/ samples for the Monte Carlo estimate ~\newline
+ \\
+\hline
+{\em target\+\_\+densities\+\_\+ptr} & -\/ vector containing the loglikelihood under the target distribution for each sample ~\newline
+ \\
+\hline
+{\em target\+\_\+densities2\+\_\+ptr} & -\/ vector containing the loglikelihood of the distribution that was used for drawing the samples ~\newline
+ \\
+\hline
+{\em scaling\+\_\+factor} & -\/ the spherical covariance matrix is given by scaling\+\_\+factor $\ast$ eye() ~\newline
+ \\
+\hline
+\end{DoxyParams}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!get\+\_\+debug\+\_\+info@{get\+\_\+debug\+\_\+info}}
 \index{get\+\_\+debug\+\_\+info@{get\+\_\+debug\+\_\+info}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
-\subsubsection[{\texorpdfstring{get\+\_\+debug\+\_\+info(double $\ast$$\ast$samples\+\_\+out\+\_\+ptr, int $\ast$samples\+\_\+out\+\_\+dim1, int $\ast$samples\+\_\+out\+\_\+dim2, double $\ast$$\ast$target\+\_\+densities\+\_\+out\+\_\+ptr, int $\ast$target\+\_\+densities\+\_\+out\+\_\+dim1, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+out\+\_\+dim1, double $\ast$$\ast$log\+\_\+responsibilities\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+responsibilities\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+responsibilities\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+background\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+background\+\_\+out\+\_\+dim1, double $\ast$$\ast$importance\+\_\+weights\+\_\+out\+\_\+ptr, int $\ast$importance\+\_\+weights\+\_\+out\+\_\+dim1, int $\ast$importance\+\_\+weights\+\_\+out\+\_\+dim2, double $\ast$$\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+ptr, int $\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim1, int $\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim2)}{get_debug_info(double **samples_out_ptr, int *samples_out_dim1, int *samples_out_dim2, double **target_densities_out_ptr, int *target_densities_out_dim1, double **log_densities_on_model_comps_out_ptr, int *log_densities_on_model_comps_out_dim1, int *log_densities_on_model_comps_out_dim2, double **log_joint_densities_out_ptr, int *log_joint_densities_out_dim1, int *log_joint_densities_out_dim2, double **log_densities_on_model_out_ptr, int *log_densities_on_model_out_dim1, double **log_responsibilities_out_ptr, int *log_responsibilities_out_dim1, int *log_responsibilities_out_dim2, double **log_densities_on_background_out_ptr, int *log_densities_on_background_out_dim1, double **importance_weights_out_ptr, int *importance_weights_out_dim1, int *importance_weights_out_dim2, double **importance_weights_normalized_out_ptr, int *importance_weights_normalized_out_dim1, int *importance_weights_normalized_out_dim2)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::get\+\_\+debug\+\_\+info (
+\subsubsection[{\texorpdfstring{get\+\_\+debug\+\_\+info(double $\ast$$\ast$samples\+\_\+out\+\_\+ptr, int $\ast$samples\+\_\+out\+\_\+dim1, int $\ast$samples\+\_\+out\+\_\+dim2, double $\ast$$\ast$target\+\_\+densities\+\_\+out\+\_\+ptr, int $\ast$target\+\_\+densities\+\_\+out\+\_\+dim1, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+comps\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+joint\+\_\+densities\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+model\+\_\+out\+\_\+dim1, double $\ast$$\ast$log\+\_\+responsibilities\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+responsibilities\+\_\+out\+\_\+dim1, int $\ast$log\+\_\+responsibilities\+\_\+out\+\_\+dim2, double $\ast$$\ast$log\+\_\+densities\+\_\+on\+\_\+background\+\_\+out\+\_\+ptr, int $\ast$log\+\_\+densities\+\_\+on\+\_\+background\+\_\+out\+\_\+dim1, double $\ast$$\ast$importance\+\_\+weights\+\_\+out\+\_\+ptr, int $\ast$importance\+\_\+weights\+\_\+out\+\_\+dim1, int $\ast$importance\+\_\+weights\+\_\+out\+\_\+dim2, double $\ast$$\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+ptr, int $\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim1, int $\ast$importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim2, int $\ast$$\ast$indices\+\_\+out, int $\ast$indices\+\_\+out\+\_\+dim1, int $\ast$$\ast$num\+\_\+samples\+\_\+history\+\_\+out\+\_\+ptr, int $\ast$num\+\_\+samples\+\_\+history\+\_\+out\+\_\+dim1, int $\ast$num\+\_\+samples\+\_\+history\+\_\+out\+\_\+dim2)}{get_debug_info(double **samples_out_ptr, int *samples_out_dim1, int *samples_out_dim2, double **target_densities_out_ptr, int *target_densities_out_dim1, double **log_densities_on_model_comps_out_ptr, int *log_densities_on_model_comps_out_dim1, int *log_densities_on_model_comps_out_dim2, double **log_joint_densities_out_ptr, int *log_joint_densities_out_dim1, int *log_joint_densities_out_dim2, double **log_densities_on_model_out_ptr, int *log_densities_on_model_out_dim1, double **log_responsibilities_out_ptr, int *log_responsibilities_out_dim1, int *log_responsibilities_out_dim2, double **log_densities_on_background_out_ptr, int *log_densities_on_background_out_dim1, double **importance_weights_out_ptr, int *importance_weights_out_dim1, int *importance_weights_out_dim2, double **importance_weights_normalized_out_ptr, int *importance_weights_normalized_out_dim1, int *importance_weights_normalized_out_dim2, int **indices_out, int *indices_out_dim1, int **num_samples_history_out_ptr, int *num_samples_history_out_dim1, int *num_samples_history_out_dim2)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::get\+\_\+debug\+\_\+info (
 \begin{DoxyParamCaption}
 \item[{double $\ast$$\ast$}]{samples\+\_\+out\+\_\+ptr, }
 \item[{int $\ast$}]{samples\+\_\+out\+\_\+dim1, }
@@ -295,9 +380,14 @@ covs -\/ covariance matrices for each component
 \item[{int $\ast$}]{importance\+\_\+weights\+\_\+out\+\_\+dim2, }
 \item[{double $\ast$$\ast$}]{importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+ptr, }
 \item[{int $\ast$}]{importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim1, }
-\item[{int $\ast$}]{importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim2}
+\item[{int $\ast$}]{importance\+\_\+weights\+\_\+normalized\+\_\+out\+\_\+dim2, }
+\item[{int $\ast$$\ast$}]{indices\+\_\+out, }
+\item[{int $\ast$}]{indices\+\_\+out\+\_\+dim1, }
+\item[{int $\ast$$\ast$}]{num\+\_\+samples\+\_\+history\+\_\+out\+\_\+ptr, }
+\item[{int $\ast$}]{num\+\_\+samples\+\_\+history\+\_\+out\+\_\+dim1, }
+\item[{int $\ast$}]{num\+\_\+samples\+\_\+history\+\_\+out\+\_\+dim2}
 \end{DoxyParamCaption}
-)}\hypertarget{classVIPS__PythonWrapper_af3f8d3af3549a8296eecc25a115c31f8}{}\label{classVIPS__PythonWrapper_af3f8d3af3549a8296eecc25a115c31f8}
+)}\hypertarget{classVIPS__PythonWrapper_a64a647b24326d512082dbb60932eaa29}{}\label{classVIPS__PythonWrapper_a64a647b24326d512082dbb60932eaa29}
 Get various densities, importance weights, etc. for debug purposes. \begin{DoxyReturn}{Returns}
 a tuple, st. ~\newline
  tuple\mbox{[}0\mbox{]} contains the samples ~\newline
@@ -308,7 +398,9 @@ a tuple, st. ~\newline
  tuple\mbox{[}5\mbox{]} contains the log responsibilities p(o$\vert$s) ~\newline
  tuple\mbox{[}6\mbox{]} contains the densitis on the background distribution q(s) ~\newline
  tuple\mbox{[}7\mbox{]} contains the importance weights ~\newline
- tuple\mbox{[}8\mbox{]} contains the normalized importance weights 
+ tuple\mbox{[}8\mbox{]} contains the normalized importance weights ~\newline
+ tuple\mbox{[}9\mbox{]} contains the indices of the active samples ~\newline
+ tuple\mbox{[}10\mbox{]} contains the history of the number of samples drawn from each component 
 \end{DoxyReturn}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples@{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples}}
 \index{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples@{get\+\_\+entropy\+\_\+estimate\+\_\+on\+\_\+active\+\_\+samples}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
@@ -469,15 +561,17 @@ log\+\_\+weights\+\_\+out\+\_\+ptr, the log-\/weights log(p(o))
 \end{DoxyReturn}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!promote\+\_\+samples\+\_\+to\+\_\+components@{promote\+\_\+samples\+\_\+to\+\_\+components}}
 \index{promote\+\_\+samples\+\_\+to\+\_\+components@{promote\+\_\+samples\+\_\+to\+\_\+components}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
-\subsubsection[{\texorpdfstring{promote\+\_\+samples\+\_\+to\+\_\+components(int N, double max\+\_\+exploration\+\_\+bonus, double tau, bool only\+\_\+check\+\_\+active\+\_\+samples, int max\+\_\+samples)}{promote_samples_to_components(int N, double max_exploration_bonus, double tau, bool only_check_active_samples, int max_samples)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::promote\+\_\+samples\+\_\+to\+\_\+components (
+\subsubsection[{\texorpdfstring{promote\+\_\+samples\+\_\+to\+\_\+components(int N, double max\+\_\+exploration\+\_\+bonus, double tau, bool only\+\_\+check\+\_\+active\+\_\+samples, int max\+\_\+samples, bool scale\+\_\+entropy=true, bool isotropic=false)}{promote_samples_to_components(int N, double max_exploration_bonus, double tau, bool only_check_active_samples, int max_samples, bool scale_entropy=true, bool isotropic=false)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::promote\+\_\+samples\+\_\+to\+\_\+components (
 \begin{DoxyParamCaption}
 \item[{int}]{N, }
 \item[{double}]{max\+\_\+exploration\+\_\+bonus, }
 \item[{double}]{tau, }
 \item[{bool}]{only\+\_\+check\+\_\+active\+\_\+samples, }
-\item[{int}]{max\+\_\+samples}
+\item[{int}]{max\+\_\+samples, }
+\item[{bool}]{scale\+\_\+entropy = {\ttfamily true}, }
+\item[{bool}]{isotropic = {\ttfamily false}}
 \end{DoxyParamCaption}
-)}\hypertarget{classVIPS__PythonWrapper_a66e3c05b6e653180186dfe64cbb0cbc8}{}\label{classVIPS__PythonWrapper_a66e3c05b6e653180186dfe64cbb0cbc8}
+)}\hypertarget{classVIPS__PythonWrapper_a8b17b5e96e7535358411ab8adcbcd934}{}\label{classVIPS__PythonWrapper_a8b17b5e96e7535358411ab8adcbcd934}
 Selects promising locations among the current samples and create new components at these positions.~\newline
  The covariance matrices are given by the weighted sums of the covariance matrices and weights of the current model, where the weights are given by the responsibilities of the model components for the new location. Locations are promising if the residual given by residual = log(p\+\_\+intractable(x)) -\/ log(p\+\_\+model(x) + exp(max\+\_\+exploration\+\_\+bonus)) is high.
 
@@ -492,8 +586,14 @@ Selects promising locations among the current samples and create new components 
 {\em only\+\_\+check\+\_\+active\+\_\+samples} & -\/ if set to true, the residual is computed on the active samples only, otherwise, the residual is computed for all samples in the sample database. ~\newline
  \\
 \hline
+{\em tau} & -\/ can be used to assign higher weight to the bonus for samples that have low density on the current model \\
+\hline
 {\em max\+\_\+samples} & -\/ maximum number of samples to be considered ~\newline
  \\
+\hline
+{\em scale\+\_\+entropy} & -\/ if true, scale the entropy of the newly created component such that it corresponds to the average entropy  p(o) H(p(x$\vert$o)) \\
+\hline
+{\em isotropic} & -\/ if true, initialize new components as isotropic (identity-\/matrix if scale\+\_\+entropy = False) instead of interpolating. \\
 \hline
 \end{DoxyParams}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!recompute\+\_\+densities@{recompute\+\_\+densities}}
@@ -518,30 +618,69 @@ Recomputes the densities of various distributions as well as the importance weig
 restores the state of the learner from a backup. \begin{DoxySeeAlso}{See also}
 \hyperlink{classVIPS__PythonWrapper_a007140eac0ea0ea69de16a7eb8c13293}{backup\+\_\+learner()} 
 \end{DoxySeeAlso}
+\index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!select\+\_\+active\+\_\+samples@{select\+\_\+active\+\_\+samples}}
+\index{select\+\_\+active\+\_\+samples@{select\+\_\+active\+\_\+samples}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
+\subsubsection[{\texorpdfstring{select\+\_\+active\+\_\+samples(int num\+\_\+comps, int num\+\_\+samples, double temperature, double $\ast$$\ast$num\+\_\+eff\+\_\+out\+\_\+ptr, int $\ast$num\+\_\+eff\+\_\+out\+\_\+dim1)}{select_active_samples(int num_comps, int num_samples, double temperature, double **num_eff_out_ptr, int *num_eff_out_dim1)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::select\+\_\+active\+\_\+samples (
+\begin{DoxyParamCaption}
+\item[{int}]{num\+\_\+comps, }
+\item[{int}]{num\+\_\+samples, }
+\item[{double}]{temperature, }
+\item[{double $\ast$$\ast$}]{num\+\_\+eff\+\_\+out\+\_\+ptr, }
+\item[{int $\ast$}]{num\+\_\+eff\+\_\+out\+\_\+dim1}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS__PythonWrapper_ad93d42f4b18f28193aaba35129e7c068}{}\label{classVIPS__PythonWrapper_ad93d42f4b18f28193aaba35129e7c068}
+This function is used for building a mixture model for importance sampling.~\newline
+ For each component p(x$\vert$o) in the current approximation, iteratively sample num\+\_\+comps components p(x$\vert$i) from the sample database (these have been used for drawing samples before) according to p  p(mu\+\_\+i$\vert$o) -\/ n\+\_\+usages Adds all samples from each chosen component and stops if num\+\_\+samples are selected ~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em num\+\_\+comps} & -\/ maximum number of components that should be selected for each component in the approximation ~\newline
+ \\
+\hline
+{\em num\+\_\+samples} & -\/ maximum number of samples that should be aselected for each component in the approximation ~\newline
+ \\
+\hline
+{\em temperature} & -\/ temperature for scaling the probability for sampling components ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a vector containing the number of effective samples for each component 
+\end{DoxyReturn}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!update\+\_\+components@{update\+\_\+components}}
 \index{update\+\_\+components@{update\+\_\+components}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
-\subsubsection[{\texorpdfstring{update\+\_\+components(double max\+\_\+kl\+\_\+bound, double factor, double tau, double ridge\+\_\+coefficient, double max\+\_\+entropy\+\_\+decrease, double max\+\_\+active\+\_\+samples, bool dont\+\_\+learn\+\_\+correlations)}{update_components(double max_kl_bound, double factor, double tau, double ridge_coefficient, double max_entropy_decrease, double max_active_samples, bool dont_learn_correlations)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::update\+\_\+components (
+\subsubsection[{\texorpdfstring{update\+\_\+components(double tau, double ridge\+\_\+coefficient, double max\+\_\+entropy\+\_\+decrease, double max\+\_\+active\+\_\+samples, bool dont\+\_\+learn\+\_\+correlations, bool dont\+\_\+recompute\+\_\+densities, bool adapt\+\_\+ridge\+\_\+multipliers)}{update_components(double tau, double ridge_coefficient, double max_entropy_decrease, double max_active_samples, bool dont_learn_correlations, bool dont_recompute_densities, bool adapt_ridge_multipliers)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::update\+\_\+components (
 \begin{DoxyParamCaption}
-\item[{double}]{max\+\_\+kl\+\_\+bound, }
-\item[{double}]{factor, }
 \item[{double}]{tau, }
 \item[{double}]{ridge\+\_\+coefficient, }
 \item[{double}]{max\+\_\+entropy\+\_\+decrease, }
 \item[{double}]{max\+\_\+active\+\_\+samples, }
-\item[{bool}]{dont\+\_\+learn\+\_\+correlations}
+\item[{bool}]{dont\+\_\+learn\+\_\+correlations, }
+\item[{bool}]{dont\+\_\+recompute\+\_\+densities, }
+\item[{bool}]{adapt\+\_\+ridge\+\_\+multipliers}
 \end{DoxyParamCaption}
-)}\hypertarget{classVIPS__PythonWrapper_a2a101ecaa2b2d445350e730a8e3b8064}{}\label{classVIPS__PythonWrapper_a2a101ecaa2b2d445350e730a8e3b8064}
+)}\hypertarget{classVIPS__PythonWrapper_a948b081338679c050ed174c6598383d3}{}\label{classVIPS__PythonWrapper_a948b081338679c050ed174c6598383d3}
 Updates the components p(s$\vert$o). 
 \begin{DoxyParams}{Parameters}
-{\em max\+\_\+kl\+\_\+bound} & -\/ hard upper bound for each KL bound \\
+{\em tau} & -\/ entropy coefficient ~\newline
+ \\
 \hline
-{\em factor} & -\/ factor for computing the KL bound for each component based on its number of effective samples \\
+{\em ridge\+\_\+coefficient} & -\/ coefficient used for regularization when fitting the quadratic surrogate ~\newline
+ \\
 \hline
-{\em tau} & -\/ entropy coefficient \\
+{\em max\+\_\+entropy\+\_\+decrease} & -\/ maximum allowed decrease in entropy for each component ~\newline
+ \\
 \hline
-{\em ridge\+\_\+coefficient} & -\/ coefficient used for regularization when fitting the quadratic surrogate \\
+{\em max\+\_\+active\+\_\+samples} & -\/ size of the subset of samples that should be used for each component update ~\newline
+ \\
 \hline
-{\em max\+\_\+entropy\+\_\+decrease} & -\/ maximum allowed decrease in entropy for each component \\
+{\em dont\+\_\+learn\+\_\+correlations} & -\/ iff true, fit a quadratic surrogate where R is diagonal (experimental) ~\newline
+ \\
+\hline
+{\em dont\+\_\+recompute\+\_\+densities} & -\/ do not recompute the densities after the component update ~\newline
+ \\
+\hline
+{\em adapt\+\_\+ridge\+\_\+multipliers} & -\/ if true, the ridge\+\_\+coefficient will be adapted for each component ~\newline
+ \\
 \hline
 \end{DoxyParams}
 \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds@{update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds}}
@@ -554,20 +693,26 @@ Updates the components p(s$\vert$o).
 )}\hypertarget{classVIPS__PythonWrapper_a0e0bab32cbad5c82966440fd5d7e91db}{}\label{classVIPS__PythonWrapper_a0e0bab32cbad5c82966440fd5d7e91db}
 Sets the current components p(s$\vert$o) and the current weight distribution p(o) as the target for the respective KL bounds. \index{V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}!update\+\_\+weights@{update\+\_\+weights}}
 \index{update\+\_\+weights@{update\+\_\+weights}!V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
-\subsubsection[{\texorpdfstring{update\+\_\+weights(double epsilon, double tau, double max\+\_\+entropy\+\_\+decrease)}{update_weights(double epsilon, double tau, double max_entropy_decrease)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::update\+\_\+weights (
+\subsubsection[{\texorpdfstring{update\+\_\+weights(double epsilon, double tau, double max\+\_\+entropy\+\_\+decrease, bool be\+\_\+greedy)}{update_weights(double epsilon, double tau, double max_entropy_decrease, bool be_greedy)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Python\+Wrapper\+::update\+\_\+weights (
 \begin{DoxyParamCaption}
 \item[{double}]{epsilon, }
 \item[{double}]{tau, }
-\item[{double}]{max\+\_\+entropy\+\_\+decrease}
+\item[{double}]{max\+\_\+entropy\+\_\+decrease, }
+\item[{bool}]{be\+\_\+greedy}
 \end{DoxyParamCaption}
-)}\hypertarget{classVIPS__PythonWrapper_a0740ed7e521f3ace439565f1d97f83a7}{}\label{classVIPS__PythonWrapper_a0740ed7e521f3ace439565f1d97f83a7}
+)}\hypertarget{classVIPS__PythonWrapper_a79046b01fe1129abfd723c4d48ca1d45}{}\label{classVIPS__PythonWrapper_a79046b01fe1129abfd723c4d48ca1d45}
 update the component weights p(o) 
 \begin{DoxyParams}{Parameters}
-{\em epsilon} & -\/ KL bound \\
+{\em epsilon} & -\/ KL bound ~\newline
+ \\
 \hline
-{\em tau} & -\/ entropy coefficient \\
+{\em tau} & -\/ entropy coefficient ~\newline
+ \\
 \hline
-{\em max\+\_\+entropy\+\_\+decrease} & -\/ lower bound on entropy \\
+{\em max\+\_\+entropy\+\_\+decrease} & -\/ lower bound on entropy ~\newline
+ \\
+\hline
+{\em be\+\_\+greedy} & -\/ if true, don\textquotesingle{}t perform K\+L-\/bound optimization but use the greedy optimal weights \\
 \hline
 \end{DoxyParams}
 
@@ -575,5 +720,4 @@ update the component weights p(o)
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+h\item 
-V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+py\item 
 V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+cpp\end{DoxyCompactItemize}

@@ -49,7 +49,7 @@ int More::run_lbfgs_nlopt(std::vector<double> &initial, bool dont_learn_omega) {
  //   nlopt::opt nlopt = nlopt::opt(nlopt::LD_MMA, 2);
     nlopt.set_min_objective(nlopt_objective, this);
     double lb_arr[] = {0,0};
-    double ub_arr[] = {1e10,1e10};
+    double ub_arr[] = {1e20,1e20};
     if (dont_learn_omega) {
         lb_arr[1] = initial[1];
         ub_arr[1] = initial[1];
@@ -81,7 +81,7 @@ int More::run_lbfgs_nlopt(std::vector<double> &initial, bool dont_learn_omega) {
     // run one more time, to make sure that all member functions are set correctly
     vec grad;
     std::tie(dual,grad) = dual_function_gaussian(eta, omega);
-
+    chol_Sigma_p = chol(Sigma_p, "lower");
     if (chol_Sigma_p.has_nan()) {
         cout << "Error in More:" << endl;
         cout << eta << " " << omega << " " << epsilon << " " << beta << endl;
@@ -94,22 +94,25 @@ int More::run_lbfgs_nlopt(std::vector<double> &initial, bool dont_learn_omega) {
         cout << "r0" << endl << r0<< endl;
         return -2;
     }
+    if (dual == 1e8)
+        return -3;
+
     return res;
 }
-
-
 /**
- * Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables
- * @param regression_weights
- * @param X
- * @param targets
- * @param ridge_factor
- * @param omit_linear_term
+ * Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables.
+ * This method centers the data by subtracting the provided mean.
+ * @param regression_weights - for weighted least squares, typically importance weights
+ * @param X - independent variable
+ * @param mean - mean of the Gaussian for which we want to compute the surrogate
+ * @param targets - reward values for each x in X (dependent variables)
+ * @param ridge_factor - coefficient for regularization
+ * @param omit_linear_term - don't learn mean
+ * @param no_correlations - learn diagonal matrix
  */
-bool More::update_surrogate_normalizeData(vec regression_weights,
+bool More::update_surrogate_CenterOnTrueMean(vec regression_weights,
                       mat X,
                       vec targets,
-                      mat cov,
                       vec mean,
                       double ridge_factor,
                       bool standardize,
@@ -159,7 +162,7 @@ bool More::update_surrogate_normalizeData(vec regression_weights,
   regularizer *= ridge_factor;
 
   vec least_squares;
-  bool invertible = solve(least_squares, features_weighted.t() * feature_matrix + regularizer,(features_weighted.t() * targets));
+  bool invertible = solve(least_squares, features_weighted.t() * feature_matrix + regularizer,(features_weighted.t() * targets), solve_opts::no_approx);
 
   if (!invertible) {
     return false;
@@ -186,35 +189,6 @@ bool More::update_surrogate_normalizeData(vec regression_weights,
     R = 0.5*(R + R.t());
   }
 
-/*    vec eigenvals = vec(this->dim, fill::none);
-  mat eigenvectors = mat(this->dim, this->dim, fill::none);
-  eig_sym( eigenvals, eigenvectors, R);
-
-
-  if (any(eigenvals > -1e-6)) {
-    was_not_pnd = true;
-    // make R pnd
-    eigenvals = clamp(eigenvals, -1e100, -1e-6);
-    mat D = diagmat(eigenvals);
-    R = eigenvectors * D * eigenvectors.t();
-
-    // refit r and constant
-    mat features_weighted_lin = features_weighted.cols(0, num_linear_features);
-    mat feature_matrix_lin = feature_matrix.cols(0, num_linear_features);
-    vec y_current(num_data, fill::none);
-    mat tmp = X * R;
-
-    for (int i=0; i<num_data; i++)
-      y_current(i) = as_scalar(tmp.row(i) * X.row(i).t());
-    vec targets_lin = targets - y_current;
-    mat regularizer_lin(1+num_linear_features, 1+num_linear_features,fill::eye);
-    regularizer_lin *= ridge_factor;
-    least_squares = solve(features_weighted_lin.t() * feature_matrix_lin + regularizer_lin,(features_weighted_lin.t() * targets));
-    r0 = least_squares(0);
-    if (!omit_linear_term)
-      r = least_squares.rows(1, num_linear_features);
-  };
-*/
   R = - 2 * R;
 
   if (R.has_nan() || R.has_inf() || r.has_nan() || r.has_inf())
@@ -224,21 +198,22 @@ bool More::update_surrogate_normalizeData(vec regression_weights,
 
 /**
  * Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables
- * @param regression_weights
- * @param X
- * @param targets
- * @param ridge_factor
- * @param omit_linear_term
- * @param no_correlations
+ * @param regression_weights - for weighted least squares, typically importance weights
+ * @param X - independent variable
+ * @param targets - reward values for each x in X (dependent variables)
+ * @param ridge_factor - coefficient for regularization
+ * @param standardize - standardize the features
+ * @param omit_linear_term - don't learn mean
+ * @param no_correlations - learn diagonal matrix
  */
 bool More::update_surrogate(vec regression_weights,
                       mat X,
                       vec targets,
                       double ridge_factor,
+                      bool standardize,
                       bool omit_linear_term,
                       bool no_correlations
 ) {
-  bool was_not_pnd = false;
   int num_data = X.n_rows;
   int num_linear_features = omit_linear_term ? 0 : dim;
   int num_features;
@@ -252,9 +227,9 @@ bool More::update_surrogate(vec regression_weights,
   // constant features:
   feature_matrix.col(0) = ones<vec>(num_data);
 
-  // linear features
+  // linear features (zero centered)
   if (!omit_linear_term)
-    feature_matrix.cols(1, num_linear_features) = X;
+    feature_matrix.cols(1, num_linear_features) = X.each_row() - arma::mean(X.each_col() % regression_weights, 0);
 
   // quadratic features
   for (int i=0; i<num_data; i++) {
@@ -267,12 +242,31 @@ bool More::update_surrogate(vec regression_weights,
     }
   }
 
+  // standardize
+  rowvec stddevs;
+  if (standardize) {
+    stddevs = stddev(feature_matrix);
+    stddevs(0) = 1; // constant offset should not be scaled
+    feature_matrix = feature_matrix.each_row() / stddevs;
+  }
+
   // perform least squares regression
   mat features_weighted = feature_matrix.each_col() % regression_weights;
   mat regularizer(num_features, num_features,fill::eye);
-//  regularizer(0,0) = 0;
+  regularizer(0,0) = 0;
   regularizer *= ridge_factor;
-  vec least_squares = solve(features_weighted.t() * feature_matrix + regularizer,(features_weighted.t() * targets));
+
+  vec least_squares;
+  bool invertible = solve(least_squares, features_weighted.t() * feature_matrix + regularizer,(features_weighted.t() * targets), solve_opts::no_approx);
+
+  if (!invertible) {
+    return false;
+  }
+
+  // de-standardize
+  if (standardize) {
+    least_squares = least_squares / stddevs.t();
+  }
 
   // set R and r to the learned coefficients
   r0 = least_squares(0);
@@ -292,9 +286,11 @@ bool More::update_surrogate(vec regression_weights,
 
   // bring the reward function into the form r = - 1/2 x^T R x + x^T r
   R = - 2 * R;
-  return was_not_pnd;
-}
 
+  if (R.has_nan() || R.has_inf() || r.has_nan() || r.has_inf())
+    return false;
+  return true;
+}
 
 /**
  * Sets the target dist.
@@ -304,10 +300,10 @@ bool More::update_surrogate(vec regression_weights,
  * @param mu_q
  */
 void More::set_target_dist(mat Sigma_q, vec mu_q) {
-  this->chol_Sigma_q = chol(Sigma_q);
+  this->chol_Sigma_q = chol(Sigma_q, "lower");
   this->chol_Q = inv(this->chol_Sigma_q);
   this->mu_q = mu_q;
-  this->Q = chol_Q * chol_Q.t();
+  this->Q = chol_Q.t() * chol_Q;
   this->q = Q * mu_q;
 }
 
@@ -322,17 +318,8 @@ void More::set_target_dist(mat chol_Sigma_q, mat chol_Q, vec mu_q) {
   this->chol_Q = chol_Q;
   this->chol_Sigma_q = chol_Sigma_q;
   this->mu_q = mu_q;
-  this->Q = chol_Q * chol_Q.t();
+  this->Q = chol_Q.t() * chol_Q;
   this->q = Q * mu_q;
-
-  /* mat Sigma_q = chol_Sigma_q.t() * chol_Sigma_q;
-   cout << "norm on construction: " << norm(inv(trimatu(chol_Sigma_q)) - chol_Q) << endl;
-   cout << "norm on construction: " << norm(chol_Sigma_q - inv(inv(chol_Sigma_q))) << endl;
-   cout << "norm on construction: " << norm(chol_Sigma_q - inv(chol_Q)) << endl;
-   cout << "norm on construction: " << norm(inv(chol_Sigma_q) - chol_Q) << endl;
-   cout << "norm on construction: " << norm(inv(Sigma_q) - Q) << endl;
-   cout << "norm on construction2: " << norm(inv(Q) - Sigma_q) << endl;*/
-
 }
 
 /**
@@ -349,12 +336,12 @@ std::tuple<double, vec> More::dual_function_gaussian(double eta, double omega) {
      omega = 0;
 
   // interpolated distribution
-  P = eta * Q + R;
-  p = eta * q + r;
+  P = (eta * Q + R)/(eta + omega + 1);
+  p = (eta * q + r)/(eta + omega + 1);
   mat chol_P(Q.n_rows, Q.n_cols, fill::none);
   bool pd = chol(chol_P, P, "lower");
   if (!pd) {
-  //  cout << "not pd" << endl;
+    // Perform zero update in case optimizer gives up (e.g. if we end up here with initial parameters)
     chol_Sigma_p = chol_Sigma_q;
     chol_P = chol_Q;
     P = Q;
@@ -362,18 +349,12 @@ std::tuple<double, vec> More::dual_function_gaussian(double eta, double omega) {
     mu_p = mu_q;
     p = q;
     KL = 0;
-    vec gradient = {-10, 0};
-    return make_tuple(1e8-eta*10, gradient);
+    vec gradient = {-10, 0}; // doesn't matter what we return
+    return make_tuple(1e8, gradient); // return a fixed high value to indicate error, ToDo: Throw exception
   }
-  chol_Sigma_p = inv(chol_P);
-  Sigma_p = chol_Sigma_p.t() * chol_Sigma_p;
+  mat inv_chol_p = inv(chol_P);
+  Sigma_p = inv_chol_p.t() * inv_chol_p;
   mu_p = Sigma_p * p;
-
-  // Covariance is rescaled after computation of the mean
-  P = P / (eta + omega + 1);
-  Sigma_p = (eta + omega + 1) * Sigma_p;
-  chol_Sigma_p *= sqrt(eta + omega + 1);
-  chol_P /= sqrt(eta + omega + 1);
 
   // compute log(det(2*pi*Sigma_q))
   double detTerm_q = as_scalar( 2 * sum(log(diagvec(chol_Sigma_q))) + dim * log(2 * M_PI) );
@@ -382,7 +363,7 @@ std::tuple<double, vec> More::dual_function_gaussian(double eta, double omega) {
   double detTerm_p = as_scalar(-2 * sum(log(diagvec(chol_P))) + dim * log(2 * M_PI) );
 
   double dualValue = eta * epsilon - beta * omega
-                     + 0.5 * as_scalar(mu_p.t() * p
+                     + 0.5 * as_scalar( (eta + omega + 1) * mu_p.t() * p
                                        - eta * mu_q.t() * q
                                        - eta * detTerm_q
                                        + (eta + omega + 1) * detTerm_p);

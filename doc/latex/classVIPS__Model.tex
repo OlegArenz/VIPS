@@ -21,7 +21,7 @@ Collaboration diagram for V\+I\+P\+S\+\_\+\+Model\+:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classVIPS__Model_a178ab41d01041c53a3f6a7f33ec6f150}{V\+I\+P\+S\+\_\+\+Model} (int dim)
+\hyperlink{classVIPS__Model_a7a17f89802a4e8be6ffefb92e691b602}{V\+I\+P\+S\+\_\+\+Model} (int dim, double initial\+\_\+kl\+\_\+bound=0.\+5)
 \item 
 void \hyperlink{classVIPS__Model_afcc9485205fd0c61801546703bffa5eb}{add\+\_\+components} (arma\+::mat new\+\_\+means, arma\+::cube new\+\_\+covs) override
 \item 
@@ -29,9 +29,12 @@ void \hyperlink{classVIPS__Model_ab83e56934a07a6381e0cb4f9beab26fd}{add\+\_\+com
 \item 
 void \hyperlink{classVIPS__Model_a6b0edde4a9a744639e1588cff6a5fa23}{delete\+\_\+component} (int index) override
 \item 
-void \hyperlink{classVIPS__Model_abbaa2af1802ba723708f11739525519b}{delete\+\_\+low\+\_\+weight\+\_\+components} (double min\+\_\+weight, int n\+\_\+del=300)
+uvec \hyperlink{classVIPS__Model_a6c65151f76ac7e9f5bbc79288b30986b}{delete\+\_\+low\+\_\+weight\+\_\+components} (double min\+\_\+weight, int n\+\_\+del=300)
 \item 
 void \hyperlink{classVIPS__Model_acf045c351edff854a5f520beb2723832}{update\+\_\+histories} (vec expected\+\_\+target\+\_\+densities, vec component\+\_\+rewards, vec component\+\_\+weights)
+\item 
+void {\bfseries update\+\_\+num\+\_\+sample\+\_\+history} (uvec new\+\_\+samples)\hypertarget{classVIPS__Model_a72e9125d30c8ce56e9e6bb71fd01a00e}{}\label{classVIPS__Model_a72e9125d30c8ce56e9e6bb71fd01a00e}
+
 \item 
 std\+::tuple$<$ arma\+::cube, arma\+::cube, arma\+::mat, arma\+::vec, arma\+::vec $>$ \hyperlink{classVIPS__Model_a19bd5e5c123088de22c80df818f67994}{get\+Targets\+For\+K\+L\+Bounds} ()
 \item 
@@ -43,9 +46,27 @@ arma\+::vec {\bfseries get\+Last\+Etas\+For\+Comp\+Optimization} ()\hypertarget{
 
 \item 
 void \hyperlink{classVIPS__Model_ac0f23dd73e953a9da2047075e6e3ff1c}{set\+Last\+Etas\+For\+Comp\+Optimization} (vec new\+\_\+last\+Etas)
+\item 
+arma\+::vec {\bfseries get\+Ridge\+Multipliers} ()\hypertarget{classVIPS__Model_a4a49a86c96c0f5239ed7b868e0de84b1}{}\label{classVIPS__Model_a4a49a86c96c0f5239ed7b868e0de84b1}
+
+\item 
+void \hyperlink{classVIPS__Model_a1d9d04bcc9b0dc392584804ac78f5813}{set\+Ridge\+Multipliers} (vec new\+\_\+ridge\+Multipliers)
+\item 
+arma\+::vec {\bfseries get\+Approx\+Reward\+Before\+Comp\+Update} ()\hypertarget{classVIPS__Model_a301ce5dc882e0ae70302a4712cc27fc1}{}\label{classVIPS__Model_a301ce5dc882e0ae70302a4712cc27fc1}
+
+\item 
+void \hyperlink{classVIPS__Model_a70c45c77ef2f4f7ebd5ddfe34c653da8}{set\+Approx\+Reward\+Before\+Comp\+Update} (vec new\+\_\+expected\+\_\+rewards)
+\item 
+arma\+::vec {\bfseries get\+K\+L\+Bounds} ()\hypertarget{classVIPS__Model_a24e9a1430fd5dd6d35db69c0490e65d7}{}\label{classVIPS__Model_a24e9a1430fd5dd6d35db69c0490e65d7}
+
+\item 
+void \hyperlink{classVIPS__Model_a5351e79e8fc43024659580eceaa89f56}{set\+K\+L\+Bounds} (vec new\+\_\+\+K\+L\+Bounds)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
+\item 
+arma\+::vec {\bfseries expected\+\_\+rewards}\hypertarget{classVIPS__Model_a3ab3746d8dd5832ea0bb0966224a4686}{}\label{classVIPS__Model_a3ab3746d8dd5832ea0bb0966224a4686}
+
 \item 
 arma\+::mat {\bfseries comp\+\_\+etd\+\_\+history}\hypertarget{classVIPS__Model_aae18271a9c94997444c4015ce24d666e}{}\label{classVIPS__Model_aae18271a9c94997444c4015ce24d666e}
 
@@ -54,6 +75,9 @@ arma\+::mat {\bfseries comp\+\_\+reward\+\_\+history}\hypertarget{classVIPS__Mod
 
 \item 
 arma\+::mat {\bfseries comp\+\_\+weight\+\_\+history}\hypertarget{classVIPS__Model_abbb57d44172beac50134b776f5308b0f}{}\label{classVIPS__Model_abbb57d44172beac50134b776f5308b0f}
+
+\item 
+arma\+::umat {\bfseries comp\+\_\+num\+\_\+samples\+\_\+history}\hypertarget{classVIPS__Model_a8ab784c4c6c4014a8255cb69813d7608}{}\label{classVIPS__Model_a8ab784c4c6c4014a8255cb69813d7608}
 
 \end{DoxyCompactItemize}
 \subsection*{Protected Member Functions}
@@ -64,7 +88,16 @@ void \hyperlink{classVIPS__Model_ad175bd3a39cec843b674a9d937c01654}{add\+\_\+met
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
+double {\bfseries initial\+\_\+kl\+\_\+bound}\hypertarget{classVIPS__Model_a9814472714c00939b479ddab4ed00fb2}{}\label{classVIPS__Model_a9814472714c00939b479ddab4ed00fb2}
+
+\item 
 arma\+::vec {\bfseries last\+\_\+etas\+\_\+for\+\_\+comp\+\_\+optimization}\hypertarget{classVIPS__Model_a0b2633c15ce1dee47eb88e1fba20de0c}{}\label{classVIPS__Model_a0b2633c15ce1dee47eb88e1fba20de0c}
+
+\item 
+arma\+::vec {\bfseries ridge\+\_\+multiplier}\hypertarget{classVIPS__Model_a15e0485d0b2d20cebe4aca4d106ac788}{}\label{classVIPS__Model_a15e0485d0b2d20cebe4aca4d106ac788}
+
+\item 
+arma\+::vec {\bfseries kl\+\_\+bounds}\hypertarget{classVIPS__Model_a0f298d2e9f9c0ea430c9785812dee158}{}\label{classVIPS__Model_a0f298d2e9f9c0ea430c9785812dee158}
 
 \item 
 arma\+::cube {\bfseries target\+\_\+inv\+\_\+chols}\hypertarget{classVIPS__Model_ac181de1cbdb425e501b43d61162577e0}{}\label{classVIPS__Model_ac181de1cbdb425e501b43d61162577e0}
@@ -87,14 +120,17 @@ arma\+::vec {\bfseries target\+\_\+weights}\hypertarget{classVIPS__Model_adce427
 \subsection{Constructor \& Destructor Documentation}
 \index{V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}!V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}}
 \index{V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}!V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}}
-\subsubsection[{\texorpdfstring{V\+I\+P\+S\+\_\+\+Model(int dim)}{VIPS_Model(int dim)}}]{\setlength{\rightskip}{0pt plus 5cm}V\+I\+P\+S\+\_\+\+Model\+::\+V\+I\+P\+S\+\_\+\+Model (
+\subsubsection[{\texorpdfstring{V\+I\+P\+S\+\_\+\+Model(int dim, double initial\+\_\+kl\+\_\+bound=0.\+5)}{VIPS_Model(int dim, double initial_kl_bound=0.5)}}]{\setlength{\rightskip}{0pt plus 5cm}V\+I\+P\+S\+\_\+\+Model\+::\+V\+I\+P\+S\+\_\+\+Model (
 \begin{DoxyParamCaption}
-\item[{int}]{dim}
+\item[{int}]{dim, }
+\item[{double}]{initial\+\_\+kl\+\_\+bound = {\ttfamily 0.5}}
 \end{DoxyParamCaption}
-)}\hypertarget{classVIPS__Model_a178ab41d01041c53a3f6a7f33ec6f150}{}\label{classVIPS__Model_a178ab41d01041c53a3f6a7f33ec6f150}
+)}\hypertarget{classVIPS__Model_a7a17f89802a4e8be6ffefb92e691b602}{}\label{classVIPS__Model_a7a17f89802a4e8be6ffefb92e691b602}
 The G\+M\+M-\/model learned by \hyperlink{classVIPS}{V\+I\+PS}. This class extends \hyperlink{classGMM}{G\+MM} to include learning related meta information. 
 \begin{DoxyParams}{Parameters}
 {\em dim} & number of dimensions \\
+\hline
+{\em initial\+\_\+kl\+\_\+bound} & \\
 \hline
 \end{DoxyParams}
 
@@ -161,12 +197,12 @@ Reimplemented from \hyperlink{classGMM_a25c1ccd0c99b1ebd1e36592b912e74c2}{G\+MM}
 
 \index{V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}!delete\+\_\+low\+\_\+weight\+\_\+components@{delete\+\_\+low\+\_\+weight\+\_\+components}}
 \index{delete\+\_\+low\+\_\+weight\+\_\+components@{delete\+\_\+low\+\_\+weight\+\_\+components}!V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}}
-\subsubsection[{\texorpdfstring{delete\+\_\+low\+\_\+weight\+\_\+components(double min\+\_\+weight, int n\+\_\+del=300)}{delete_low_weight_components(double min_weight, int n_del=300)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Model\+::delete\+\_\+low\+\_\+weight\+\_\+components (
+\subsubsection[{\texorpdfstring{delete\+\_\+low\+\_\+weight\+\_\+components(double min\+\_\+weight, int n\+\_\+del=300)}{delete_low_weight_components(double min_weight, int n_del=300)}}]{\setlength{\rightskip}{0pt plus 5cm}uvec V\+I\+P\+S\+\_\+\+Model\+::delete\+\_\+low\+\_\+weight\+\_\+components (
 \begin{DoxyParamCaption}
 \item[{double}]{min\+\_\+weight, }
 \item[{int}]{n\+\_\+del = {\ttfamily 300}}
 \end{DoxyParamCaption}
-)}\hypertarget{classVIPS__Model_abbaa2af1802ba723708f11739525519b}{}\label{classVIPS__Model_abbaa2af1802ba723708f11739525519b}
+)}\hypertarget{classVIPS__Model_a6c65151f76ac7e9f5bbc79288b30986b}{}\label{classVIPS__Model_a6c65151f76ac7e9f5bbc79288b30986b}
 Removes all components with weight below the given threshold that did not exceed that threshold during the last n\+\_\+del iterations. Weights are normalized afterwards. 
 \begin{DoxyParams}{Parameters}
 {\em min\+\_\+weight} & -\/ threshold for keeping components \\
@@ -174,6 +210,9 @@ Removes all components with weight below the given threshold that did not exceed
 {\em n\+\_\+del} & -\/ number of most recent EM iterations to be considered \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+deleted\+\_\+indices -\/ a vector containing the (old) indices of the deleted components 
+\end{DoxyReturn}
 \index{V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}!get\+Targets\+For\+K\+L\+Bounds@{get\+Targets\+For\+K\+L\+Bounds}}
 \index{get\+Targets\+For\+K\+L\+Bounds@{get\+Targets\+For\+K\+L\+Bounds}!V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}}
 \subsubsection[{\texorpdfstring{get\+Targets\+For\+K\+L\+Bounds()}{getTargetsForKLBounds()}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::tuple$<$ arma\+::cube, arma\+::cube, arma\+::mat, arma\+::vec, arma\+::vec $>$ V\+I\+P\+S\+\_\+\+Model\+::get\+Targets\+For\+K\+L\+Bounds (
@@ -191,6 +230,30 @@ the following tuple~\newline
  tuple\mbox{[}3\mbox{]} -\/ vector of size N\+\_\+components containing the log\+\_\+weights log(q(o))~\newline
  tuple\mbox{[}4\mbox{]} -\/ vector of size N\+\_\+components containing the weights q(o) 
 \end{DoxyReturn}
+\index{V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}!set\+Approx\+Reward\+Before\+Comp\+Update@{set\+Approx\+Reward\+Before\+Comp\+Update}}
+\index{set\+Approx\+Reward\+Before\+Comp\+Update@{set\+Approx\+Reward\+Before\+Comp\+Update}!V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}}
+\subsubsection[{\texorpdfstring{set\+Approx\+Reward\+Before\+Comp\+Update(vec new\+\_\+expected\+\_\+rewards)}{setApproxRewardBeforeCompUpdate(vec new_expected_rewards)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Model\+::set\+Approx\+Reward\+Before\+Comp\+Update (
+\begin{DoxyParamCaption}
+\item[{vec}]{new\+\_\+expected\+\_\+rewards}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS__Model_a70c45c77ef2f4f7ebd5ddfe34c653da8}{}\label{classVIPS__Model_a70c45c77ef2f4f7ebd5ddfe34c653da8}
+Store the approximated reward for each component, computed on the same set of samples that was used for the component update. If this value is significantly larger than an estimate on fresh samples, we are probably overfitting. 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+approx\+Rewards} & -\/ an importance weighted MC estimate of the expected reward  p(x$\vert$o) (log p(x) + log q(o$\vert$x))) + H(q(x$\vert$o) \\
+\hline
+\end{DoxyParams}
+\index{V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}!set\+K\+L\+Bounds@{set\+K\+L\+Bounds}}
+\index{set\+K\+L\+Bounds@{set\+K\+L\+Bounds}!V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}}
+\subsubsection[{\texorpdfstring{set\+K\+L\+Bounds(vec new\+\_\+\+K\+L\+Bounds)}{setKLBounds(vec new_KLBounds)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Model\+::set\+K\+L\+Bounds (
+\begin{DoxyParamCaption}
+\item[{vec}]{new\+\_\+\+K\+L\+Bounds}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS__Model_a5351e79e8fc43024659580eceaa89f56}{}\label{classVIPS__Model_a5351e79e8fc43024659580eceaa89f56}
+Set the KL bounds for each component 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+\+K\+L\+Bounds} & -\/ KL bounds used by the next component update \\
+\hline
+\end{DoxyParams}
 \index{V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}!set\+Last\+Etas\+For\+Comp\+Optimization@{set\+Last\+Etas\+For\+Comp\+Optimization}}
 \index{set\+Last\+Etas\+For\+Comp\+Optimization@{set\+Last\+Etas\+For\+Comp\+Optimization}!V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}}
 \subsubsection[{\texorpdfstring{set\+Last\+Etas\+For\+Comp\+Optimization(vec new\+\_\+last\+Etas)}{setLastEtasForCompOptimization(vec new_lastEtas)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Model\+::set\+Last\+Etas\+For\+Comp\+Optimization (
@@ -201,6 +264,18 @@ the following tuple~\newline
 Store the Lagrangian parameters that have been learned during the last model update for warm-\/starting. 
 \begin{DoxyParams}{Parameters}
 {\em new\+\_\+last\+Etas} & -\/ Lagrangian parameters for the KL constraints for the component update \\
+\hline
+\end{DoxyParams}
+\index{V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}!set\+Ridge\+Multipliers@{set\+Ridge\+Multipliers}}
+\index{set\+Ridge\+Multipliers@{set\+Ridge\+Multipliers}!V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}}
+\subsubsection[{\texorpdfstring{set\+Ridge\+Multipliers(vec new\+\_\+ridge\+Multipliers)}{setRidgeMultipliers(vec new_ridgeMultipliers)}}]{\setlength{\rightskip}{0pt plus 5cm}void V\+I\+P\+S\+\_\+\+Model\+::set\+Ridge\+Multipliers (
+\begin{DoxyParamCaption}
+\item[{vec}]{new\+\_\+ridge\+Multiplier}
+\end{DoxyParamCaption}
+)}\hypertarget{classVIPS__Model_a1d9d04bcc9b0dc392584804ac78f5813}{}\label{classVIPS__Model_a1d9d04bcc9b0dc392584804ac78f5813}
+For each component, update the factor $>$= 1 to scale the ridge coefficient for fitting the surrogates. 
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+ridge\+Multipliers} & -\/ vector containing the new ridge scaling multipliers \\
 \hline
 \end{DoxyParams}
 \index{V\+I\+P\+S\+\_\+\+Model@{V\+I\+P\+S\+\_\+\+Model}!update\+\_\+histories@{update\+\_\+histories}}

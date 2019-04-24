@@ -24,13 +24,15 @@ class Breast_Cancer(AbstractVIPSExperiment):
     def run_experiment(self):
         self.run_experiment_VIPS(self.target_lnpdf, self.config, self.groundtruth_samples, self.groundtruth_lnpdfs)
 
-def run_on_cluster(config_name, path_for_dumps, rate_of_dumps=100, num_threads=1):
-    if config_name is 'explorative40':
-        import experiments.VIPS.configs.explorative40 as config
-    elif config_name is 'explorative5':
-        import experiments.VIPS.configs.explorative5 as config
-    elif config_name is 'single':
-        import experiments.VIPS.configs.single_comp as config
+def run_on_cluster(config_name, path_for_dumps, rate_of_dumps=100, num_threads=1, num_initial=1, adding_rate=None, adapt_ridge=None, ridge_coeff=None, fixedKL=None):
+    if config_name is 'default':
+        import experiments.VIPS.configs.default as config
+    elif config_name is 'fast_adding':
+        import experiments.VIPS.configs.fast_adding as config
+    elif config_name is 'oldSampleReusage':
+        import experiments.VIPS.configs.oldSampleReusage as config
+    elif config_name is 'noAddingOrDeletion':
+        import experiments.VIPS.configs.noAddingOrDeletion as config
     else:
         print("config_name " + config_name + ' not known')
         return
@@ -39,13 +41,25 @@ def run_on_cluster(config_name, path_for_dumps, rate_of_dumps=100, num_threads=1
     config.COMMON['gmm_dumps_path'] = path_for_dumps
     config.COMMON['gmm_dumps_rate'] = rate_of_dumps
     config.PLOTTING['rate'] = -1
+    if adding_rate is not None:
+        config.LTS['component_adding_rate'] = adding_rate
+    if adapt_ridge is not None:
+        config.COMPONENT_OPTIMIZATION['adapt_ridge_multipliers'] = adapt_ridge
+    if ridge_coeff is not None:
+        config.COMPONENT_OPTIMIZATION['ridge_for_MORE'] = ridge_coeff
+    if fixedKL is not None:
+        config.COMPONENT_OPTIMIZATION['max_kl_bound'] = fixedKL
+        config.COMPONENT_OPTIMIZATION['min_kl_bound'] = fixedKL
 
-    experiment = Breast_Cancer(num_initial_components=1, initial_mixture_prior_variance=100, config=config)
+    experiment = Breast_Cancer(num_initial_components=num_initial, initial_mixture_prior_variance=100, config=config)
     experiment.run_experiment()
 
 if __name__ == '__main__':
-   # import experiments.VIPS.configs.single_comp as config
-    import experiments.VIPS.configs.explorative40 as config
+    import experiments.VIPS.configs.default as config
+    config.COMMON['mmd_alpha'] = 20
+    config.PLOTTING['rate'] = 5
+    config.COMMON['mmd_rate'] = 5
+
 
     experiment = Breast_Cancer(num_initial_components=1, initial_mixture_prior_variance=100, config=config)
     experiment.obtain_groundtruth()

@@ -106,10 +106,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>run_lbfgs_nlopt</b> (s
 <tr class="separator:aafcaa1a9dd299715349391a9092691ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3fdb202ca291e253f7c157d8a13040b"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; double, vec &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMore.html#aa3fdb202ca291e253f7c157d8a13040b">dual_function_gaussian</a> (double eta, double omega)</td></tr>
 <tr class="separator:aa3fdb202ca291e253f7c157d8a13040b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bb1da06e25a581a06d4c84359702e7b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMore.html#a5bb1da06e25a581a06d4c84359702e7b">update_surrogate</a> (vec regression_weights, mat X, vec targets, double ridge_factor, bool omit_linear_term, bool no_correlations)</td></tr>
-<tr class="separator:a5bb1da06e25a581a06d4c84359702e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0943909cf34c607dba952bf65f724702"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMore.html#a0943909cf34c607dba952bf65f724702">update_surrogate_normalizeData</a> (vec regression_weights, mat X, vec targets, mat cov, vec mean, double ridge_factor, bool standardize, bool omit_linear_term, bool no_correlations)</td></tr>
-<tr class="separator:a0943909cf34c607dba952bf65f724702"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab33950a4fa62de6b3f247c544e13fe59"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMore.html#ab33950a4fa62de6b3f247c544e13fe59">update_surrogate</a> (vec regression_weights, mat X, vec targets, double ridge_factor, bool standardize=true, bool omit_linear_term=false, bool no_correlations=false)</td></tr>
+<tr class="separator:ab33950a4fa62de6b3f247c544e13fe59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79f14b01eafe1c3b2966ee6a6cb157eb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMore.html#a79f14b01eafe1c3b2966ee6a6cb157eb">update_surrogate_CenterOnTrueMean</a> (vec regression_weights, mat X, vec targets, vec mean, double ridge_factor, bool standardize, bool omit_linear_term, bool no_correlations)</td></tr>
+<tr class="separator:a79f14b01eafe1c3b2966ee6a6cb157eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7163e4cb11467ccbdb76b830a193c597"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMore.html#a7163e4cb11467ccbdb76b830a193c597">set_target_dist</a> (mat Sigma_q, vec mu_q)</td></tr>
 <tr class="separator:a7163e4cb11467ccbdb76b830a193c597"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52a17e3a77606659aeb668ad597aac62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMore.html#a52a17e3a77606659aeb668ad597aac62">set_target_dist</a> (mat chol_Sigma_q, mat chol_Q, vec mu_q)</td></tr>
@@ -296,7 +296,7 @@ vec&#160;</td><td class="memItemRight" valign="bottom"><b>p</b></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5bb1da06e25a581a06d4c84359702e7b"></a>
+<a class="anchor" id="ab33950a4fa62de6b3f247c544e13fe59"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -328,13 +328,19 @@ vec&#160;</td><td class="memItemRight" valign="bottom"><b>p</b></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>omit_linear_term</em>, </td>
+          <td class="paramname"><em>standardize</em> = <code>true</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>no_correlations</em>&#160;</td>
+          <td class="paramname"><em>omit_linear_term</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>no_correlations</em> = <code>false</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -345,24 +351,25 @@ vec&#160;</td><td class="memItemRight" valign="bottom"><b>p</b></td></tr>
 </div><div class="memdoc">
 <p>Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">regression_weights</td><td></td></tr>
-    <tr><td class="paramname">X</td><td></td></tr>
-    <tr><td class="paramname">targets</td><td></td></tr>
-    <tr><td class="paramname">ridge_factor</td><td></td></tr>
-    <tr><td class="paramname">omit_linear_term</td><td></td></tr>
-    <tr><td class="paramname">no_correlations</td><td></td></tr>
+    <tr><td class="paramname">regression_weights</td><td>- for weighted least squares, typically importance weights </td></tr>
+    <tr><td class="paramname">X</td><td>- independent variable </td></tr>
+    <tr><td class="paramname">targets</td><td>- reward values for each x in X (dependent variables) </td></tr>
+    <tr><td class="paramname">ridge_factor</td><td>- coefficient for regularization </td></tr>
+    <tr><td class="paramname">standardize</td><td>- standardize the features </td></tr>
+    <tr><td class="paramname">omit_linear_term</td><td>- don't learn mean </td></tr>
+    <tr><td class="paramname">no_correlations</td><td>- learn diagonal matrix </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a class="anchor" id="a0943909cf34c607dba952bf65f724702"></a>
+<a class="anchor" id="a79f14b01eafe1c3b2966ee6a6cb157eb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool More::update_surrogate_normalizeData </td>
+          <td class="memname">bool More::update_surrogate_CenterOnTrueMean </td>
           <td>(</td>
           <td class="paramtype">vec&#160;</td>
           <td class="paramname"><em>regression_weights</em>, </td>
@@ -378,12 +385,6 @@ vec&#160;</td><td class="memItemRight" valign="bottom"><b>p</b></td></tr>
           <td></td>
           <td class="paramtype">vec&#160;</td>
           <td class="paramname"><em>targets</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">mat&#160;</td>
-          <td class="paramname"><em>cov</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -422,13 +423,15 @@ vec&#160;</td><td class="memItemRight" valign="bottom"><b>p</b></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables. This method centers the data by subtracting the provided mean. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">regression_weights</td><td></td></tr>
-    <tr><td class="paramname">X</td><td></td></tr>
-    <tr><td class="paramname">targets</td><td></td></tr>
-    <tr><td class="paramname">ridge_factor</td><td></td></tr>
-    <tr><td class="paramname">omit_linear_term</td><td></td></tr>
+    <tr><td class="paramname">regression_weights</td><td>- for weighted least squares, typically importance weights </td></tr>
+    <tr><td class="paramname">X</td><td>- independent variable </td></tr>
+    <tr><td class="paramname">mean</td><td>- mean of the Gaussian for which we want to compute the surrogate </td></tr>
+    <tr><td class="paramname">targets</td><td>- reward values for each x in X (dependent variables) </td></tr>
+    <tr><td class="paramname">ridge_factor</td><td>- coefficient for regularization </td></tr>
+    <tr><td class="paramname">omit_linear_term</td><td>- don't learn mean </td></tr>
+    <tr><td class="paramname">no_correlations</td><td>- learn diagonal matrix </td></tr>
   </table>
   </dd>
 </dl>

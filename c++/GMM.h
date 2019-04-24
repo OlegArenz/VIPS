@@ -30,16 +30,14 @@ protected:
 // RNG (only used for sampling mixture components)
     std::default_random_engine rng;
 
-    std::tuple<vec, vec, vec> softMax_2D(mat data);
-
 public:
     int max_components;
 
     GMM(int dim, int max_components=100000);
 
-    arma::cube interpolate_covs_for_query_points(mat query_points);
+    arma::cube interpolate_covs_for_query_points(mat query_points, bool scale_entropy, bool isotropic);
 
-    virtual void add_components_at_locations(mat means);
+    virtual void add_components_at_locations(mat means, bool scale_entropy, bool isotropic);
 
     virtual void add_components(mat means, cube covs);
 
@@ -60,7 +58,7 @@ public:
 
     vec evaluate_GMM_densities(mat samples, bool return_log);
 
-    vec evaluate_GMM_densities_low_mem(mat samples);
+    vec evaluate_GMM_densities_low_mem(mat samples, bool uniform_weights=false);
 
     std::tuple<mat, mat, rowvec, rowvec, vec, mat> compute_log_marginals(mat samples);
 

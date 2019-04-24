@@ -22,6 +22,10 @@ def lnpdf(theta):
 lnpdf.counter = 0
 
 def sample(n_samps, n_steps, epsilon, path):
+    if path is not None:
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
     start = time()
     samples = hmc(lnpdf, x0=np.random.randn(num_dimensions), n_samples=int(n_samps), n_steps=n_steps, epsilon=epsilon)
     end = time()
@@ -30,6 +34,10 @@ def sample(n_samps, n_steps, epsilon, path):
     print("done")
 
 def sample_with_progress(repeats, n_samps, n_steps, epsilon, path=None):
+    if path is not None:
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
     last = np.random.randn(num_dimensions)
     timestamps = []
     all_samples = []

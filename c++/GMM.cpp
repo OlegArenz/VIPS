@@ -25,16 +25,28 @@ GMM::GMM(int dim, int max_components)
 * Compute a covariance matrix for each given query point by interpolating the covariance matrices of the GMM components
 * weighted by the their responsibility for the given query point.<br>
 * This can be used, for example, for initializing new components.<br>
-* @param query_points - D X N matrix containing the query points
+* @param query_points - D X N matrix containing the query points <br>
+* @param scale_entropy - if true, scale the entropy of the Gaussian such that it corresponds to the average entropy \sum_o p(o) H(p(x|o))
+* @param isotropic - if true, return an isotropic (identity if scale_entropy = False) covariance instead of interpolating.
 * @returns a cube of size N x D X D containing the covariance matrices
 */
-cube GMM::interpolate_covs_for_query_points(mat query_points) {
+cube GMM::interpolate_covs_for_query_points(mat query_points, bool scale_entropy, bool isotropic) {
   int N = query_points.n_cols;
   mat responsibilities = arma::exp(std::get<5>(compute_log_marginals(query_points)));
   cube new_covs(dim, dim, N, fill::zeros);
   for (int i = 0; i < N; i++) {
-    for (int j = 0; j < num_components; j++) {
-      new_covs.slice(i) += responsibilities(j, i) * covs.slice(j);
+    if (isotropic) {
+        new_covs.slice(i).eye();
+    } else {
+        for (int j = 0; j < num_components; j++) {
+          new_covs.slice(i) += responsibilities(j, i) * covs.slice(j);
+        }
+    }
+
+    if (scale_entropy) {
+        double target_entropy = dot(getWeights(), getEntropies());
+        double rescaling_factor = std::max(1e-3,exp(1./(double)getNumDimensions() * (2*target_entropy - log(det(2*M_PI*exp(1)*new_covs.slice(i))))));
+        new_covs.slice(i) = rescaling_factor * new_covs.slice(i);
     }
   }
   return new_covs;
@@ -46,11 +58,13 @@ cube GMM::interpolate_covs_for_query_points(mat query_points) {
 * weighted by their responsibilities for the new mean.<br>
 * The weights are initialized to low values, such that the change of the mixture is negligible
 * @param means - matrix of size N_dimensions x N_newComponents specifying
+* @param scale_entropy - if true, scale the entropy of the Gaussian such that it corresponds to the average entropy \sum_o p(o) H(p(x|o))
+* @param isotropic - if true, return an isotropic (identity if scale_entropy = False) covariance instead of interpolating.
 * at which positions new components are to be added
 */
-void GMM::add_components_at_locations(mat new_means) {
-  cube new_covs = interpolate_covs_for_query_points(new_means);
-  vec new_weights = join_cols(weights, 1e-12 * ones<vec>(new_means.n_cols));
+void GMM::add_components_at_locations(mat new_means, bool scale_entropy, bool isotropic) {
+  cube new_covs = interpolate_covs_for_query_points(new_means, scale_entropy, isotropic);
+  vec new_weights = join_cols(weights, 1e-30 * ones<vec>(new_means.n_cols));
   new_weights /= arma::sum(new_weights);
 
   add_components(new_means, new_covs);
@@ -82,7 +96,7 @@ void GMM::add_components(mat new_means, cube new_covs) {
   determinants.insert_rows(num_components, N, false);
   for (int i = 0; i < new_covs.n_slices; i++) {
     int idx = num_components + i;
-    chols.slice(idx) = chol(new_covs.slice(i));
+    chols.slice(idx) = chol(new_covs.slice(i), "lower");
     inv_chols.slice(idx) = inv(chols.slice(idx));
     entropies.at(idx) = sum(log(diagvec(chols.slice(idx)))) + entropy_offset;
     determinants.at(idx) = pow(as_scalar(prod(diagvec(chols.slice(idx)))), 2);
@@ -118,8 +132,8 @@ void GMM::add_components_invChols(mat new_means, cube new_invChols) {
   determinants.insert_rows(num_components, N, false);
   for (int i = 0; i < new_invChols.n_slices; i++) {
     int idx = num_components + i;
-    chols.slice(idx) = inv(new_invChols.slice(i));
-    covs.slice(idx) = chols.slice(idx) * chols.slice(idx).t();
+    covs.slice(idx) = inv(new_invChols.slice(i).t() * new_invChols.slice(i));
+    chols.slice(idx) = chol(covs.slice(idx), "lower");
     entropies.at(idx) = sum(log(diagvec(chols.slice(idx)))) + entropy_offset;
     determinants.at(idx) = pow(as_scalar(prod(diagvec(chols.slice(idx)))), 2);
   }
@@ -197,7 +211,7 @@ void GMM::changeComponent(int index, mat newChol, vec newMean) {
   means.col(index) = newMean;
   chols.slice(index) = newChol;
   inv_chols.slice(index) = inv(newChol);
-  covs.slice(index) = newChol.t() * newChol;
+  covs.slice(index) = newChol * newChol.t();
   entropies.at(index) = sum(log(diagvec(chols.slice(index)))) + entropy_offset;
   determinants.at(index) = pow(as_scalar(prod(diagvec(chols.slice(index)))), 2);
 }
@@ -238,16 +252,17 @@ vec GMM::evaluate_GMM_densities(mat samples, bool return_log) {
   if (return_log)
     return std::get<0>(softMax_2D(joint_densities));
   else
-    return sum(joint_densities, 1).t();
+    return exp(std::get<0>(softMax_2D(joint_densities)));
 }
 
 /**
  * Evaluates the GMM on the given samples in a memory efficient way.
  * This function is recommended for very large number of samples or components
  * @param samples - a matrix of size N_dim x N_samples of samples to be evaluated
+ * @param uniform_weights - evaluate the GMM densities assuming that p(o) is uniform
  * @return the log GMM densities log(p(s))
  */
-vec GMM::evaluate_GMM_densities_low_mem(mat samples) {
+vec GMM::evaluate_GMM_densities_low_mem(mat samples, bool uniform_weights) {
   omp_set_dynamic(0);
   int max_threads = omp_get_max_threads();
   mat mixture_densities_per_thread(max_threads, samples.n_cols, fill::zeros);
@@ -266,7 +281,11 @@ vec GMM::evaluate_GMM_densities_low_mem(mat samples) {
 #pragma omp parallel for
   for (int i = 0; i < num_components; i++) {
     int tid = omp_get_thread_num();
-    joint_densities_per_thread.row(tid) =
+    if (uniform_weights)
+        joint_densities_per_thread.row(tid) =
+            log_weights.at(1./num_components) + gaussian_pdf(inv_chols.slice(i), samples.each_col() - means.col(i), true).t();
+    else
+        joint_densities_per_thread.row(tid) =
             log_weights.at(i) + gaussian_pdf(inv_chols.slice(i), samples.each_col() - means.col(i), true).t();
     old_max_per_thread.row(tid) = max_per_thread.row(tid);
     max_per_thread.row(tid) = arma::max(joint_densities_per_thread.row(tid), max_per_thread.row(tid));
@@ -342,7 +361,7 @@ std::tuple<mat, mat, rowvec, rowvec, vec, mat> GMM::compute_log_marginals(mat sa
 * Draw n samples from the specified component
 */
 mat GMM::sample_from_component(int index, int n) {
-  mat samples_out = chols.slice(index).t() * randn(dim, n);
+  mat samples_out = trimatl(chols.slice(index)) * randn(dim, n);
   samples_out = samples_out.each_col() + means.col(index);
   return samples_out;
 }
@@ -429,22 +448,6 @@ std::tuple<mat, uvec> GMM::sample_from_mixture_weights(
   used_components = used_components.rows(permutation);
 
   return std::make_tuple(new_samples, conv_to<uvec>::from(used_components));
-}
-
-
-//---- Helpers
-/**
-* computes log(sum(exp(data))) columnwise
-* @returns a tuple containing<br>
-* tuple[0]: a vector containing the column-wise softmaxs, max(data) + log(sum(exp(data-max(data)))<br>
-* tuple[1]: a vector containing column-wise offsets, i.e. -max(data)<br>
-* tuple[2]: a vector containing the column-wise summations, sum(exp(data-max(data)))
-*/
-std::tuple<vec, vec, vec> GMM::softMax_2D(mat data) {
-  rowvec columnwise_offsets = -max(data, 0);
-  vec summation_with_offsets = sum(exp(data.each_row() + columnwise_offsets), 0).t();
-  vec softMax2D = log(summation_with_offsets) - columnwise_offsets.t();
-  return make_tuple(softMax2D, columnwise_offsets.t(), summation_with_offsets);
 }
 
 

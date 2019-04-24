@@ -1,13 +1,17 @@
 from time import time
 
 import numpy as np
-
+import os
 from experiments.lnpdfs.create_target_lnpfs import build_german_credit_lnpdf
 from sampler.elliptical_slice.bovy_mcmc.elliptical_slice import elliptical_slice as ess_update
 
 [target_lnpdf, prior, prior_chol] = build_german_credit_lnpdf()
 
 def sample(n_samps, path=None):
+    if path is not None:
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
     iters = []
     nfevals = []
     target_lnpdf.counter = 0

@@ -1,4 +1,5 @@
-import numpy as np
+import autograd.numpy as np
+import os
 from time import time
 from experiments.lnpdfs.create_target_lnpfs import build_frisk_autograd
 from autograd import grad
@@ -18,6 +19,10 @@ def lnpdf(theta):
 lnpdf.counter = 0
 
 def sample_with_progress(repeats, n_samps, n_steps, epsilon, path=None):
+    if path is not None:
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
     last = np.random.randn(D)
     timestamps = []
     all_samples = []

@@ -14,9 +14,9 @@ int {\bfseries run\+\_\+lbfgs\+\_\+nlopt} (std\+::vector$<$ double $>$ \&initial
 \item 
 std\+::tuple$<$ double, vec $>$ \hyperlink{classMore_aa3fdb202ca291e253f7c157d8a13040b}{dual\+\_\+function\+\_\+gaussian} (double eta, double omega)
 \item 
-bool \hyperlink{classMore_a5bb1da06e25a581a06d4c84359702e7b}{update\+\_\+surrogate} (vec regression\+\_\+weights, mat X, vec targets, double ridge\+\_\+factor, bool omit\+\_\+linear\+\_\+term, bool no\+\_\+correlations)
+bool \hyperlink{classMore_ab33950a4fa62de6b3f247c544e13fe59}{update\+\_\+surrogate} (vec regression\+\_\+weights, mat X, vec targets, double ridge\+\_\+factor, bool standardize=true, bool omit\+\_\+linear\+\_\+term=false, bool no\+\_\+correlations=false)
 \item 
-bool \hyperlink{classMore_a0943909cf34c607dba952bf65f724702}{update\+\_\+surrogate\+\_\+normalize\+Data} (vec regression\+\_\+weights, mat X, vec targets, mat cov, vec mean, double ridge\+\_\+factor, bool standardize, bool omit\+\_\+linear\+\_\+term, bool no\+\_\+correlations)
+bool \hyperlink{classMore_a79f14b01eafe1c3b2966ee6a6cb157eb}{update\+\_\+surrogate\+\_\+\+Center\+On\+True\+Mean} (vec regression\+\_\+weights, mat X, vec targets, vec mean, double ridge\+\_\+factor, bool standardize, bool omit\+\_\+linear\+\_\+term, bool no\+\_\+correlations)
 \item 
 void \hyperlink{classMore_a7163e4cb11467ccbdb76b830a193c597}{set\+\_\+target\+\_\+dist} (mat Sigma\+\_\+q, vec mu\+\_\+q)
 \item 
@@ -152,57 +152,63 @@ Sets the target dist. This version takes both, the cholesky decomposition of the
 \end{DoxyParams}
 \index{More@{More}!update\+\_\+surrogate@{update\+\_\+surrogate}}
 \index{update\+\_\+surrogate@{update\+\_\+surrogate}!More@{More}}
-\subsubsection[{\texorpdfstring{update\+\_\+surrogate(vec regression\+\_\+weights, mat X, vec targets, double ridge\+\_\+factor, bool omit\+\_\+linear\+\_\+term, bool no\+\_\+correlations)}{update_surrogate(vec regression_weights, mat X, vec targets, double ridge_factor, bool omit_linear_term, bool no_correlations)}}]{\setlength{\rightskip}{0pt plus 5cm}bool More\+::update\+\_\+surrogate (
+\subsubsection[{\texorpdfstring{update\+\_\+surrogate(vec regression\+\_\+weights, mat X, vec targets, double ridge\+\_\+factor, bool standardize=true, bool omit\+\_\+linear\+\_\+term=false, bool no\+\_\+correlations=false)}{update_surrogate(vec regression_weights, mat X, vec targets, double ridge_factor, bool standardize=true, bool omit_linear_term=false, bool no_correlations=false)}}]{\setlength{\rightskip}{0pt plus 5cm}bool More\+::update\+\_\+surrogate (
 \begin{DoxyParamCaption}
 \item[{vec}]{regression\+\_\+weights, }
 \item[{mat}]{X, }
 \item[{vec}]{targets, }
 \item[{double}]{ridge\+\_\+factor, }
-\item[{bool}]{omit\+\_\+linear\+\_\+term, }
-\item[{bool}]{no\+\_\+correlations}
+\item[{bool}]{standardize = {\ttfamily true}, }
+\item[{bool}]{omit\+\_\+linear\+\_\+term = {\ttfamily false}, }
+\item[{bool}]{no\+\_\+correlations = {\ttfamily false}}
 \end{DoxyParamCaption}
-)}\hypertarget{classMore_a5bb1da06e25a581a06d4c84359702e7b}{}\label{classMore_a5bb1da06e25a581a06d4c84359702e7b}
+)}\hypertarget{classMore_ab33950a4fa62de6b3f247c544e13fe59}{}\label{classMore_ab33950a4fa62de6b3f247c544e13fe59}
 Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables 
 \begin{DoxyParams}{Parameters}
-{\em regression\+\_\+weights} & \\
+{\em regression\+\_\+weights} & -\/ for weighted least squares, typically importance weights \\
 \hline
-{\em X} & \\
+{\em X} & -\/ independent variable \\
 \hline
-{\em targets} & \\
+{\em targets} & -\/ reward values for each x in X (dependent variables) \\
 \hline
-{\em ridge\+\_\+factor} & \\
+{\em ridge\+\_\+factor} & -\/ coefficient for regularization \\
 \hline
-{\em omit\+\_\+linear\+\_\+term} & \\
+{\em standardize} & -\/ standardize the features \\
 \hline
-{\em no\+\_\+correlations} & \\
+{\em omit\+\_\+linear\+\_\+term} & -\/ don\textquotesingle{}t learn mean \\
+\hline
+{\em no\+\_\+correlations} & -\/ learn diagonal matrix \\
 \hline
 \end{DoxyParams}
-\index{More@{More}!update\+\_\+surrogate\+\_\+normalize\+Data@{update\+\_\+surrogate\+\_\+normalize\+Data}}
-\index{update\+\_\+surrogate\+\_\+normalize\+Data@{update\+\_\+surrogate\+\_\+normalize\+Data}!More@{More}}
-\subsubsection[{\texorpdfstring{update\+\_\+surrogate\+\_\+normalize\+Data(vec regression\+\_\+weights, mat X, vec targets, mat cov, vec mean, double ridge\+\_\+factor, bool standardize, bool omit\+\_\+linear\+\_\+term, bool no\+\_\+correlations)}{update_surrogate_normalizeData(vec regression_weights, mat X, vec targets, mat cov, vec mean, double ridge_factor, bool standardize, bool omit_linear_term, bool no_correlations)}}]{\setlength{\rightskip}{0pt plus 5cm}bool More\+::update\+\_\+surrogate\+\_\+normalize\+Data (
+\index{More@{More}!update\+\_\+surrogate\+\_\+\+Center\+On\+True\+Mean@{update\+\_\+surrogate\+\_\+\+Center\+On\+True\+Mean}}
+\index{update\+\_\+surrogate\+\_\+\+Center\+On\+True\+Mean@{update\+\_\+surrogate\+\_\+\+Center\+On\+True\+Mean}!More@{More}}
+\subsubsection[{\texorpdfstring{update\+\_\+surrogate\+\_\+\+Center\+On\+True\+Mean(vec regression\+\_\+weights, mat X, vec targets, vec mean, double ridge\+\_\+factor, bool standardize, bool omit\+\_\+linear\+\_\+term, bool no\+\_\+correlations)}{update_surrogate_CenterOnTrueMean(vec regression_weights, mat X, vec targets, vec mean, double ridge_factor, bool standardize, bool omit_linear_term, bool no_correlations)}}]{\setlength{\rightskip}{0pt plus 5cm}bool More\+::update\+\_\+surrogate\+\_\+\+Center\+On\+True\+Mean (
 \begin{DoxyParamCaption}
 \item[{vec}]{regression\+\_\+weights, }
 \item[{mat}]{X, }
 \item[{vec}]{targets, }
-\item[{mat}]{cov, }
 \item[{vec}]{mean, }
 \item[{double}]{ridge\+\_\+factor, }
 \item[{bool}]{standardize, }
 \item[{bool}]{omit\+\_\+linear\+\_\+term, }
 \item[{bool}]{no\+\_\+correlations}
 \end{DoxyParamCaption}
-)}\hypertarget{classMore_a0943909cf34c607dba952bf65f724702}{}\label{classMore_a0943909cf34c607dba952bf65f724702}
-Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables 
+)}\hypertarget{classMore_a79f14b01eafe1c3b2966ee6a6cb157eb}{}\label{classMore_a79f14b01eafe1c3b2966ee6a6cb157eb}
+Fits a quadratic surrogate using weighted ridge regression and stores the result in the member variables. This method centers the data by subtracting the provided mean. 
 \begin{DoxyParams}{Parameters}
-{\em regression\+\_\+weights} & \\
+{\em regression\+\_\+weights} & -\/ for weighted least squares, typically importance weights \\
 \hline
-{\em X} & \\
+{\em X} & -\/ independent variable \\
 \hline
-{\em targets} & \\
+{\em mean} & -\/ mean of the Gaussian for which we want to compute the surrogate \\
 \hline
-{\em ridge\+\_\+factor} & \\
+{\em targets} & -\/ reward values for each x in X (dependent variables) \\
 \hline
-{\em omit\+\_\+linear\+\_\+term} & \\
+{\em ridge\+\_\+factor} & -\/ coefficient for regularization \\
+\hline
+{\em omit\+\_\+linear\+\_\+term} & -\/ don\textquotesingle{}t learn mean \\
+\hline
+{\em no\+\_\+correlations} & -\/ learn diagonal matrix \\
 \hline
 \end{DoxyParams}
 

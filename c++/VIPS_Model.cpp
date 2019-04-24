@@ -8,12 +8,16 @@ using namespace arma;
  * The GMM-model learned by VIPS.
  * This class extends GMM to include learning related meta information.
  * @param dim number of dimensions
+ * @param initial_kl_bound
  * @extends GMM
  */
-VIPS_Model::VIPS_Model(int dim)
-        : GMM(dim), last_etas_for_comp_optimization(), target_inv_chols(dim, dim, 0),
+VIPS_Model::VIPS_Model(int dim, double initial_kl_bound)
+        : GMM(dim), last_etas_for_comp_optimization(), ridge_multiplier(), target_inv_chols(dim, dim, 0),
           target_chols(dim, dim, 0), target_means(dim, 0), target_weights(), target_log_weights(),
-          comp_reward_history(), comp_etd_history(), comp_weight_history() {}
+          comp_reward_history(), comp_etd_history(), comp_weight_history(), comp_num_samples_history(),
+           expected_rewards(), kl_bounds() {
+           this->initial_kl_bound = initial_kl_bound;
+           }
 
 
 arma::vec VIPS_Model::getLastEtasForCompOptimization() { return last_etas_for_comp_optimization; }
@@ -31,6 +35,51 @@ void VIPS_Model::setLastEtasForCompOptimization(vec new_lastEtas) {
 }
 
 /**
+* Store the approximated reward for each component, computed on the same set of samples that was used for the component update.
+* If this value is significantly larger than an estimate on fresh samples, we are probably overfitting.
+* @param new_approxRewards - an importance weighted MC estimate of the expected reward \int_x p(x|o) (log p(x) + log q(o|x))) + H(q(x|o)
+*/
+void VIPS_Model::setApproxRewardBeforeCompUpdate(vec new_expected_rewards) {
+  if (new_expected_rewards.n_rows == num_components) {
+    expected_rewards = new_expected_rewards;
+  } else {
+    throw std::invalid_argument("VIPS_Model::setApproxRewardBeforeCompUpdate: Vector has wrong size");
+  }
+}
+
+arma::vec VIPS_Model::getApproxRewardBeforeCompUpdate() {
+    return expected_rewards;
+}
+
+arma::vec VIPS_Model::getRidgeMultipliers() { return ridge_multiplier; }
+
+/**
+* For each component, update the factor >= 1 to scale the ridge coefficient for fitting the surrogates.
+* @param new_ridgeMultipliers - vector containing the new ridge scaling multipliers
+*/
+void VIPS_Model::setRidgeMultipliers(vec new_ridgeMultiplier) {
+  if (new_ridgeMultiplier.n_rows == num_components) {
+    ridge_multiplier = new_ridgeMultiplier;
+  } else {
+    throw std::invalid_argument("VIPS_Model::setRidgeMultipliers: Vector has wrong size");
+  }
+}
+
+arma::vec VIPS_Model::getKLBounds() { return kl_bounds; }
+
+/**
+* Set the KL bounds for each component
+* @param new_KLBounds - KL bounds used by the next component update
+*/
+void VIPS_Model::setKLBounds(vec new_KLBounds) {
+  if (new_KLBounds.n_rows == num_components) {
+    kl_bounds = new_KLBounds;
+  } else {
+    throw std::invalid_argument("setKLBounds: Vector has wrong size");
+  }
+}
+
+/**
 * The VIPS-model stores various meta-information for each component, e.g. KL bounds,
 * the target distributions for the KL constraint and some debug data like the history of achieved rewards.<br>
 * This function will enlarge the matrices/vector that store this meta-information in order to account for
@@ -39,7 +88,8 @@ void VIPS_Model::setLastEtasForCompOptimization(vec new_lastEtas) {
 */
 void VIPS_Model::add_meta_info_for_components(int N) {
   // update last learned etas for warm-starting
-  last_etas_for_comp_optimization = join_cols(last_etas_for_comp_optimization, vec(N, fill::ones));
+  last_etas_for_comp_optimization = join_cols(last_etas_for_comp_optimization, 1e4 * vec(N, fill::ones));
+  ridge_multiplier = join_cols(ridge_multiplier, vec(N, fill::ones));
 
   // update targets for KL bounds
   int old_num_components = target_inv_chols.n_slices;
@@ -51,14 +101,17 @@ void VIPS_Model::add_meta_info_for_components(int N) {
   target_log_weights.insert_rows(old_num_components, N, false);
   uvec indices_of_new_comps = arma::linspace<uvec>(num_components - N, num_components - 1, N);
   update_targets_for_KL_bounds(indices_of_new_comps, true, true);
+  expected_rewards = join_cols(expected_rewards, -datum::inf * vec(N, fill::ones));
+  kl_bounds = join_cols(kl_bounds, initial_kl_bound * vec(N, fill::ones));
 
-  // update reward history
+  // update histories
   comp_reward_history.insert_rows(old_num_components, N, false);
   comp_reward_history.tail_rows(N).fill(-datum::inf);
   comp_etd_history.insert_rows(old_num_components, N, false);
   comp_etd_history.tail_rows(N).fill(-datum::inf);
   comp_weight_history.insert_rows(old_num_components, N, false);
   comp_weight_history.tail_rows(N).fill(datum::inf);
+  comp_num_samples_history.insert_rows(old_num_components, N, true);
 }
 
 /**
@@ -71,6 +124,10 @@ void VIPS_Model::update_histories(vec expected_target_densities, vec component_r
     comp_etd_history = join_horiz(comp_etd_history, expected_target_densities);
     comp_reward_history = join_horiz(comp_reward_history, component_rewards);
     comp_weight_history = join_horiz(comp_weight_history, weights);
+}
+
+void VIPS_Model::update_num_sample_history(uvec new_samples) {
+    comp_num_samples_history = join_horiz(comp_num_samples_history, new_samples);
 }
 
 /**
@@ -104,6 +161,8 @@ void VIPS_Model::add_components_invChols(arma::mat new_means, arma::cube new_inv
 void VIPS_Model::delete_component(int index) {
   GMM::delete_component(index);
   last_etas_for_comp_optimization.shed_row(index);
+  ridge_multiplier.shed_row(index);
+  kl_bounds.shed_row(index);
   target_inv_chols.shed_slice(index);
   target_chols.shed_slice(index);
   target_means.shed_col(index);
@@ -112,6 +171,8 @@ void VIPS_Model::delete_component(int index) {
   comp_weight_history.shed_row(index);
   comp_reward_history.shed_row(index);
   comp_etd_history.shed_row(index);
+  comp_num_samples_history.shed_row(index);
+  expected_rewards.shed_row(index);
 }
 
 
@@ -121,15 +182,27 @@ void VIPS_Model::delete_component(int index) {
  * Weights are normalized afterwards.
  * @param min_weight - threshold for keeping components
  * @param n_del - number of most recent EM iterations to be considered
+ * @return deleted_indices - a vector containing the (old) indices of the deleted components
  */
-void VIPS_Model::delete_low_weight_components(double min_weight, int n_del) {
+uvec VIPS_Model::delete_low_weight_components(double min_weight, int n_del) {
+  n_del++;
   int n_hist = comp_weight_history.n_cols;
   if (n_hist < n_del)
-    return;
+    return uvec();
 
   vec best_weights = arma::max(comp_weight_history.tail_cols(n_del), 1);
-  uvec stagnating_indices = find(best_weights <= min_weight);
-  delete_components(stagnating_indices);
+  uvec low_weight_indices = find(best_weights <= min_weight);
+
+  vec old_rewards = comp_reward_history.col(comp_reward_history.n_cols - n_del);
+  vec current_rewards = comp_reward_history.col(comp_reward_history.n_cols-1);
+  old_rewards -= arma::max(current_rewards);
+  current_rewards -= arma::max(current_rewards);
+  uvec stagnating_indices = find( (current_rewards - old_rewards) / abs(old_rewards) < 0.01);
+//  vec tmp = (current_rewards - old_rewards) / abs(old_rewards);
+//  cout << "reward changes: " << tmp.t() << endl;
+  uvec bad_components = intersect(stagnating_indices, low_weight_indices);
+  delete_components(bad_components);
+  return bad_components;
 }
 
 

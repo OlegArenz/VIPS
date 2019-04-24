@@ -87,7 +87,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classGMM-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -107,10 +106,10 @@ Inheritance diagram for GMM:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a84d95fb2c6582568a9d9a1b0efe200a4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a84d95fb2c6582568a9d9a1b0efe200a4">GMM</a> (int dim, int max_components=100000)</td></tr>
 <tr class="separator:a84d95fb2c6582568a9d9a1b0efe200a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd0dd8e7f38a792f515d296dd467924a"><td class="memItemLeft" align="right" valign="top">arma::cube&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#acd0dd8e7f38a792f515d296dd467924a">interpolate_covs_for_query_points</a> (mat query_points)</td></tr>
-<tr class="separator:acd0dd8e7f38a792f515d296dd467924a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00680c4a0c5f3befd742015bb8ad0a08"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a00680c4a0c5f3befd742015bb8ad0a08">add_components_at_locations</a> (mat means)</td></tr>
-<tr class="separator:a00680c4a0c5f3befd742015bb8ad0a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b867d2bbe2d3eebbd871bd1e99eabd2"><td class="memItemLeft" align="right" valign="top">arma::cube&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a5b867d2bbe2d3eebbd871bd1e99eabd2">interpolate_covs_for_query_points</a> (mat query_points, bool scale_entropy, bool isotropic)</td></tr>
+<tr class="separator:a5b867d2bbe2d3eebbd871bd1e99eabd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16b4be29710b9754b3276c649ede42b5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a16b4be29710b9754b3276c649ede42b5">add_components_at_locations</a> (mat means, bool scale_entropy, bool isotropic)</td></tr>
+<tr class="separator:a16b4be29710b9754b3276c649ede42b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae33b6f52e8585c0cd590fd1d509956b0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#ae33b6f52e8585c0cd590fd1d509956b0">add_components</a> (mat means, cube covs)</td></tr>
 <tr class="separator:ae33b6f52e8585c0cd590fd1d509956b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07d7ade16c34458f6cf8fad958728c98"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a07d7ade16c34458f6cf8fad958728c98">add_components_invChols</a> (mat new_means, cube new_invChols)</td></tr>
@@ -129,8 +128,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8a9e502395f9d7f6a63eb7f56df5a73f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c2d04636a640ce56bf245df750e97ea"><td class="memItemLeft" align="right" valign="top">vec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a1c2d04636a640ce56bf245df750e97ea">evaluate_GMM_densities</a> (mat samples, bool return_log)</td></tr>
 <tr class="separator:a1c2d04636a640ce56bf245df750e97ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a0e20b34d77c21fb31449dac5d1bd32"><td class="memItemLeft" align="right" valign="top">vec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a9a0e20b34d77c21fb31449dac5d1bd32">evaluate_GMM_densities_low_mem</a> (mat samples)</td></tr>
-<tr class="separator:a9a0e20b34d77c21fb31449dac5d1bd32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7e827d443107567eb5c4e5791158005"><td class="memItemLeft" align="right" valign="top">vec&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#ab7e827d443107567eb5c4e5791158005">evaluate_GMM_densities_low_mem</a> (mat samples, bool uniform_weights=false)</td></tr>
+<tr class="separator:ab7e827d443107567eb5c4e5791158005"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11d50f8336e3f0b4371fa4c7c023e11f"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; mat, mat, rowvec, rowvec, vec, mat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a11d50f8336e3f0b4371fa4c7c023e11f">compute_log_marginals</a> (mat samples)</td></tr>
 <tr class="separator:a11d50f8336e3f0b4371fa4c7c023e11f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03b69ac93de1b177102fc9378665f20b"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; mat, rowvec, rowvec, vec, mat &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#a03b69ac93de1b177102fc9378665f20b">compute_log_marginals_from_comp_densities</a> (mat log_component_marginals)</td></tr>
@@ -186,11 +185,6 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:af0c5335a6c9ac80c07d3212314e0d8b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0c5335a6c9ac80c07d3212314e0d8b6"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>max_components</b></td></tr>
 <tr class="separator:af0c5335a6c9ac80c07d3212314e0d8b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:adfbd4c7449817315f02f54736751e1ce"><td class="memItemLeft" align="right" valign="top">std::tuple&lt; vec, vec, vec &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGMM.html#adfbd4c7449817315f02f54736751e1ce">softMax_2D</a> (mat data)</td></tr>
-<tr class="separator:adfbd4c7449817315f02f54736751e1ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -307,7 +301,7 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
 
 </div>
 </div>
-<a class="anchor" id="a00680c4a0c5f3befd742015bb8ad0a08"></a>
+<a class="anchor" id="a16b4be29710b9754b3276c649ede42b5"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -318,8 +312,24 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
           <td class="memname">void GMM::add_components_at_locations </td>
           <td>(</td>
           <td class="paramtype">mat&#160;</td>
-          <td class="paramname"><em>new_means</em></td><td>)</td>
+          <td class="paramname"><em>new_means</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>scale_entropy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isotropic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -332,7 +342,9 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
  The covariance matrices are initialized by interpolating the covariance matrices of the existing components weighted by their responsibilities for the new mean.<br />
  The weights are initialized to low values, such that the change of the mixture is negligible </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">means</td><td>- matrix of size N_dimensions x N_newComponents specifying at which positions new components are to be added </td></tr>
+    <tr><td class="paramname">means</td><td>- matrix of size N_dimensions x N_newComponents specifying </td></tr>
+    <tr><td class="paramname">scale_entropy</td><td>- if true, scale the entropy of the Gaussian such that it corresponds to the average entropy  p(o) H(p(x|o)) </td></tr>
+    <tr><td class="paramname">isotropic</td><td>- if true, return an isotropic (identity if scale_entropy = False) covariance instead of interpolating. at which positions new components are to be added </td></tr>
   </table>
   </dd>
 </dl>
@@ -624,7 +636,7 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
 
 </div>
 </div>
-<a class="anchor" id="a9a0e20b34d77c21fb31449dac5d1bd32"></a>
+<a class="anchor" id="ab7e827d443107567eb5c4e5791158005"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -632,14 +644,25 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
           <td class="memname">vec GMM::evaluate_GMM_densities_low_mem </td>
           <td>(</td>
           <td class="paramtype">mat&#160;</td>
-          <td class="paramname"><em>samples</em></td><td>)</td>
+          <td class="paramname"><em>samples</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>uniform_weights</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Evaluates the <a class="el" href="classGMM.html">GMM</a> on the given samples in a memory efficient way. This function is recommended for very large number of samples or components </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">samples</td><td>- a matrix of size N_dim x N_samples of samples to be evaluated </td></tr>
+    <tr><td class="paramname">uniform_weights</td><td>- evaluate the <a class="el" href="classGMM.html">GMM</a> densities assuming that p(o) is uniform </td></tr>
   </table>
   </dd>
 </dl>
@@ -647,7 +670,7 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
 
 </div>
 </div>
-<a class="anchor" id="acd0dd8e7f38a792f515d296dd467924a"></a>
+<a class="anchor" id="a5b867d2bbe2d3eebbd871bd1e99eabd2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -655,8 +678,24 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
           <td class="memname">cube GMM::interpolate_covs_for_query_points </td>
           <td>(</td>
           <td class="paramtype">mat&#160;</td>
-          <td class="paramname"><em>query_points</em></td><td>)</td>
+          <td class="paramname"><em>query_points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>scale_entropy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isotropic</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -664,7 +703,10 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
  This can be used, for example, for initializing new components.<br />
  </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">query_points</td><td>- D X N matrix containing the query points </td></tr>
+    <tr><td class="paramname">query_points</td><td>- D X N matrix containing the query points <br />
+ </td></tr>
+    <tr><td class="paramname">scale_entropy</td><td>- if true, scale the entropy of the Gaussian such that it corresponds to the average entropy  p(o) H(p(x|o)) </td></tr>
+    <tr><td class="paramname">isotropic</td><td>- if true, return an isotropic (identity if scale_entropy = False) covariance instead of interpolating. </td></tr>
   </table>
   </dd>
 </dl>
@@ -781,34 +823,6 @@ std::default_random_engine&#160;</td><td class="memItemRight" valign="bottom"><b
 <dl class="section return"><dt>Returns</dt><dd>samples - N Samples drwan from the mixture with the given weights </dd>
 <dd>
 indices - for each sample, the index of the component that was used for drawing it </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="adfbd4c7449817315f02f54736751e1ce"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::tuple&lt; vec, vec, vec &gt; GMM::softMax_2D </td>
-          <td>(</td>
-          <td class="paramtype">mat&#160;</td>
-          <td class="paramname"><em>data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>computes log(sum(exp(data))) columnwise </p><dl class="section return"><dt>Returns</dt><dd>a tuple containing<br />
- tuple[0]: a vector containing the column-wise softmaxs, max(data) + log(sum(exp(data-max(data)))<br />
- tuple[1]: a vector containing column-wise offsets, i.e. -max(data)<br />
- tuple[2]: a vector containing the column-wise summations, sum(exp(data-max(data))) </dd></dl>
 
 </div>
 </div>

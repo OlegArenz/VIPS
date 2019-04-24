@@ -2,8 +2,7 @@
 \label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper}\index{V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+V\+I\+P\+S\+\_\+\+Python\+Wrapper@{V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+V\+I\+P\+S\+\_\+\+Python\+Wrapper}}
 
 
-Inheritance diagram for V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+V\+I\+P\+S\+\_\+\+Python\+Wrapper\+:
-\nopagebreak
+Inheritance diagram for V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+V\+I\+P\+S\+\_\+\+Python\+Wrapper\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+V\+I\+P\+S\+\_\+\+Py
 \end{figure}
 
 
-Collaboration diagram for V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+V\+I\+P\+S\+\_\+\+Python\+Wrapper\+:
-\nopagebreak
+Collaboration diagram for V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+V\+I\+P\+S\+\_\+\+Python\+Wrapper\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,7 +21,7 @@ Collaboration diagram for V\+I\+P\+S\+\_\+\+Python\+Wrapper.\+V\+I\+P\+S\+\_\+\+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def {\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, num\+\_\+dimensions, num\+\_\+threads)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a9341696236fd64ec54fae41e0fb14c5e}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a9341696236fd64ec54fae41e0fb14c5e}
+def {\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, num\+\_\+dimensions, num\+\_\+threads, min\+\_\+kl\+\_\+bound, max\+\_\+kl\+\_\+bound)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ab6f9fbbadfba841cd317a0df11c2519f}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ab6f9fbbadfba841cd317a0df11c2519f}
 
 \item 
 def {\bfseries add\+\_\+components} (self, new\+\_\+weights\+\_\+in, new\+\_\+means\+\_\+in, new\+\_\+covs\+\_\+in)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a2e83abd123df46605bf9f509482ba6aa}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a2e83abd123df46605bf9f509482ba6aa}
@@ -32,7 +30,7 @@ def {\bfseries add\+\_\+components} (self, new\+\_\+weights\+\_\+in, new\+\_\+me
 def {\bfseries promote\+\_\+samples\+\_\+to\+\_\+components} (self, N, max\+\_\+exploration\+\_\+bonus, tau, only\+\_\+check\+\_\+active\+\_\+samples, max\+\_\+samples)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_adf3bfe2bd7c08eb16161b980185c48b4}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_adf3bfe2bd7c08eb16161b980185c48b4}
 
 \item 
-def {\bfseries delete\+\_\+low\+\_\+weight\+\_\+components} (self, min\+\_\+weight)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a3608b22c3a3c6ee0e79054d034ef3ba5}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a3608b22c3a3c6ee0e79054d034ef3ba5}
+def {\bfseries delete\+\_\+low\+\_\+weight\+\_\+components} (self, min\+\_\+weight, n\+\_\+del=300)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a1f27ed4c1eb33b135c885a9134068a0a}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a1f27ed4c1eb33b135c885a9134068a0a}
 
 \item 
 def {\bfseries draw\+\_\+samples} (self, N, temperature)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_accf6844547cc58211f290b9179137751}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_accf6844547cc58211f290b9179137751}
@@ -41,22 +39,28 @@ def {\bfseries draw\+\_\+samples} (self, N, temperature)\hypertarget{classVIPS__
 def {\bfseries draw\+\_\+samples\+\_\+weights} (self, N, new\+\_\+weights\+\_\+in)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ab50ef56f6c26d4c9affffdcc098d7bb2}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ab50ef56f6c26d4c9affffdcc098d7bb2}
 
 \item 
+def {\bfseries add\+\_\+samples\+\_\+mean\+\_\+cov} (self, samples\+\_\+ptr, target\+\_\+densities\+\_\+ptr, mean\+\_\+in, cov\+\_\+in)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a7bd41147bb2f65758e925e1a5bf603c1}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a7bd41147bb2f65758e925e1a5bf603c1}
+
+\item 
 def {\bfseries add\+\_\+samples} (self, samples\+\_\+ptr, indices\+\_\+ptr, target\+\_\+densities\+\_\+ptr)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a23823478d0783aa449e3cd1d0df226ae}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a23823478d0783aa449e3cd1d0df226ae}
 
 \item 
-def {\bfseries activate\+\_\+newest\+\_\+samples} (self, N)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a80436aba4ac10a9ae4a858dd776daa46}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a80436aba4ac10a9ae4a858dd776daa46}
+def {\bfseries activate\+\_\+newest\+\_\+samples} (self, N, keep\+\_\+old)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a3f34753c13c3c84c64f59d10692ef6e1}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a3f34753c13c3c84c64f59d10692ef6e1}
+
+\item 
+def {\bfseries select\+\_\+active\+\_\+samples} (self, num\+\_\+comps, num\+\_\+samples, temperature)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ab12230147a31f6aad9030e2665a326ff}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ab12230147a31f6aad9030e2665a326ff}
 
 \item 
 def {\bfseries update\+\_\+targets\+\_\+for\+\_\+\+K\+L\+\_\+bounds} (self, update\+\_\+weight\+\_\+targets, update\+\_\+comp\+\_\+targets)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a655ac6d10787d77209af115b7f9974aa}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a655ac6d10787d77209af115b7f9974aa}
 
 \item 
-def {\bfseries update\+\_\+weights} (self, epsilon, tau, max\+\_\+entropy\+\_\+decrease)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a22d9320a61ce3b417fd844f23496df95}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a22d9320a61ce3b417fd844f23496df95}
+def {\bfseries update\+\_\+weights} (self, epsilon, tau, max\+\_\+entropy\+\_\+decrease, be\+\_\+greedy)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ae72f3ce8e5ffc43599b925657644f3be}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ae72f3ce8e5ffc43599b925657644f3be}
 
 \item 
 def {\bfseries apply\+\_\+lower\+\_\+bound\+\_\+on\+\_\+weights} (self, lb\+\_\+weights\+\_\+in)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a1c414ea0d6e4e499e1dec190a75e37c5}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a1c414ea0d6e4e499e1dec190a75e37c5}
 
 \item 
-def {\bfseries update\+\_\+components} (self, max\+\_\+kl\+\_\+bound, factor, tau, ridge\+\_\+coefficient, max\+\_\+entropy\+\_\+decrease, max\+\_\+active\+\_\+samples, dont\+\_\+learn\+\_\+correlations)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a67549b1db5ae4a85e93a75cf61f41ac6}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a67549b1db5ae4a85e93a75cf61f41ac6}
+def {\bfseries update\+\_\+components} (self, tau, ridge\+\_\+coefficient, max\+\_\+entropy\+\_\+decrease, max\+\_\+active\+\_\+samples, dont\+\_\+learn\+\_\+correlations, dont\+\_\+recompute\+\_\+densities)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ad57ed1641ce5d862fc75787f27d98c6a}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ad57ed1641ce5d862fc75787f27d98c6a}
 
 \item 
 def {\bfseries recompute\+\_\+densities} (self, only\+\_\+weights\+\_\+changed)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_af2603b54ce5770f30caaaedd0de39903}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_af2603b54ce5770f30caaaedd0de39903}
@@ -83,6 +87,9 @@ def {\bfseries get\+\_\+num\+\_\+samples} (self)\hypertarget{classVIPS__PythonWr
 def {\bfseries get\+\_\+expected\+\_\+rewards} (self)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_adbaec109e7405288175ca97a62062b54}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_adbaec109e7405288175ca97a62062b54}
 
 \item 
+def {\bfseries get\+\_\+best\+\_\+interpolation} (self, index, samples\+\_\+ptr, target\+\_\+densities\+\_\+ptr, target\+\_\+densities2\+\_\+ptr, scaling\+\_\+factor)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_acba6adf82d0a8c9d93d97dee8b004ba1}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_acba6adf82d0a8c9d93d97dee8b004ba1}
+
+\item 
 def {\bfseries get\+\_\+log\+\_\+densities\+\_\+on\+\_\+mixture} (self, samples\+\_\+ptr)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a6ccb306fac4c0dcaf679c53528607eb4}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_a6ccb306fac4c0dcaf679c53528607eb4}
 
 \item 
@@ -102,6 +109,9 @@ def {\bfseries backup\+\_\+learner} (self)\hypertarget{classVIPS__PythonWrapper_
 
 \item 
 def {\bfseries restore\+\_\+learner} (self)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ab443f0f71c3cda42e5fd2c35b618b47a}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_ab443f0f71c3cda42e5fd2c35b618b47a}
+
+\item 
+def {\bfseries compute\+\_\+\+K\+Ls\+\_\+between\+\_\+\+G\+M\+M\+\_\+and\+\_\+\+D\+B\+\_\+components} (self, reverse\+\_\+\+KL)\hypertarget{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_acff8ed89b9041378a5082beb2bfd846b}{}\label{classVIPS__PythonWrapper_1_1VIPS__PythonWrapper_acff8ed89b9041378a5082beb2bfd846b}
 
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}

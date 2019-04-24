@@ -24,12 +24,10 @@ class Frisk(AbstractVIPSExperiment):
         self.run_experiment_VIPS(self.target_lnpdf, self.config, self.groundtruth_samples, self.groundtruth_lnpdfs)
 
 def run_on_cluster(config_name, path_for_dumps, rate_of_dumps=100, num_threads=1):
-    if config_name is 'explorative40':
-        import experiments.VIPS.configs.explorative40 as config
-    elif config_name is 'explorative5':
-        import experiments.VIPS.configs.explorative5 as config
-    elif config_name is 'single':
-        import experiments.VIPS.configs.single_comp as config
+    if config_name is 'default':
+        import experiments.VIPS.configs.default as config
+    elif config_name is 'fast_adding':
+        import experiments.VIPS.configs.fast_adding as config
     else:
         print("config_name " + config_name + ' not known')
         return
@@ -44,9 +42,9 @@ def run_on_cluster(config_name, path_for_dumps, rate_of_dumps=100, num_threads=1
 
 
 if __name__ == '__main__':
-    import experiments.VIPS.configs.explorative5 as explorative5
-    import experiments.VIPS.configs.single_comp as VIPS1
-    config = VIPS1
+    import experiments.VIPS.configs.default as VIPS100
+
+    config = VIPS100
     experiment = Frisk(num_initial_components=1, initial_mixture_prior_variance=1, config=config)
     experiment.obtain_groundtruth()
     experiment.enable_progress_logging(config, 5)

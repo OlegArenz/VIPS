@@ -59,17 +59,17 @@ public:
 
     // weighted ridge regression
     bool update_surrogate(vec regression_weights,
-                          mat X,
-                          vec targets,
-                          double ridge_factor,
-                          bool omit_linear_term,
-                          bool no_correlations
-    );
-
-    bool update_surrogate_normalizeData(vec regression_weights,
                       mat X,
                       vec targets,
-                      mat cov,
+                      double ridge_factor,
+                      bool standardize=true,
+                      bool omit_linear_term=false,
+                      bool no_correlations=false
+    );
+
+    bool update_surrogate_CenterOnTrueMean(vec regression_weights,
+                      mat X,
+                      vec targets,
                       vec mean,
                       double ridge_factor,
                       bool standardize,

@@ -4,9 +4,9 @@ from time import time
 from experiments.lnpdfs.create_target_lnpfs import build_GPR_iono_lnpdf
 from sampler.SliceSampling.slice_sampler import slice_sample
 
-num_dimensions = 34
+num_dimensions = 35
 
-lnpdf = build_GPR_iono_lnpdf()
+lnpdf = build_GPR_iono_lnpdf()[0]
 
 prior = normal(np.zeros((num_dimensions)), np.eye((num_dimensions)))
 initial = prior.rvs(1)

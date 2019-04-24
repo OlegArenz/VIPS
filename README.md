@@ -32,16 +32,16 @@ Download armadillo into ~/libs
 
 ```bash
 cd ~/libs
-wget http://sourceforge.net/projects/arma/files/armadillo-8.300.3.tar.xz
+wget http://sourceforge.net/projects/arma/files/armadillo-9.100.5.tar.xz
 ```
 You can also check for a newer version at http://arma.sourceforge.net/download.html
 
 Unpack and configure it (Don't make it, we just need the headers)
 
 ```bash
-tar xJvf armadillo-8.300.3.tar.xz
-mv armadillo-8.300.3 armadillo
-rm armadillo-8.300.3.tar.xz
+tar xJvf armadillo-9.100.5.tar.xz
+mv armadillo-9.100.5 armadillo
+rm armadillo-9.100.5.tar.xz
 cd armadillo
 ./configure
 ```

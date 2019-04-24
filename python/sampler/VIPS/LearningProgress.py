@@ -71,6 +71,9 @@ class LearningProgress:
         # entropy coefficient
         self.taus = []
 
+        # effective samples after KL-based subsampling
+        self.neffs = []
+
     def add_timestamp(self, timestamp):
         self.timestamps = np.hstack((self.timestamps, np.array([timestamp])))
 
@@ -156,3 +159,6 @@ class LearningProgress:
 
     def add_tau(self, new_tau):
         self.taus.append(new_tau)
+
+    def add_neff(self, neff):
+            self.neffs.append(neff)

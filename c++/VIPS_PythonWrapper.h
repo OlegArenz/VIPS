@@ -17,7 +17,7 @@ protected:
     arma::vec last_expected_rew;
     arma::vec last_expected_target_densities;
 public:
-    VIPS_PythonWrapper(int num_dimensions, int num_threads);
+    VIPS_PythonWrapper(int num_dimensions, int num_threads, double min_kl_bound, double max_kl_bound);
     ~VIPS_PythonWrapper(void);
 
     void add_components(
@@ -25,9 +25,9 @@ public:
             double * new_means_in, int new_means_in_dim1, int new_means_in_dim2,
             double * new_covs_in,  int new_covs_in_dim1, int new_covs_in_dim2, int new_covs_in_dim3);
     
-    void promote_samples_to_components(int N, double max_exploration_bonus, double tau, bool only_check_active_samples, int max_samples);
+    void promote_samples_to_components(int N, double max_exploration_bonus, double tau, bool only_check_active_samples, int max_samples, bool scale_entropy=true, bool isotropic=false);
 
-    void delete_low_weight_components(double min_weight);
+    void delete_low_weight_components(double min_weight, int n_del=300);
 
     void draw_samples(
             // inputs:
@@ -45,22 +45,34 @@ public:
         int **indices_out, int *indices_out_dim1
     );
 
+void add_samples_mean_cov(
+        // inputs:
+        double *samples_ptr, int samples_dim1, int samples_dim2,
+        double *target_densities_ptr, int td_dim1,
+        double *mean_in, int mean_in_dim1,
+        double *cov_in, int cov_in_dim1, int cov_in_dim2);
+
     void add_samples(
             // inputs:
             double * samples_ptr, int samples_dim1, int samples_dim2,
             int * indices_ptr, int indices_dim1,
-            double * target_densiies_ptr, int td_dim1);
+            double * target_densities_ptr, int td_dim1
+    );
 
-    void activate_newest_samples(int N);
+
+    void activate_newest_samples(int N, bool keep_old);
+
+    void select_active_samples(int num_comps, int num_samples, double temperature,
+                            double ** num_eff_out_ptr, int * num_eff_out_dim1);
 
     void update_targets_for_KL_bounds(bool update_weight_targets, bool update_comp_targets);
 
-    void update_weights(double epsilon, double tau, double max_entropy_decrease);
+    void update_weights(double epsilon, double tau, double max_entropy_decrease, bool be_greedy);
 
     void apply_lower_bound_on_weights(double * lb_weights_in, int lb_weights_in_dim1);
 
-    void update_components(double max_kl_bound, double factor, double tau, double ridge_coefficient,
-                double max_entropy_decrease, double max_active_samples, bool dont_learn_correlations);
+    void update_components(double tau, double ridge_coefficient,
+                double max_entropy_decrease, double max_active_samples, bool dont_learn_correlations, bool dont_recompute_densities, bool adapt_ridge_multipliers);
 
     void recompute_densities(bool only_weights_changed);
 
@@ -99,6 +111,13 @@ public:
         double ** comp_reward_history_out_ptr, int * comp_reward_history_out_dim1, int * comp_reward_history_out_dim2
     );
 
+    void get_best_interpolation(int index,
+                                double * samples_ptr, int samples_dim1, int samples_dim2,
+                                double *target_densities_ptr, int td_dim1,
+                                double *target_densities2_ptr, int td2_dim1,
+                                double scaling_factor
+    );
+
     void get_log_densities_on_mixture(
             double * samples_ptr, int samples_dim1, int samples_dim2,
             double ** sample_densities_out, int * sample_densities_out_dim1
@@ -123,8 +142,13 @@ public:
     double ** log_responsibilities_out_ptr, int * log_responsibilities_out_dim1, int * log_responsibilities_out_dim2,
     double ** log_densities_on_background_out_ptr, int * log_densities_on_background_out_dim1,
     double ** importance_weights_out_ptr, int * importance_weights_out_dim1, int * importance_weights_out_dim2,
-    double ** importance_weights_normalized_out_ptr, int * importance_weights_normalized_out_dim1, int * importance_weights_normalized_out_dim2
+    double ** importance_weights_normalized_out_ptr, int * importance_weights_normalized_out_dim1, int * importance_weights_normalized_out_dim2,
+    int **indices_out, int *indices_out_dim1,
+    int **num_samples_history_out_ptr, int *num_samples_history_out_dim1, int *num_samples_history_out_dim2
     );
+
+    void compute_KLs_between_GMM_and_DB_components(bool reverse_KL,
+        float ** KL_mat_out_ptr, int * KL_mat_out_dim1, int * KL_mat_out_dim2);
 
     void backup_learner();
 

@@ -13,6 +13,7 @@ class TwoD_plots:
         self.x = np.linspace(min_x, max_x, num_x)
         self.y = np.linspace(min_y, max_y, num_y)
         self.a, self.b = np.meshgrid(self.x, self.y)
+        self.plotted_samps=[0]
 
         self.create_target_data()
         self.firsttime = True
@@ -28,6 +29,55 @@ class TwoD_plots:
         self.z_true_log_normed -= np.log(np.sum(np.exp(self.z_true_log_normed)))
         self.z_true_normed = np.exp(self.z_true_log_normed)
 
+    def plot_target(self, sampler, plotLog=False):
+        z = np.zeros((len(self.x), len(self.y)))
+        for i in range(0, len(self.x)):
+            for j in range(0, len(self.y)):
+                z[i, j] = self.target_lnpdf(np.array([self.a[i, j], self.b[i, j]]).reshape((1, 2)))
+
+        z_normed = z - np.max(z)
+        z_normed -= np.log(np.sum(np.exp(z_normed)))
+        z_log_normed = z_normed.copy()
+        z_normed = np.exp(z_normed)
+
+        plt.figure(111)
+        plt.title('Approximated Densities')
+        plt.cla()
+        if plotLog:
+            plt.contourf(self.a, self.b, z_log_normed, 50)
+        else:
+            plt.contourf(self.a, self.b, z_normed, 50)
+        plt.savefig("/tmp/target.eps")
+
+
+    def plot_mixture(self, sampler):
+        z = np.zeros((len(self.x), len(self.y)))
+        for i in range(0, len(self.x)):
+            for j in range(0, len(self.y)):
+                z[i, j] = sampler.vips_c.get_log_densities_on_mixture(np.array([self.a[i, j], self.b[i, j]]).reshape((1, 2)))
+
+        z_normed = z - np.max(z)
+        z_normed -= np.log(np.sum(np.exp(z_normed)))
+        z_log_normed = z_normed.copy()
+        z_normed = np.exp(z_normed)
+        means = sampler.vips_c.get_model()[1]
+        plt.figure(110)
+        plt.title('Approximated Densities')
+        plt.cla()
+        plt.contourf(self.a, self.b, z_normed, 50)
+        plt.savefig("/tmp/iter_"+str(30*(len(self.plotted_samps)-1))+"_nomixture.eps")
+
+        samps = sampler.vips_c.get_debug_info()[0]
+
+        sampler.vips_c.get_debug_info()[0]
+        plt.plot(samps[self.plotted_samps[-1]:,0], samps[self.plotted_samps[-1]:,1], '.k', markersize=3)
+        plt.plot(means[:-1, 0], means[:-1, 1], 'w+', markersize=7)
+        plt.plot(means[-1, 0], means[-1, 1], 'w*', markersize=9)
+        plt.xlim([self.min_x, self.max_x])
+        plt.ylim([self.min_y, self.max_y])
+        plt.savefig("/tmp/iter_"+str(30*(len(self.plotted_samps)-1))+".eps")
+        plt.pause(0.001)
+        self.plotted_samps.append(len(samps))
 
     def comp_plot(self, sampler, plot_KL=True):
         if self.firsttime:
